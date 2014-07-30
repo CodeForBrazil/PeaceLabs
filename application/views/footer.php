@@ -22,6 +22,7 @@
 		    <input type="password" class="form-control" id="loginPassword" name="login_password" 
 		    	placeholder="<?php echo lang('app_password_placeholder'); ?>" value="<?php echo set_value('login_password'); ?>">
 		    <div class="alert-danger"><?php echo form_error('login_password'); ?></div>
+		    <div><a href="#password" data-toggle="modal" data-target="#passwordModal" data-dismiss="modal"><?php echo lang('app_retrieve_password'); ?></a></div>
 		  </div>
 	    </div>
 	    <div class="modal-footer">
@@ -73,6 +74,33 @@
   </div>
 </div>
 
+<div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="passwordModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only"><?php echo lang('app_close'); ?></span></button>
+        <h4 class="modal-title" id="passwordModalLabel"><?php echo lang('app_password_title'); ?></h4>
+      </div>
+	  <form role="form" method="post">
+	  	<input type="hidden" name="form_name" value="password"/>
+	    <div class="modal-body">
+		  <div class="form-group">
+		    <label for="passwordEmail"><?php echo lang('app_email'); ?></label>
+		    <input type="email" class="form-control" id="passwordEmail" name="password_email" 
+		    	placeholder="<?php echo lang('app_retrieve_password_placeholder'); ?>" value="<?php echo set_value('password_email'); ?>">
+		    <div class="alert-danger"><?php echo form_error('password_email'); ?></div>
+		  </div>
+	    </div>
+	    <div class="modal-footer">
+	      <a href="#register" data-toggle="modal" data-target="#registerModal" data-dismiss="modal"><?php echo lang('app_register'); ?></a>
+	      <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('app_cancel'); ?></button>
+	      <button type="submit" class="btn btn-primary"><?php echo lang('app_send'); ?></button>
+	    </div>
+	  </form>
+    </div>
+  </div>
+</div>
+
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/assets/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -81,13 +109,10 @@
     
     <script type="text/javascript">
     $(window).load(function(){
-<?php if (isset($open_login_modal)) : ?>
-        $('#loginModal').modal('show');
+<?php if (isset($open_modal)) : ?>
+        $('#{$open_modal}Modal').modal('show');
 <?php endif; ?>
 
-<?php if (isset($open_register_modal)) : ?>
-        $('#registerModal').modal('show');
-<?php endif; ?>
     });
     </script>
 

@@ -27,7 +27,7 @@ class User_identity_model extends MY_Model
 
   public function __construct($data = array()) {
 	$this->TABLE_NAME = self::TABLE_NAME;
-    parent::__construct();
+    parent::__construct($data);
   }
 
   /**

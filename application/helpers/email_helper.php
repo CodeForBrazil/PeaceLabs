@@ -25,12 +25,11 @@ if ( ! function_exists('admin_report'))
 
 }
 
-
 if ( ! function_exists('email_user_confirmation'))
 {
 
   /**
-   * Send email to admin
+   * Send confirmation email to user
    */
   function email_user_confirmation($user) {
 	$ci = get_instance();
@@ -46,6 +45,28 @@ if ( ! function_exists('email_user_confirmation'))
 	
 	$ci->email->send();
    	
+  }
+
+}
+
+
+if ( ! function_exists('email_user_password'))
+{
+
+  /**
+   * Send password to user
+   */
+  function email_user_password($user,$email,$password) {
+	$ci = get_instance();
+	$ci->load->library('email');
+	
+	$ci->email->from(SENDER_EMAIL);
+	$ci->email->to($email);
+	$ci->email->subject(lang('app_mail_password_retrieval_title'));
+	$ci->email->message(sprintf(lang('app_mail_password_retrieval_content'),$password,site_url('/user')));	
+	
+	$ci->email->send();
+	
   }
 
 }

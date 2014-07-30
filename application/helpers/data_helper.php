@@ -14,7 +14,6 @@ if ( ! function_exists('import_data'))
    */
   function import_data(&$object, $data)
   {
-
     // In case of $data is an object, casts it into an array.
     is_object($data) and $data = get_object_vars($data);
 

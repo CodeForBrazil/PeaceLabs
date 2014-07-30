@@ -34,7 +34,7 @@ class User_model extends MY_Model
   
   public function __construct($data = array()) {
 	$this->TABLE_NAME = self::TABLE_NAME;
-    parent::__construct();
+    parent::__construct($data);
   }
   
   /**
@@ -54,7 +54,10 @@ class User_model extends MY_Model
   protected function match_identity($value,$type,$user_id) {
   	$this->load->model('User_identity_model');
 	$res = $this->User_identity_model->match($value,$type,$user_id);
-	if (!$res) admin_report("Problem matching identity $value","Data given: value = $value, type = $type, user_id = $user_id");
+	if (!$res) {
+		$this->load->help('email');
+		admin_report("Problem matching identity $value","Data given: value = $value, type = $type, user_id = $user_id");
+	}
 	return $res;
   }
 
@@ -131,6 +134,8 @@ class User_model extends MY_Model
 	
   	$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     $password = substr(str_shuffle($chars),0,8);
+  
+  	log_message('info',"Password changed: $password");
   
   	$this->password = $this->encrypt_password($password);
 	$this->update();

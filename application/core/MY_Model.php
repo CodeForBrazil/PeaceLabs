@@ -84,14 +84,18 @@ class MY_Model extends CI_Model
    * Return a list of models from query results
    */
   protected function get_self_results($query) {
-    return $query->result();
+   	$result = array();
+	$class = get_class($this);
+    foreach ($query->result() as $row) { $result[] =  new $class($row); }
+    return $result;
   }  
 
   /**
    * Returns the first result as model
    */
   protected function get_first_self_result($query) {
-    return $query->num_rows() > 0 ? array_shift($query->result()) : null;
+  	$class = get_class($this);
+    return $query->num_rows() > 0 ? new $class(array_shift($query->result())) : null;
   }  
   
 } 

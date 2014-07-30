@@ -62,8 +62,7 @@ class MY_Controller extends CI_Controller
 						}
 					}
 					if (!$current_user) {
-//					    $this->errors[] = lang('app_sigin_error');
-						$this->set_data('open_login_modal',TRUE);
+						$this->set_data('open_modal','login');
 					}
 					break;
 				
@@ -77,15 +76,29 @@ class MY_Controller extends CI_Controller
 						$password = $this->input->post('register_password');
 						$current_user = $this->register($email,$password);
 						if ($current_user) {
-							$ci = get_instance();
-							$ci->load->helper('email_helper');
+							$this->load->helper('email');
 							email_user_confirmation($current_user);
 						}
 					} else {
-//					    $this->errors[] = lang('app_register_error');
-						$this->set_data('open_register_modal',TRUE);
+						$this->set_data('open_modal','register');
 					}					
 					break;
+
+				case 'password':
+					$this->form_validation->set_rules('password_email', lang('app_email'), 'required|valid_email');
+
+					if ($this->form_validation->run() !== FALSE) {
+						$email = $this->input->post('password_email');
+						if ($this->retrieve_password($email)) {
+							$this->messages[] = sprintf(lang('app_retrieve_password_success'),$email);
+						} else {
+							$this->errors[] = sprintf(lang('app_retrieve_password_error'),$email);
+						}
+					} else {
+						$this->set_data('open_modal','password');
+					}					
+					break;
+
 			}
 				
 		}
@@ -109,8 +122,8 @@ class MY_Controller extends CI_Controller
   /**
    * Log a user in.
    *
-   * @param int $type 
-   * @param boolean $redirect 
+   * @param string $email 
+   * @param string $password 
    * @return boolean
    */
   protected function login($email,$password)
@@ -118,8 +131,6 @@ class MY_Controller extends CI_Controller
 	$this->load->model('User_model');
 	$user = $this->User_model->get_by_email($email);
 	$password = $this->User_model->encrypt_password($password);
-	log_message('info',$password);
-	log_message('info',json_encode($user));
   	if ( !is_null($user) && ($password === $user->password) ) {
 		$this->set_currentuser($user);
 		return $user;
@@ -141,14 +152,36 @@ class MY_Controller extends CI_Controller
 	$user->email = $email;
 	$user->password = $this->User_model->encrypt_password($password);
 	$user->set_confirmation();
-	log_message('info',json_encode($user));
 	if ($user->insert()) {
 		$this->set_currentuser($user);
 		return $user;
 	}
 	else
-		return false;
+		return FALSE;
   }
+
+  /**
+   * Retrieve user password.
+   *
+   * @param int $type 
+   * @param boolean $redirect 
+   * @return boolean
+   */
+  protected function retrieve_password($email)
+  {
+	$this->load->model('User_model');
+	if ($user = $this->User_model->get_by_email($email)) {
+		$password = $user->reset_password();
+
+		$this->load->helper('email');
+		email_user_password($user,$email,$password);
+		
+		return TRUE;
+	} else {
+		return FALSE;
+	}
+  }
+
   
   /**
    * Set user as current user
