@@ -32,6 +32,8 @@ $lang['app_retrieve_password_placeholder'] = "Entrez l'email de votre compte $ap
 //$lang['app_register_error'] = "L'enregistrement à échouer";
 $lang['app_retrieve_password_success'] = "Votre mot de passe a été envoyé à l'adresse '%s'";
 $lang['app_retrieve_password_error'] = "Aucun compte utilisateur ne correspond à l'email '%s'.";
+$lang['app_confirmation_ok'] = "Votre compte a été correctement activé. Nous vous en remercions.";
+$lang['app_confirmation_error'] = "Activation de votre compte impossible. Si le problème se répète, veuillez nous contacter: %s";
 
 /**** Emails */
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";

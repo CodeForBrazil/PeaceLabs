@@ -106,7 +106,6 @@ class User_model extends MY_Model
    */
   public function get_by_email($email)
   {
-    $email = (string) $email;
     $query = $this->db->get_where(self::TABLE_NAME, array('email' => $email));
     return $this->get_first_self_result($query);
   }
@@ -156,6 +155,24 @@ class User_model extends MY_Model
 	$this->status = self::STATUS_WAITING;
 
 	return $confirmation;
+  }
+  
+  /**
+   * Check if confirmation is OK
+   * 
+   * @return user
+   */
+  public function check_confirmation($confirmation) {
+    $query = $this->db->get_where(self::TABLE_NAME, array('confirmation' => $confirmation));
+    if ($query->num_rows() > 0) {
+    	$user = $this->get_first_self_result($query);
+    	$user->confirmation = NULL;
+		$user->status = self::STATUS_ACTIVE;
+		$user->update();
+		return $user;
+    } else {
+        return false;
+    }
   }
 }
 
