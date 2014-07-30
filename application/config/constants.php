@@ -36,6 +36,13 @@ define('FOPEN_READ_WRITE_CREATE',				'a+b');
 define('FOPEN_WRITE_CREATE_STRICT',				'xb');
 define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
+/********
+ * CUSTOM CONSTANTS
+ **/
+
+define('SENDER_EMAIL', 'thierry@thde.pro');
+define('ENCODE_CODE_WORD', 'azerty123456');
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

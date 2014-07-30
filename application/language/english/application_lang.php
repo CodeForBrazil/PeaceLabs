@@ -1,86 +1,27 @@
 <?php
-
+$app_name = "Lets";
 $lang['app_home'] = "Home";
-$lang['app_connect'] = "Connect";
-$lang['app_disconnect'] = "Disconnect";
-$lang['app_territories'] = "Territories";
-$lang['app_territories_description'] = "Territories management";
-$lang['app_providers'] = "Providers";
-$lang['app_providers_description'] = "Providers management";
-$lang['app_hello'] = "Hello!";
-$lang['app_my_account'] = "My account";
-$lang['app_terms'] = "Terms of use";
-$lang['app_legal'] = "Legal information";
-$lang['app_support'] = "Support";
-$lang['app_new_object_list'] = "New object list";
-$lang['app_title'] = "Title";
-$lang['app_title_help'] = "The title can not exceed 20 characters in length.";
-$lang['app_distance'] = "Distance";
-$lang['app_distance_help'] = "Distance in meters from selected location (long/lat).";
-$lang['app_order'] = "Sort order";
-$lang['app_order_default'] = "By default";
-$lang['app_order_proximity'] = "By proximity";
-$lang['app_order_keywords'] = "By keywords";
-$lang['app_order_events'] = "Current events";
-$lang['app_order_coming'] = "Coming soon";
-$lang['app_order_lucky'] = "I feel lucky";
-$lang['app_keywords'] = "Keywords";
-$lang['app_search_tags'] = "Search tags to add";
-$lang['app_long_lat'] = "Longitude/latitude";
-$lang['app_long_lat_help'] = "If longitude and latitude are empty, object list will be calculated using user position.";
-$lang['app_search_location'] = "Search for a location";
-$lang['app_inactive'] = "Inactive";
-$lang['app_active'] = "Active";
-$lang['app_last_import'] = "Last import";
-$lang['app_no_import'] = "No import yet";
-$lang['app_no_provider'] = "No provider was found.";
-$lang['app_edit_provider'] = "Edit provider";
-$lang['app_new_provider'] = "New provider";
-$lang['app_new_provider_description'] = "Create a new data provider";
-$lang['app_password'] = "Password";
-$lang['app_go'] = "Go";
-$lang['app_welcome'] = "Welcome";
-$lang['app_welcome_text'] = "<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>";
-$lang['app_new_territory'] = "New territory";
-$lang['app_new_territory_description'] = "Create a new territory";
-$lang['app_status'] = "Status";
-$lang['app_search_providers'] = "Search providers to add";
-$lang['app_edit_territory'] = "Edit territory";
-$lang['app_stats_territory'] = "Statistics for territory";
-$lang['app_new_password'] = "New password";
-$lang['app_intro'] = "Intro";
-$lang['app_object_lists'] = "Object lists";
-$lang['app_owner'] = "Owner";
-$lang['app_no_territory'] = "No territory was found.";
-$lang['app_user'] = "User";
-$lang['app_facebook'] = "Facebook";
-$lang['app_twitter'] = "Twitter";
-$lang['app_phone'] = "Phone";
-$lang['app_country'] = "Country";
-$lang['app_city'] = "City";
-$lang['app_birth_year'] = "Birth year";
-$lang['app_sex'] = "Sex";
-$lang['app_married'] = "Married";
-$lang['app_kids'] = "Kids";
-$lang['app_none'] = "None";
-$lang['app_types'] = "Types";
-$lang['app_object_list_save_error'] = "Cannot save the object list, check the data and try again.";
-$lang['app_search_key_error'] = "Search key is empty or too short.";
-$lang['app_provider_save_error'] = "Cannot save the provider, check the data and try again.";
-$lang['app_sigin_error'] = "Cannot sign in.";
-$lang['app_sigin'] = "Sign in";
-$lang['app_territory_save_error'] = "Cannot save the territory, check the data and try again.";
-$lang['app_stats_users'] = 'Users';
-$lang['app_stats_objects'] = 'Objects';
-$lang['app_stats_newaccounts'] = 'New users';
-$lang['app_stats_table_legend'] = 'Data unit: user per day';
-$lang['app_stats_map_users'] = 'Users (last %s days)';
-$lang['app_stats_map_objects'] = 'Objects viewed (last %s days)';
 
-$lang['app_error_alpha_numeric_dash'] = 'The %s field should contains only the following charaters: alphanumerical, _ and -';
-$lang['period_date'] = 'from %s to %s';
-$lang['period_time'] = '%s from %s to %s';
-$lang['period_datetime'] = '%s at %s';
+/**** Génériques */
+$lang['app_close'] = "Close";
+$lang['app_cancel'] = "Cancel";
+$lang['app_connect'] = "Connect";
+$lang['app_register'] = "Register";
+
+/**** Modals */
+$lang['app_login_title'] = "Connect to your $app_name account";
+$lang['app_register_title'] = "Create a new $app_name account";
+
+
+/**** Form labels */
+$lang['app_email'] = "Email address";
+$lang['app_password'] = "Password";
+
+
+/**** Error messages */
+$lang['app_sigin_error'] = "Connection failed";
+$lang['app_register_error'] = "New account creation failed";
+
 
 /* End of file application_lang.php */
 /* Location: ./application/language/english/application_lang.php */

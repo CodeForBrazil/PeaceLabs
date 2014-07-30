@@ -7,7 +7,8 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome/home');
+		$this->check_login();
+		$this->load->view('welcome/home',$this->get_data());
 	}
 
 	/**
@@ -18,6 +19,17 @@ class Welcome extends MY_Controller {
 		$this->load->view('welcome/theme');
 	}
 
+	/**
+	 * Sign out action.
+	 *
+	 * @return void
+	 */
+	public function out()
+	{
+	    $this->session->sess_destroy();
+	    redirect('/');
+	}
+	
 }
 
 /* End of file welcome.php */

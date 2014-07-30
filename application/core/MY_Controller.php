@@ -14,7 +14,7 @@ class MY_Controller extends CI_Controller
    * @var array
    */
   private $_data = array();
-  protected $debug = array();
+  public $debug = array();
   public $messages = array();
   public $errors = array();
 
@@ -30,13 +30,68 @@ class MY_Controller extends CI_Controller
     {
       $this->load->model('User_model');
       $this->set_data('current_user', $this->User_model->get_by_id($user_id));
-	  
-  	  $this->load->model('Territory_model');
-	  $this->set_data('user_territory',$this->Territory_model->get_by_owner($user_id));
     }
     $this->output->set_header('Content-Type: text/html; charset='.$this->config->item('charset'));
 
   }
+
+	/**
+	 * execute login with post parameters
+	 *
+	 * @return void
+	 */
+	function check_login() {
+		$this->load->helper('form');
+		$this->load->library('form_validation');
+		
+		if ($this->is_post()) {
+			$this->form_validation->set_error_delimiters('','');
+			switch ($this->input->post('form_name')) {
+				case 'login':
+					$this->form_validation->set_rules('login_email', lang('app_email'), 'required|valid_email');
+					$this->form_validation->set_rules('login_password', lang('app_password'), 'required');
+					
+					$current_user = false;
+					if ($this->form_validation->run() !== FALSE) {
+						$email    = $this->input->post('login_email');
+						$password = $this->input->post('login_password');
+					
+						if ($current_user = $this->login($email,$password)) {
+							$redirect = $this->input->post('redirect');
+							if (!empty($redirect)) redirect($redirect);
+						}
+					}
+					if (!$current_user) {
+//					    $this->errors[] = lang('app_sigin_error');
+						$this->set_data('open_login_modal',TRUE);
+					}
+					break;
+				
+				case 'register':
+					$this->form_validation->set_rules('register_email', lang('app_email'), 'required|valid_email|is_unique[user.email]');
+					$this->form_validation->set_rules('register_password', lang('app_password'), 'required|min_length[5]|max_length[15]');
+					$this->form_validation->set_rules('confirm_password', lang('app_confirm_password'), 'required|matches[register_password]');
+	
+					if ($this->form_validation->run() !== FALSE) {
+						$email    = $this->input->post('register_email');
+						$password = $this->input->post('registerpassword');
+						$current_user = $this->register($email,$password);
+						if ($current_user) {
+							$ci = get_instance();
+							$ci->load->helper('email_helper');
+							email_user_confirmation($current_user);
+						}
+					} else {
+//					    $this->errors[] = lang('app_register_error');
+						$this->set_data('open_register_modal',TRUE);
+					}					
+					break;
+			}
+				
+		}
+		
+	}
+
 
   /**
    * Checks if current user is authenticated (has signed in).
@@ -58,13 +113,11 @@ class MY_Controller extends CI_Controller
    * @param boolean $redirect 
    * @return boolean
    */
-  public function login($email,$password)
+  protected function login($email,$password)
   {
 	$this->load->model('User_model');
   	if ( ($user = $this->User_model->get_by_email($email)) && $this->User_model->encrypt_password($password) === $user->password) {
-		$this->session->set_userdata('user_id', $user->id);
-	    $this->set_data('current_user', $user);
-		return $user;
+		return $this->set_currentuser($user);
 	}
 	return false;
   }
@@ -76,19 +129,30 @@ class MY_Controller extends CI_Controller
    * @param string $password 
    * @return boolean
    */
-  public function register($email,$password)
+  protected function register($email,$password)
   {
 	$this->load->model('User_model');
-	$this->User_model->email = $email;
-	$this->User_model->password = $this->User_model->encrypt_password($password);
-	if ($this->User_model->insert()) {
-		$user = $this->User_model->get_by_id($this->User_model->id);
-		$this->session->set_userdata('user_id', $user->id);
-	    $this->set_data('current_user', $user);
+	$user = new User_model();
+	$user->email = $email;
+	$user->password = $this->User_model->encrypt_password($password);
+	$user->set_confirmation();
+	if ($user->insert()) {
+		$this->set_currentuser($user);
 		return $user;
 	}
 	else
 		return false;
+  }
+  
+  /**
+   * Set user as current user
+   */
+  protected function set_currentuser($user)
+  {
+  	if ($user) {
+		$this->session->set_userdata('user_id', $user->id);
+	    $this->set_data('current_user', $user);
+  	}
   }
 
   /**
@@ -122,6 +186,8 @@ class MY_Controller extends CI_Controller
   {
   	$this->_data['errors'] = $this->errors;
   	$this->_data['messages'] = $this->messages;
+  	if (defined('ENVIRONMENT') && in_array(ENVIRONMENT,array('development'))) $this->_data['debug'] = $this->debug;
+	
     if (null === $key)
     {
       return $this->_data;
@@ -158,26 +224,7 @@ class MY_Controller extends CI_Controller
     $this->output->set_header('Content-Length: '.strlen($json));
     $this->output->set_output($json);
   }
-
- /**
-   * Check if string contains only alfanumerical characters and - and _ .
-   *
-   * @param string $str 
-   * @return boolean
-   */
-	public function valid_phone($str)
-	{
-		if ( preg_match("/[^0-9\+ ]/i", $str))
-		{
-			$this->form_validation->set_message('valid_phone', lang('app_error_valid_phone'));
-			return FALSE;
-		}
-		else
-		{
-			return TRUE;
-		}
-	}
-	
+  
 }
 
 /* End of file MY_Controller.php */

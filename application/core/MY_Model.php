@@ -23,8 +23,6 @@ class MY_Model extends CI_Model
   public function __construct($data = array()) {
     parent::__construct();
 	
-	$this->TABLE_NAME = self::TABLE_NAME;
-	
     $this->load->helper('data');
     import_data($this, $data);
   }

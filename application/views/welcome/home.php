@@ -3,7 +3,8 @@
     <div class="container theme-showcase" role="main">
 
 		<div class="jumbotron">
-			<h1>Page d'accueil</h1>
+			<?php if (isset($current_user)) echo json_encode($current_user); else echo "Hello"; ?>
+			<?php echo $this->session->userdata('user_id'); ?>
 		</div>
     </div>
     
