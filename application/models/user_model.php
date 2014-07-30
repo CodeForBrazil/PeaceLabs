@@ -104,9 +104,8 @@ class User_model extends MY_Model
   public function get_by_email($email)
   {
     $email = (string) $email;
-  	$this->load->model('User_identity_model');
-	$identity = $this->User_identity_model->get_by_value($email,User_identity_model::TYPE_EMAIL);
-	return (!is_null($identity->user_id))?$this->get_by_id($identity->user_id):false;
+    $query = $this->db->get_where(self::TABLE_NAME, array('email' => $email));
+    return $this->get_first_self_result($query);
   }
 
   /**

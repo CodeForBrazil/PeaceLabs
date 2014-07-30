@@ -74,7 +74,7 @@ class MY_Controller extends CI_Controller
 	
 					if ($this->form_validation->run() !== FALSE) {
 						$email    = $this->input->post('register_email');
-						$password = $this->input->post('registerpassword');
+						$password = $this->input->post('register_password');
 						$current_user = $this->register($email,$password);
 						if ($current_user) {
 							$ci = get_instance();
@@ -116,8 +116,13 @@ class MY_Controller extends CI_Controller
   protected function login($email,$password)
   {
 	$this->load->model('User_model');
-  	if ( ($user = $this->User_model->get_by_email($email)) && $this->User_model->encrypt_password($password) === $user->password) {
-		return $this->set_currentuser($user);
+	$user = $this->User_model->get_by_email($email);
+	$password = $this->User_model->encrypt_password($password);
+	log_message('info',$password);
+	log_message('info',json_encode($user));
+  	if ( !is_null($user) && ($password === $user->password) ) {
+		$this->set_currentuser($user);
+		return $user;
 	}
 	return false;
   }
@@ -136,6 +141,7 @@ class MY_Controller extends CI_Controller
 	$user->email = $email;
 	$user->password = $this->User_model->encrypt_password($password);
 	$user->set_confirmation();
+	log_message('info',json_encode($user));
 	if ($user->insert()) {
 		$this->set_currentuser($user);
 		return $user;

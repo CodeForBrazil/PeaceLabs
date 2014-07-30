@@ -90,6 +90,9 @@
 <?php endif; ?>
     });
     </script>
+
+<?php if (defined('ENVIRONMENT') && in_array(ENVIRONMENT,array('development'))) $this->output->enable_profiler(TRUE); ?>
     
   </body>
 </html>
+

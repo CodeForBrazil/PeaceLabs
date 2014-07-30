@@ -37,11 +37,13 @@
           </ul>
           <ul class="nav navbar-nav pull-right">
           	<?php if (isset($current_user)) : ?>
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $current_user->email; ?><span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="<?php echo site_url('user'); ?>"><?php echo lang('app_my_account'); ?></a></li>
-                <li><a href="<?php echo site_url('welcome/out'); ?>"><?php echo lang('app_disconnect'); ?></a></li>
-              </ul>
+	          	<li class="dropdown">
+	              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $current_user->email; ?><span class="caret"></span></a>
+	              <ul class="dropdown-menu" role="menu">
+	                <li><a href="<?php echo site_url('user'); ?>"><?php echo lang('app_my_account'); ?></a></li>
+	                <li><a href="<?php echo site_url('welcome/out'); ?>"><?php echo lang('app_disconnect'); ?></a></li>
+	              </ul>
+	          	</li>
           	<?php else : ?>
               <li><a href="#login" data-toggle="modal" data-target="#loginModal"><?php echo lang('app_connect'); ?></a></li>
             <?php endif; ?>

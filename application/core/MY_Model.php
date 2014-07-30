@@ -22,7 +22,7 @@ class MY_Model extends CI_Model
    */
   public function __construct($data = array()) {
     parent::__construct();
-	
+
     $this->load->helper('data');
     import_data($this, $data);
   }
@@ -84,18 +84,14 @@ class MY_Model extends CI_Model
    * Return a list of models from query results
    */
   protected function get_self_results($query) {
-   	$result = array();
-	$class = get_class($this);
-    foreach ($query->result() as $row) { $result[] =  new $class($row); }
-    return $result;
+    return $query->result();
   }  
 
   /**
    * Returns the first result as model
    */
   protected function get_first_self_result($query) {
-  	$class = get_class($this);
-    return $query->num_rows() > 0 ? new $class(array_shift($query->result())) : null;
+    return $query->num_rows() > 0 ? array_shift($query->result()) : null;
   }  
   
 } 
