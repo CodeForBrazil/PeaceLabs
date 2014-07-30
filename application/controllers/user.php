@@ -7,7 +7,7 @@ class User extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome/home');
+		$this->load->view('welcome/home',$this->get_data());
 	}
 	
 	/**
@@ -23,7 +23,7 @@ class User extends MY_Controller {
 		}
 		$this->load->view('welcome/home',$this->get_data());
 	}
-		
+
 }
 
 /* End of file user.php */
