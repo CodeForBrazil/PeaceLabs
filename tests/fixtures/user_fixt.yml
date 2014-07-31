@@ -1,0 +1,17 @@
+1:
+    id: 21
+    email: 'test@thde.com'
+    status: 1
+    role: 0
+2:
+    id: 22
+    email: 'test2@thde.com'
+    status: 1
+    role: 0
+3:
+    id: 23
+    email: 'test3@thde.com'
+    status: 2
+    confirmation: 'azerty'
+    role: 0
+    

@@ -163,6 +163,7 @@ class User_model extends MY_Model
    * @return user
    */
   public function check_confirmation($confirmation) {
+  	if (empty($confirmation)) return false;
     $query = $this->db->get_where(self::TABLE_NAME, array('confirmation' => $confirmation));
     if ($query->num_rows() > 0) {
     	$user = $this->get_first_self_result($query);
