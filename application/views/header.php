@@ -29,11 +29,11 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#" id="logo"><img src="/assets/img/lets-do-it.gif" /></a>
+          <a class="navbar-brand" href="/" id="logo"><img src="/assets/img/lets-do-it.gif" /></a>
         </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
+            <li class="active"><a href="/">Home</a></li>
           </ul>
           <ul class="nav navbar-nav pull-right">
           	<?php if (isset($current_user)) : ?>

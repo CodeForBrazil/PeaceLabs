@@ -42,6 +42,7 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('SENDER_EMAIL', 'thierry@thde.pro');
 define('CONTACT_EMAIL', 'thierry@thde.pro');
+define('ADMIN_EMAIL', 'thierry@thde.pro');
 define('ENCODE_CODE_WORD', 'azerty123456');
 
 

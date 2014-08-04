@@ -8,16 +8,18 @@ class UserModelTest extends CIUnit_TestCase
 {
 	protected $tables = array(
 		'user'		  => 'user',
+		'user_identity'		  => 'user_identity',
 	);
 	
 	private $um;
+	private $uim;
 	private $users;
+	private $user_identities;
 	
 	public function __construct($name = NULL, array $data = array(), $dataName = '')
 	{
 		parent::__construct($name, $data, $dataName);
 		$this->users = Spyc::YAMLLoad(dirname(__FILE__)."/../fixtures/user_fixt.yml");
-		
 	}
 	
 	public function setUp()
@@ -31,7 +33,7 @@ class UserModelTest extends CIUnit_TestCase
 	}
 	
 	/*****
-	 * Providers
+	 * Global Providers
 	 */
 	public function GetUsers() {
 		return $this->users;
@@ -88,12 +90,13 @@ class UserModelTest extends CIUnit_TestCase
 	{
 		$user = $this->um->get_by_id($id);
 		$confirmation = $user->set_confirmation();
-		$user->update();
+		$res = $user->update();
+		$this->assertTrue($res,'Checking user update');
 		$this->assertEquals(strlen($confirmation),24);
 		$this->assertEquals($user->status,User_model::STATUS_WAITING);
 
 		$user = $this->um->check_confirmation($confirmation);
-		$this->assertNotEmpty($user);
+		$this->assertNotFalse($user);
 		$this->assertEquals($user->id,$id);
 		$this->assertEquals($user->status,User_model::STATUS_ACTIVE);
 	}
@@ -118,5 +121,59 @@ class UserModelTest extends CIUnit_TestCase
 	}
 	
 	// ------------------------------------------------------------------------
+	/**
+	 * @dataProvider GetNewUser
+	 */
+	public function testInsert_NewIdentity($email,$password) {
+		$user = $this->um->get_by_email($email);
+		$this->assertEmpty($user);
+
+		$user2 = new User_model();
+		$user2->um->email = $email;
+		$user2->um->password = $password;
+		$res = $user2->um->insert();
+		$this->assertNotEmpty($res);
+	}
+	
+	/**
+	 * @dataProvider GetNewUserExistingEmail
+	 */
+	public function testInsert_ExistingEmail($email,$password) {
+		$user = $this->um->get_by_email($email);
+		$this->assertNotEmpty($user);
 		
+		$user2 = new User_model();
+		$user2->um->email = $email;
+		$user2->um->password = $password;
+		$res = $user2->um->insert();
+		$this->assertFalse($res);
+	}
+	
+	public function GetNewUser() {
+		return array(
+			array('jose@thde.pro', $this->makepassword()),
+			array('andrew@thde.pro', $this->makepassword()),
+			array('marie@thde.pro', $this->makepassword()),
+		);
+	}
+	
+	public function GetNewUserExistingEmail() {
+		$res = array();
+		foreach ($this->users as $user) {
+			$res[] = array($user['email'],$this->makepassword());
+		}	
+		return $res;
+	}
+	
+	
+	protected function makepassword() {
+		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    	return substr(str_shuffle($chars),0,8);
+	}
+	
+	
+	
+	
+	
+	
 }

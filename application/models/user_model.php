@@ -51,14 +51,14 @@ class User_model extends MY_Model
   /**
    * Create a new identity or link it to user if exists
    */
-  protected function match_identity($value,$type,$user_id) {
-  	$this->load->model('User_identity_model');
+  protected function match_identity() {
+/*  	$this->load->model('User_identity_model');
 	$res = $this->User_identity_model->match($value,$type,$user_id);
 	if (!$res) {
-		$this->load->help('email');
+		$this->load->helper('email');
 		admin_report("Problem matching identity $value","Data given: value = $value, type = $type, user_id = $user_id");
-	}
-	return $res;
+	}*/
+	return true;
   }
 
   /**
@@ -68,11 +68,17 @@ class User_model extends MY_Model
    */
   public function insert()
   {
+  	if (	empty($this->email) || 
+  			empty($this->password) || 
+  			$this->get_by_email($this->email)) 
+  		return false;
+	
 	$this->dateadd = gmdate("Y-m-d H:i:s");
 	$this->dateupdate = gmdate("Y-m-d H:i:s");
 	$res = parent::insert();
-  	$this->load->model('User_identity_model');
-	if ($res) $this->match_identity($this->email,User_identity_model::TYPE_EMAIL,$this->id);
+	
+	if ($res) $this->match_identity();
+	
 	return $res;
   }
 
@@ -83,8 +89,16 @@ class User_model extends MY_Model
    */
   public function update()
   {
+  	if ( empty($this->email) ) 
+  		return false;
+
 	$this->dateupdate = gmdate("Y-m-d H:i:s");
-	return parent::update();
+	$res = parent::update();
+	
+	if ($res) $this->match_identity();
+	
+	return $res;
+	
   }
 
   /**

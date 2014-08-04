@@ -78,6 +78,8 @@ class MY_Controller extends CI_Controller
 						if ($current_user) {
 							$this->load->helper('email');
 							email_user_confirmation($current_user);
+						} else {
+							$this->errors[] = sprintf(lang('app_register_error'),$email);
 						}
 					} else {
 						$this->set_data('open_modal','register');

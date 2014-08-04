@@ -110,7 +110,7 @@
     <script type="text/javascript">
     $(window).load(function(){
 <?php if (isset($open_modal)) : ?>
-        $('#{$open_modal}Modal').modal('show');
+        $('#<?php echo $open_modal; ?>Modal').modal('show');
 <?php endif; ?>
 
     });
