@@ -7,7 +7,8 @@ class User extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('welcome/home',$this->get_data());
+		
+		$this->load->view('user/index',$this->get_data());
 	}
 	
 	/**

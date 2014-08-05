@@ -25,6 +25,7 @@ class User_model extends MY_Model
   // Table fields
   public $id;
   public $email;
+  public $name = NULL;
   public $password = NULL;
   public $role = self::ROLE_DEFAULT;
   public $confirmation;

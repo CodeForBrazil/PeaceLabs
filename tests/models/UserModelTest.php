@@ -8,7 +8,6 @@ class UserModelTest extends CIUnit_TestCase
 {
 	protected $tables = array(
 		'user'		  => 'user',
-		'user_identity'		  => 'user_identity',
 	);
 	
 	private $um;
@@ -124,7 +123,7 @@ class UserModelTest extends CIUnit_TestCase
 	/**
 	 * @dataProvider GetNewUser
 	 */
-	public function testInsert_NewIdentity($email,$password) {
+	public function testInsert_NewIdentity($email,$password,$name) {
 		$user = $this->um->get_by_email($email);
 		$this->assertEmpty($user);
 
@@ -138,7 +137,7 @@ class UserModelTest extends CIUnit_TestCase
 	/**
 	 * @dataProvider GetNewUserExistingEmail
 	 */
-	public function testInsert_ExistingEmail($email,$password) {
+	public function testInsert_ExistingEmail($email,$password,$name) {
 		$user = $this->um->get_by_email($email);
 		$this->assertNotEmpty($user);
 		
@@ -150,17 +149,19 @@ class UserModelTest extends CIUnit_TestCase
 	}
 	
 	public function GetNewUser() {
-		return array(
-			array('jose@thde.pro', $this->makepassword()),
-			array('andrew@thde.pro', $this->makepassword()),
-			array('marie@thde.pro', $this->makepassword()),
-		);
+		$res = array();
+		for ($i=0; $i < 4; $i++) { 
+			$name = $this->makename();
+			$email = (is_null($name))?'unknow':strtolower($name);
+			$res[] = array($email.'@thde.pro',$this->makepassword(),$name);
+		}
+		return $res;
 	}
 	
 	public function GetNewUserExistingEmail() {
 		$res = array();
 		foreach ($this->users as $user) {
-			$res[] = array($user['email'],$this->makepassword());
+			$res[] = array($user['email'],$this->makepassword(),$this->makename());
 		}	
 		return $res;
 	}
@@ -169,6 +170,12 @@ class UserModelTest extends CIUnit_TestCase
 	protected function makepassword() {
 		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
     	return substr(str_shuffle($chars),0,8);
+	}
+	
+	protected function makename() {
+		$names = array(NULL,'Jules','Ann','Carolina','Joe','Yvette','Leonardo','Julien','Esteban','John','Luke');
+		$k = array_rand($names);
+		return $names[$k];
 	}
 	
 	

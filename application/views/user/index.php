@@ -3,8 +3,7 @@
     <div class="container" role="main">
 
 		<div class="jumbotron">
-			<?php if (isset($current_user)) echo json_encode($current_user); else echo "Hello"; ?>
-			<?php echo $this->session->userdata('user_id'); ?>
+			<?php echo $current_user->get_name(); ?>
 		</div>
     </div>
     
