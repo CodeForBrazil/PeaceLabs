@@ -12,6 +12,7 @@ $lang['app_already_account'] = "Déjà un compte?";
 $lang['app_my_account'] = "Mon compte";
 $lang['app_retrieve_password'] = "Mot de passe oublié?";
 $lang['app_send'] = "Envoyer";
+$lang['app_parameters'] = "Paramètres";
 
 /**** Modals */
 $lang['app_login_title'] = "Se connecter à $app_name";

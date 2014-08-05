@@ -21,13 +21,17 @@ class User_model extends MY_Model
   const STATUS_DISABLE = 0;
   const STATUS_ACTIVE = 1;
   const STATUS_WAITING = 2;
+  const STATUS_NO_ACCOUNT = 3;
+  
+  // Other
+  const NO_NAME = "----";
 
   // Table fields
   public $id;
   public $email;
   public $name = NULL;
   public $password = NULL;
-  public $role = self::ROLE_DEFAULT;
+  public $roles = self::ROLE_DEFAULT;
   public $confirmation;
   public $dateadd = 0;
   public $dateupdate = 0;
@@ -36,6 +40,17 @@ class User_model extends MY_Model
   public function __construct($data = array()) {
 	$this->TABLE_NAME = self::TABLE_NAME;
     parent::__construct($data);
+  }
+  
+  /**
+   * Return a string with user denomination
+   * @return string
+   */
+  public function get_name() {
+    $name = trim($this->name);
+    empty($name) and $name = trim($this->email);
+	empty($name) and $name = self::NO_NAME;
+    return $name;
   }
   
   /**

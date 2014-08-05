@@ -7,7 +7,6 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
-		$this->check_login();
 		$this->load->view('welcome/home',$this->get_data());
 	}
 

@@ -3,8 +3,9 @@
     <div class="container" role="main">
 
 		<div class="jumbotron">
-			<h2><?php echo $user->get_name(); ?></h2>
+			<?php echo "Paramètres du compte: ".$user->get_name(); ?>
 		</div>
     </div>
+    
     
 <?php $this->load->view('footer.php');

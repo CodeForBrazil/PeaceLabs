@@ -33,14 +33,15 @@ class MY_Controller extends CI_Controller
     }
     $this->output->set_header('Content-Type: text/html; charset='.$this->config->item('charset'));
 
+	$this->check_post();
   }
 
 	/**
-	 * execute login with post parameters
+	 * check if post is cross-site (like login, register, password retrieval)
 	 *
 	 * @return void
 	 */
-	function check_login() {
+	function check_post() {
 		$this->load->helper('form');
 		$this->load->library('form_validation');
 		
@@ -107,6 +108,12 @@ class MY_Controller extends CI_Controller
 		
 	}
 
+  /**
+   * Get current user
+   */
+  public function get_currentuser() {
+  	return $this->get_data('current_user');
+  }
 
   /**
    * Checks if current user is authenticated (has signed in).
@@ -117,7 +124,7 @@ class MY_Controller extends CI_Controller
    */
   public function check_user($type = null, $redirect = true)
   {
-    $current_user = $this->get_data('current_user');
+    $current_user = $this->get_currentuser();
     return $this->validation->check_user($current_user, $type, $redirect);
   }
   
