@@ -6,8 +6,8 @@ class User extends MY_Controller {
 	 * Index Page for this controller.
 	 */
 	public function index($id=NULL)
-	{
-		$user = $this->getUser((int)$id);
+	{	
+		$user = $this->getUser((is_null($id))?NULL:(int)$id);
 		$this->set_data('user',$user);
 		$this->load->view('user/index',$this->get_data());
 	}

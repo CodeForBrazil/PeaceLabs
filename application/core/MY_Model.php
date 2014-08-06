@@ -13,7 +13,7 @@ class MY_Model extends CI_Model
    * Table name.
    */
   protected $TABLE_NAME;
-
+  
  /**
    * Class constructor.
    *
@@ -97,7 +97,13 @@ class MY_Model extends CI_Model
   	$class = get_class($this);
     return $query->num_rows() > 0 ? new $class(array_shift($query->result())) : null;
   }  
-  
+	
+	/**
+	 * Echo field
+	 */
+	public function html($field) {
+		echo htmlspecialchars($this->$field);
+	}
 } 
 
 
