@@ -91,6 +91,7 @@ class UserModelTest extends CIUnit_TestCase
 		$confirmation = $user->set_confirmation();
 		$res = $user->update();
 		$this->assertTrue($res,'Checking user update');
+		$this->assertNotEmpty($user->alias);
 		$this->assertEquals(strlen($confirmation),24);
 		$this->assertEquals($user->status,User_model::STATUS_WAITING);
 
@@ -132,6 +133,7 @@ class UserModelTest extends CIUnit_TestCase
 		$user2->um->password = $password;
 		$res = $user2->um->insert();
 		$this->assertNotEmpty($res);
+		$this->assertNotEmpty($user2->um->alias);
 	}
 	
 	/**

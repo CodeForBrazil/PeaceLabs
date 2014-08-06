@@ -31,6 +31,9 @@ class User_model extends MY_Model
   public $email;
   public $name = NULL;
   public $password = NULL;
+  public $alias = NULL;
+  public $bio = NULL;
+  public $city = NULL;
   public $roles = self::ROLE_DEFAULT;
   public $confirmation;
   public $dateadd = 0;
@@ -91,6 +94,7 @@ class User_model extends MY_Model
 	
 	$this->dateadd = gmdate("Y-m-d H:i:s");
 	$this->dateupdate = gmdate("Y-m-d H:i:s");
+	$this->set_alias(FALSE);
 	$res = parent::insert();
 	
 	if ($res) $this->match_identity();
@@ -109,7 +113,9 @@ class User_model extends MY_Model
   		return false;
 
 	$this->dateupdate = gmdate("Y-m-d H:i:s");
+	$this->set_alias(FALSE);
 	$res = parent::update();
+
 	
 	if ($res) $this->match_identity();
 	
@@ -137,6 +143,18 @@ class User_model extends MY_Model
   public function get_by_email($email)
   {
     $query = $this->db->get_where(self::TABLE_NAME, array('email' => $email));
+    return $this->get_first_self_result($query);
+  }
+
+  /**
+   * Gets an user by its alias.
+   *
+   * @param string $alias 
+   * @return User_model|null
+   */
+  public function get_by_alias($alias)
+  {
+    $query = $this->db->get_where(self::TABLE_NAME, array('alias' => $alias));
     return $this->get_first_self_result($query);
   }
 
@@ -205,6 +223,48 @@ class User_model extends MY_Model
         return false;
     }
   }
+
+  /**
+   * Format object name into url alias
+   * THIS FUNCTION SAVES THE NEW ALIAS IF ALIAS WAS EMPTY
+   * 
+   * @return string
+   */
+	protected function set_alias($save = TRUE) {
+		$alias = $this->alias;
+		if (empty($alias)) {
+			if (!empty($this->email)) $name = array_shift(explode('@',$this->email));
+			else if (!empty($name)) $name = $this->name;
+			else $name = 'newuser';
+
+			$table = array(
+		        'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
+		        'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
+		        'Ê'=>'E', 'Ë'=>'E', 'Ì'=>'I', 'Í'=>'I', 'Î'=>'I', 'Ï'=>'I', 'Ñ'=>'N', 'Ò'=>'O', 'Ó'=>'O', 'Ô'=>'O',
+		        'Õ'=>'O', 'Ö'=>'O', 'Ø'=>'O', 'Ù'=>'U', 'Ú'=>'U', 'Û'=>'U', 'Ü'=>'U', 'Ý'=>'Y', 'Þ'=>'B', 'ß'=>'Ss',
+		        'à'=>'a', 'á'=>'a', 'â'=>'a', 'ã'=>'a', 'ä'=>'a', 'å'=>'a', 'æ'=>'a', 'ç'=>'c', 'è'=>'e', 'é'=>'e',
+		        'ê'=>'e', 'ë'=>'e', 'ì'=>'i', 'í'=>'i', 'î'=>'i', 'ï'=>'i', 'ð'=>'o', 'ñ'=>'n', 'ò'=>'o', 'ó'=>'o',
+		        'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
+		        'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r',
+		    );
+			$alias = preg_replace("/[^a-zA-Z0-9]+/", "_", strtr($name, $table));
+			$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $alias));
+			if ($query->num_rows() > 0) {
+				$city = $this->city;
+				$alias = preg_replace("/[^a-zA-Z0-9]+/", "_", strtr($name.' '.$city, $table));
+				$base = $alias;
+				$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $alias));
+				while ($query->num_rows() > 0) {
+					$alias = $base.$i++;
+					$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $alias));
+				}
+			}
+			$this->alias = $alias;
+			if ($save) $this->update();
+		}
+		return $alias;	
+	}
+
 }
 
 /* End of file user_model.php */

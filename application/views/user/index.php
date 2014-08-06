@@ -5,6 +5,7 @@
 		<div class="jumbotron">
 			<h2><?php echo $user->get_name(); ?></h2>
 		</div>
-    </div>
+
+	</div>
     
 <?php $this->load->view('footer.php');

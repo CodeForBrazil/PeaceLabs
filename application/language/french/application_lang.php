@@ -1,5 +1,6 @@
 <?php
 $app_name = "Lets";
+$contact_admin = "Si le problème se répète, veuillez nous contacter: %s";
 $lang['app_home'] = "Accueil";
 
 /**** Génériques */
@@ -9,7 +10,7 @@ $lang['app_connect'] = "Se connecter";
 $lang['app_disconnect'] = "Se déconnecter";
 $lang['app_register'] = "S'inscrire";
 $lang['app_already_account'] = "Déjà un compte?";
-$lang['app_my_account'] = "Mon compte";
+$lang['app_my_account'] = "Mon profil et mes activités";
 $lang['app_retrieve_password'] = "Mot de passe oublié?";
 $lang['app_send'] = "Envoyer";
 $lang['app_parameters'] = "Paramètres";
@@ -20,6 +21,7 @@ $lang['app_register_title'] = "Créer un nouveau compte $app_name";
 $lang['app_password_title'] = "Récupération du mot de passe";
 
 /**** Form labels */
+$lang['app_name'] = "Nom";
 $lang['app_email'] = "Adresse email";
 $lang['app_password'] = "Mot de passe";
 $lang['app_confirm_password'] = "Confirmation du mot de passe";
@@ -27,6 +29,11 @@ $lang['app_email_placeholder'] = "Entrez votre email";
 $lang['app_password_placeholder'] = "Choisir un mot de passe";
 $lang['app_confirm_password_placeholder'] = "Ré-écrire votre mot de passe";
 $lang['app_retrieve_password_placeholder'] = "Entrez l'email de votre compte $app_name";
+$lang['app_alias'] = "Nom d'utilisateur";
+$lang['app_city'] = "Ville";
+$lang['app_website'] = "Site web";
+$lang['app_bio'] = "A propos de vous";
+$lang['app_bio_placeholder'] = "Décrire rapidement vos centres d'intérêts";
 
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";
@@ -34,7 +41,9 @@ $lang['app_register_error'] = "L'enregistrement à échouer. Veuillez tentez ave
 $lang['app_retrieve_password_success'] = "Votre mot de passe a été envoyé à l'adresse '%s'";
 $lang['app_retrieve_password_error'] = "Aucun compte utilisateur ne correspond à l'email '%s'.";
 $lang['app_confirmation_ok'] = "Votre compte a été correctement activé. Nous vous en remercions.";
-$lang['app_confirmation_error'] = "Activation de votre compte impossible. Si le problème se répète, veuillez nous contacter: %s";
+$lang['app_confirmation_error'] = "Activation de votre compte impossible. $contact_admin";
+$lang['app_user_save_success'] = "Vos paramètres utilisateur ont été correctement enregistré.";
+$lang['app_user_save_error'] = "Une erreur est survenue lors de l'enregistrement de vos paramètres. $contact_admin";
 
 /**** Emails */
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";
