@@ -31,9 +31,10 @@ class User_model extends MY_Model
   public $email;
   public $name = NULL;
   public $password = NULL;
-  public $alias = NULL;
-  public $bio = NULL;
-  public $city = NULL;
+  public $avatar;
+  public $alias;
+  public $bio;
+  public $city;
   public $roles = self::ROLE_DEFAULT;
   public $confirmation;
   public $dateadd = 0;
@@ -51,9 +52,22 @@ class User_model extends MY_Model
    */
   public function get_name() {
     $name = trim($this->name);
-    empty($name) and $name = trim($this->email);
+    empty($name) and $name = $this->alias;
 	empty($name) and $name = self::NO_NAME;
     return $name;
+  }
+  
+  /**
+   * Returns user avatar media model
+   */
+  public function get_avatar($style=NULL) {
+  	if ($this->avatar) {
+  		$this->load->model('Media_model');
+		$avatar = $this->Media_model->get_by_id($this->avatar);
+		if ($path = $avatar->get_path($style))
+			return $path;
+  	}
+	return DEFAULT_AVATAR;
   }
   
   /**
@@ -223,7 +237,30 @@ class User_model extends MY_Model
         return false;
     }
   }
-
+  
+  /**
+   * Add a new avatar image to user profile
+   */
+  public function add_avatar($path) {
+  	$this->load->model('Media_model');
+	
+	// removing old avatar
+	if ($this->avatar) {
+		$media_old = new Media_model();
+		if ($media_old->get_by_id($this->avatar)) $media_old->delete();
+	}	
+	
+	//saving new avatar
+	$media = new Media_model();
+	if ($media->insert($path)) {
+		$this->avatar = $media->id;
+		return $this->update();
+	} else {
+		return false;
+	}
+	
+  }
+   
   /**
    * Format object name into url alias
    * THIS FUNCTION SAVES THE NEW ALIAS IF ALIAS WAS EMPTY

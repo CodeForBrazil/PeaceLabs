@@ -5,3 +5,39 @@
 
 .dropdown-menu > li > a { padding: 10px 20px; }
 
+.btn-file {
+  overflow: hidden;
+  position: absolute;
+  bottom: 0;
+  left: 120px;
+  input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+  }
+}
+
+
+.avatar-large { height: 200px; width: 200px; }
+.avatar-medium { height: 100px; width: 100px; }
+.avatar-small { height: 32px; width: 32px; }
+
+.img-preview {
+  display:block;
+  max-height:100px;
+  overflow:hidden;
+  img {
+    width:100%;
+    min-height:100px;    
+  }
+}

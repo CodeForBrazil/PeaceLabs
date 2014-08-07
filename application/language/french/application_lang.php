@@ -13,6 +13,8 @@ $lang['app_already_account'] = "Déjà un compte?";
 $lang['app_my_account'] = "Mon profil et mes activités";
 $lang['app_retrieve_password'] = "Mot de passe oublié?";
 $lang['app_send'] = "Envoyer";
+$lang['app_remove'] = "Retirer";
+$lang['app_delete'] = "Supprimer";
 $lang['app_parameters'] = "Paramètres";
 
 /**** Modals */
@@ -22,6 +24,7 @@ $lang['app_password_title'] = "Récupération du mot de passe";
 
 /**** Form labels */
 $lang['app_name'] = "Nom";
+$lang['app_avatar'] = "Image";
 $lang['app_email'] = "Adresse email";
 $lang['app_password'] = "Mot de passe";
 $lang['app_confirm_password'] = "Confirmation du mot de passe";

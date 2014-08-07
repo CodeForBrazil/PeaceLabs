@@ -5,13 +5,27 @@
 		<div class="row">
 			<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 table-responsive" id="disabled_objects">
 				
-				<form id="edit_user" method="post" class="form-horizontal" role="form">
+				<form id="edit_user" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 					<div class="form-group">
 						<label class="control-label col-sm-4" for="name"><?php echo lang('app_name'); ?></label>
 						<div class="controls col-sm-8">
 							<input id="user-name" name="name" type="text" class="input-xlarge form-control"
 								value="<?php echo set_value('name', $user -> name); ?>" maxlength="100" />
 							 <div class="alert-danger"><?php echo form_error('name'); ?></div>
+						</div>
+					</div>
+					<div class="form-group" id="icon_group">
+						<label class="control-label col-sm-4" for="avatar"><?php echo lang('app_avatar'); ?></label>
+						<div class="controls col-sm-8">
+							<div class="avatar-medium img-preview">
+								<img src="<?php echo site_url($user->get_avatar('medium')); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
+							</div>
+							<span class="btn btn-default btn-file btn-xs">
+							    Choisir une image <input type="file" id="user-avatar" name="avatar" />
+							</span>
+							<div class="alert-danger">
+								<?php echo form_error('avatar'); ?>
+							</div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -76,6 +90,7 @@
 			</div>
 		</div>
     </div>
-    
-    
-<?php $this->load->view('footer.php');
+
+<?php $data['extra_js'] = array("/assets/js/user.js"); ?>
+
+<?php $this->load->view('footer.php',$data);

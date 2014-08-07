@@ -105,7 +105,14 @@
     <script src="/assets/js/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/assets/js/bootstrap.min.js"></script>
-    
+	<script src="/assets/js/global.js" type="text/javascript"></script>
+<?php 
+	if (isset($extra_js)) {
+		foreach ($extra_js as $js) {
+			echo "<script src=\"$js\" type=\"text/javascript\"></script>";
+		}
+	}
+?>    
     
     <script type="text/javascript">
     $(window).load(function(){

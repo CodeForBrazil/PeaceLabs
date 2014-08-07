@@ -36,6 +36,7 @@ class User extends MY_Controller {
 	{
 	    $this->load->helper('form');
 	    $this->load->library('form_validation');
+		$this->load->model('User_model');
 		
 		$user = $this->getUser($id,User_model::ROLE_ADMIN);
 		
@@ -70,6 +71,13 @@ class User extends MY_Controller {
 				if (!empty($password)) $user->password = $user->encrypt_password($password);
 	
 		        if ($user->update()) {
+
+					$this->load->library('upload');
+					if ( (!empty($_FILES['avatar']['tmp_name'])) && ($this->upload->do_upload('avatar')) ) {
+						$data = $this->upload->data();
+						$user->add_avatar($data['full_path']);
+					}
+
 		        	$current_user = $this->get_currentuser();
 					if ($user->id == $current_user->id) {
 						$current_user = $user;
