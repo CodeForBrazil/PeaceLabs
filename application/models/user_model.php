@@ -61,7 +61,7 @@ class User_model extends MY_Model
    * Returns user avatar media model
    */
   public function get_avatar($style=NULL) {
-  	if ($this->avatar) {
+  	if (!is_null($this->avatar)) {
   		$this->load->model('Media_model');
 		$avatar = $this->Media_model->get_by_id($this->avatar);
 		if ($path = $avatar->get_path($style))
@@ -245,9 +245,9 @@ class User_model extends MY_Model
   	$this->load->model('Media_model');
 	
 	// removing old avatar
-	if ($this->avatar) {
-		$media_old = new Media_model();
-		if ($media_old->get_by_id($this->avatar)) $media_old->delete();
+	if (!is_null($this->avatar)) {
+		$media_old = $this->Media_model->get_by_id($this->avatar);
+		if ($media_old) $media_old->delete();
 	}	
 	
 	//saving new avatar

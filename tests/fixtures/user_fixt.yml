@@ -3,6 +3,7 @@
     email: 'test@thde.pro'
     status: 1
     roles: 0
+    avatar: 9999
 2:
     id: 22
     email: 'test2@thde.pro'
@@ -14,6 +15,7 @@
     status: 2
     confirmation: 'azerty'
     roles: 0
+    avatar: 9999
 4:
     id: 24
     email: 'test4@thde.pro'
@@ -24,4 +26,10 @@
     email: 'admin@thde.pro'
     status: 1
     roles: 1
+6:
+    id: 26
+    email: 'josie@thde.pro'
+    status: 1
+    roles: 0
+    avatar: 9999
    

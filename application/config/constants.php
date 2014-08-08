@@ -44,10 +44,12 @@ define('SENDER_EMAIL', 'thierry@thde.pro');
 define('CONTACT_EMAIL', 'thierry@thde.pro');
 define('ADMIN_EMAIL', 'thierry@thde.pro');
 define('ENCODE_CODE_WORD', 'azerty123456');
+define('ROOT_PATH',APPPATH.'../');
 define('UPLOAD_PATH', 'upload/');
 define('MEDIA_PATH', UPLOAD_PATH.'medias/');
 define('CACHE_PATH', UPLOAD_PATH.'cache/');
 define('DEFAULT_AVATAR', 'assets/img/avatar.png');
+define('CACHE_MEDIA', TRUE);
 
 
 /* End of file constants.php */

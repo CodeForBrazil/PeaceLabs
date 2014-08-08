@@ -8,6 +8,7 @@ class UserModelTest extends CIUnit_TestCase
 {
 	protected $tables = array(
 		'user'		  => 'user',
+		'media'		  => 'media',
 	);
 	
 	private $um;
@@ -19,6 +20,7 @@ class UserModelTest extends CIUnit_TestCase
 	{
 		parent::__construct($name, $data, $dataName);
 		$this->users = Spyc::YAMLLoad(dirname(__FILE__)."/../fixtures/user_fixt.yml");
+		shuffle($this->users);
 	}
 	
 	public function setUp()
@@ -29,6 +31,7 @@ class UserModelTest extends CIUnit_TestCase
 		$this->CI->load->model('User_model','um');
 		$this->um = $this->CI->um;
 		$this->dbfixt('user');
+		$this->dbfixt('media');
 	}
 	
 	/*****
@@ -167,7 +170,63 @@ class UserModelTest extends CIUnit_TestCase
 		}	
 		return $res;
 	}
+
+	// ------------------------------------------------------------------------
+	/**
+	 * @dataProvider GetAddAvatar
+	 */
+	public function testAddAvatar($user_id,$path) {
+		copy(ROOT_PATH . 'tests/images/9999',ROOT_PATH . MEDIA_PATH . '9999');
+		$user = $this->um->get_by_id($user_id);
+		$update = !is_null($user->avatar);
+		if ($update) {
+			$old_avatar = $user->get_avatar();
+			$this->assertTrue(file_exists(ROOT_PATH.$old_avatar));
+		}
+
+		$this->assertTrue(file_exists($path));
+		$user->add_avatar($path);
+
+		$user = $this->um->get_by_id($user_id);
+		$this->assertNotEmpty($user->avatar);
+		$new_avatar = $user->get_avatar();
+		$this->assertTrue(file_exists(ROOT_PATH.$new_avatar));
+		
+		if ($update) {
+			$this->assertNotEquals($new_avatar,$old_avatar);
+			$this->assertFalse(file_exists(ROOT_PATH.$old_avatar),'Error checking if old avatar deleted: '.ROOT_PATH.$old_avatar);
+		}
+	}
+
+	public function getAddAvatar() {
+		$nb = 5;
+		$users = array_slice($this->users,0,$nb);
+		$images = glob(ROOT_PATH . 'tests/images/*');
+		$res = array();
+		foreach ($users as $user) { // start with avatar to add
+			$image = array_rand($images);
+			$res[] = array($user['id'],$images[$image]);
+		}
+		foreach ($users as $user) { // then with avatar to update
+			$image = array_rand($images);
+			$res[] = array($user['id'],$images[$image]);
+		}
+		return $res;
+	}
 	
+	// ------------------------------------------------------------------------
+	// Helper methods
+	// ------------------------------------------------------------------------
+		protected function getimage($path) {
+		$h = opendir($path); //Open the current directory
+		while (false !== ($entry = readdir($h))) {
+		    if($entry != '.' && $entry != '..') {
+		    	if (exif_imagetype($path.$entry) === FALSE)
+			        return $path.$entry; 
+		    }
+		}
+		return false;
+	}
 	
 	protected function makepassword() {
 		$chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

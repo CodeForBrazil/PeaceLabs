@@ -14,6 +14,7 @@ class Media_model extends MY_Model
   const TABLE_NAME = 'media';
   
   const STYLE_ORIGINAL = NULL;
+  const STYLE_ROOT = 'root';
   const STYLE_MEDIUM = 'medium';
   
   protected $styles = array(
@@ -36,17 +37,17 @@ class Media_model extends MY_Model
   		
 		$path = MEDIA_PATH.$this->id;
 		
-		if ($style != self::STYLE_ORIGINAL) {
+		if (!in_array($style,array(self::STYLE_ORIGINAL,self::STYLE_ROOT))) {
 			$cache_path = CACHE_PATH.$this->id.'_'.$style;
-			if (file_exists($cache_path)) {
+			if (CACHE_MEDIA && file_exists(ROOT_PATH.$cache_path)) {
 				log_message('debug','Using image cache: '.$cache_path);
-				return $cache_path;
+				$path = $cache_path;
 			} else {
 				$style = $this->styles[$style];
 				
 				$config['image_library'] = 'gd2';
-				$config['source_image']	= FCPATH.$path;
-				$config['new_image'] = FCPATH.CACHE_PATH;
+				$config['source_image']	= ROOT_PATH.$path;
+				$config['new_image'] = ROOT_PATH.CACHE_PATH;
 				$config['maintain_ratio'] = FALSE;
 				$config['width'] =  $style['width'];
 				$config['height'] = $style['height'];
@@ -54,18 +55,16 @@ class Media_model extends MY_Model
 				$this->load->library('image_lib', $config); 
 
 				if ($this->image_lib->resize()) {
-					rename(FCPATH.CACHE_PATH.$this->id,$cache_path);
+					rename(ROOT_PATH.CACHE_PATH.$this->id,$cache_path);
 					log_message('debug','Creating image cache: '.$cache_path);
-					return $cache_path;
+					$path = $cache_path;
 				} else {
-					if (file_exists($cache_path)) unlink($cache_path);
+					if (file_exists(ROOT_PATH.$cache_path)) unlink($cache_path);
 					log_message('error','Error creating image cache: '.$this->image_lib->display_errors());
-					return $path;
 				}
 			}
-		} else {
-			return $path;
 		}
+		return (($style == self::STYLE_ROOT)?ROOT_PATH:'').$path;
 		
 	} else return false;
   }
@@ -75,8 +74,8 @@ class Media_model extends MY_Model
    */
   public function insert($path) {
   	if ( !file_exists($path)) return false;
-	
-	return (parent::insert()) && rename($path, $this->get_path());
+
+	return (parent::insert()) && copy($path, $this->get_path(self::STYLE_ROOT));
   }
   
   /**
@@ -85,7 +84,7 @@ class Media_model extends MY_Model
   public function update($path) {
   	if ( !file_exists($path)) return false;
 
-	return (parent::update()) && rename($path, $this->get_path());
+	return (parent::update()) && copy($path, $this->get_path(self::STYLE_ROOT));
   }
   
   /**
@@ -93,8 +92,8 @@ class Media_model extends MY_Model
    */
   public function delete() {
   	if (isset($this->id)) {
-  		if (file_exists($this->get_path()))
-		  	unlink($this->get_path());
+  		if (file_exists($this->get_path(self::STYLE_ROOT)))
+		  	unlink($this->get_path(self::STYLE_ROOT));
 	}
 	return parent::delete();
   }
