@@ -60,6 +60,7 @@ class MY_Controller extends CI_Controller
 						if ($current_user = $this->login($email,$password)) {
 							$redirect = $this->input->post('redirect');
 							if (!empty($redirect)) redirect($redirect);
+							else redirect(site_url('user'));
 						}
 					}
 					if (!$current_user) {

@@ -1,5 +1,7 @@
 @import "bootstrap/bootstrap.less";
+
 @import "font-awesome/font-awesome.less";
+@fa-font-path: "assets/fonts";
 
 @import "global.less";
 
@@ -27,10 +29,11 @@
   }
 }
 
-
-.avatar-large { height: 200px; width: 200px; }
-.avatar-medium { height: 100px; width: 100px; }
-.avatar-small { height: 32px; width: 32px; }
+.avatar {
+  height: 100px; width: 100px;
+  &.avatar-large { height: 200px; width: 200px; }
+  &.avatar-small { height: 32px; width: 32px; }
+}
 
 .img-preview {
   display:block;
@@ -43,3 +46,10 @@
 }
 
 .container .jumbotron { background-color: white; }
+
+.user-header {
+  .avatar { float: left; display:block; margin-right: 10px; }
+  min-height: 100px;
+  h2 { margin-top: 0; }
+}
+

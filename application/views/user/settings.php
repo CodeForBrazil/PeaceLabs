@@ -17,7 +17,7 @@
 					<div class="form-group" id="icon_group">
 						<label class="control-label col-sm-4" for="avatar"><?php echo lang('app_avatar'); ?></label>
 						<div class="controls col-sm-8">
-							<div class="avatar-medium img-preview">
+							<div class="avatar img-preview">
 								<img src="<?php echo site_url($user->get_avatar('medium')); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
 							</div>
 							<span class="btn btn-default btn-file btn-xs">
