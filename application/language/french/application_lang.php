@@ -12,15 +12,19 @@ $lang['app_register'] = "S'inscrire";
 $lang['app_already_account'] = "Déjà un compte?";
 $lang['app_my_account'] = "Mon profil et mes activités";
 $lang['app_retrieve_password'] = "Mot de passe oublié?";
+$lang['app_save'] = "Enregistrer";
 $lang['app_send'] = "Envoyer";
 $lang['app_remove'] = "Retirer";
 $lang['app_delete'] = "Supprimer";
-$lang['app_parameters'] = "Paramètres";
+$lang['app_browse'] = "Choisir une image";
+$lang['app_parameters'] = "Informations du compte";
+
 
 /**** Modals */
 $lang['app_login_title'] = "Se connecter à $app_name";
 $lang['app_register_title'] = "Créer un nouveau compte $app_name";
 $lang['app_password_title'] = "Récupération du mot de passe";
+$lang['app_new_activity_title'] = "Ajouter une activité qui intéresserait vos amis";
 
 /**** Form labels */
 $lang['app_name'] = "Nom";
@@ -37,6 +41,15 @@ $lang['app_city'] = "Ville";
 $lang['app_website'] = "Site web";
 $lang['app_bio'] = "A propos de vous";
 $lang['app_bio_placeholder'] = "Décrire rapidement vos centres d'intérêts";
+$lang['app_activity_title'] = "Titre de l'activité";
+$lang['app_activity_title_help'] = "Ex: Faire des crêpes, Jouer au scrabble, Aller à la piscine, ...";
+$lang['app_activity_title_placeholder'] = "Titre de l'activité proposée";
+$lang['app_activity_description'] = "Description";
+$lang['app_activity_description_help'] = "Décrire en détail ce que vous proposez de faire. Vous pouvez y mettre des informations pratiques sur le lieu, les dates, le nombre de personne minimum, etc..";
+$lang['app_activity_description_placeholder'] = "Quoi? Où? Quand? Comment? Avec qui?";
+$lang['app_activity_image'] = "Image";
+$lang['app_activity_image_help'] = "Mettre une image de bonne qualité correspondant à l'activité décrite";
+
 
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";

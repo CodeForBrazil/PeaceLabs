@@ -31,17 +31,26 @@
           </button>
           <a class="navbar-brand" href="/" id="logo"><img src="/assets/img/lets-do-it.png" /></a>
         </div>
+        <div>
+        	<a href="#new" data-toggle="modal" data-target="#<?php echo (isset($current_user)?'newActivity':'login');?>Modal" 
+        		class="new-activity-btn" title="<?php echo lang('app_new_activity_title'); ?>">
+        		<i class="fa fa-plus"></i>
+        	</a>
+        </div>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
           	<?php if (isset($current_user)) : ?>
-	          	<li class="dropdown">
-	              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $current_user->email; ?><span class="caret"></span></a>
+	          	<li class="dropdown hidden-xs">
+	              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $current_user->get_name(); ?><span class="caret"></span></a>
 	              <ul class="dropdown-menu" role="menu">
 	                <li><a href="<?php echo site_url('user'); ?>"><?php echo lang('app_my_account'); ?></a></li>
 	                <li><a href="<?php echo site_url('user/settings'); ?>"><?php echo lang('app_parameters'); ?></a></li>
 	                <li><a href="<?php echo site_url('welcome/out'); ?>"><?php echo lang('app_disconnect'); ?></a></li>
 	              </ul>
 	          	</li>
+                <li class="visible-xs"><a href="<?php echo site_url('user'); ?>"><?php echo lang('app_my_account'); ?></a></li>
+                <li class="visible-xs"><a href="<?php echo site_url('user/settings'); ?>"><?php echo lang('app_parameters'); ?></a></li>
+                <li class="visible-xs"><a href="<?php echo site_url('welcome/out'); ?>"><?php echo lang('app_disconnect'); ?></a></li>
           	<?php else : ?>
               <li><a href="#login" data-toggle="modal" data-target="#loginModal"><?php echo lang('app_connect'); ?></a></li>
             <?php endif; ?>
