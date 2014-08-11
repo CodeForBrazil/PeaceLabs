@@ -24,7 +24,7 @@ $lang['app_parameters'] = "Informations du compte";
 $lang['app_login_title'] = "Se connecter à $app_name";
 $lang['app_register_title'] = "Créer un nouveau compte $app_name";
 $lang['app_password_title'] = "Récupération du mot de passe";
-$lang['app_new_activity_title'] = "Ajouter une activité qui intéresserait vos amis";
+$lang['app_new_activity_title'] = "Ajouter une activité à faire avec vos amis";
 
 /**** Form labels */
 $lang['app_name'] = "Nom";
@@ -60,6 +60,8 @@ $lang['app_confirmation_ok'] = "Votre compte a été correctement activé. Nous 
 $lang['app_confirmation_error'] = "Activation de votre compte impossible. $contact_admin";
 $lang['app_user_save_success'] = "Vos paramètres utilisateur ont été correctement enregistré.";
 $lang['app_user_save_error'] = "Une erreur est survenue lors de l'enregistrement de vos paramètres. $contact_admin";
+$lang['app_new_activity_error'] = "Une erreur est survenue lors de l'enregistrement de l'activité. $contact_admin";
+$lang['app_no_current_user_error'] = "Vous devez être connecter pour effectuer cette action.";
 
 /**** Emails */
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";

@@ -27,7 +27,6 @@ class User extends MY_Controller {
 		$this->set_data('user',$user);
 		$this->load->view('user/index',$this->get_data());
 	}
-
 	
 	/**
 	 * User settings page

@@ -48,6 +48,30 @@ class MY_Controller extends CI_Controller
 		if ($this->is_post()) {
 			$this->form_validation->set_error_delimiters('','');
 			switch ($this->input->post('form_name')) {
+				case 'new_activity':
+					$current_user = $this->get_data('current_user');
+					if (!$current_user) {
+						$this->errors[] = lang('app_no_current_user_error');
+					} else {
+						$this->form_validation->set_rules('title', lang('app_activity_title'), 'required');
+						
+						if ($this->form_validation->run() !== FALSE) {
+							$this->load->model('activity_Model');
+							$activity = new activity_Model();
+							$activity->title = $this->input->post('title');
+							if ($description = $this->input->post('description')) $activity->description = $description;
+							if ($activity->insert()) {
+								redirect(site_url('activity/update/'.$activity->id));
+							} else {
+								$this->errors[] = sprintf(lang('app_new_activity_error'),CONTACT_EMAIL);
+							}
+						} else {
+							$this->set_data('open_modal','newActivity');
+						}
+					}
+					
+					break;
+
 				case 'login':
 					$this->form_validation->set_rules('login_email', lang('app_email'), 'required|valid_email');
 					$this->form_validation->set_rules('login_password', lang('app_password'), 'required');

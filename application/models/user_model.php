@@ -71,6 +71,17 @@ class User_model extends MY_Model
   }
   
   /**
+   * Returns all activities
+   */
+  public function get_activities() {
+  	if (isset($this->id)) {
+	  	$this->load->model('Activity_model');
+		return $this->Activity_model->get_by_owner($this->id);
+  	}
+	return false;
+  }
+  
+  /**
    * Checks if user is within a specific role.
    *
    * @param int $role 
@@ -85,12 +96,6 @@ class User_model extends MY_Model
    * Create a new identity or link it to user if exists
    */
   protected function match_identity() {
-/*  	$this->load->model('User_identity_model');
-	$res = $this->User_identity_model->match($value,$type,$user_id);
-	if (!$res) {
-		$this->load->helper('email');
-		admin_report("Problem matching identity $value","Data given: value = $value, type = $type, user_id = $user_id");
-	}*/
 	return true;
   }
 

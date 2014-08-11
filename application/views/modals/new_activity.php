@@ -16,13 +16,13 @@
 		  </div>
 		  <div class="form-group">
 			<label for="activity-description"><?php echo lang('app_activity_description'); ?></label>
-			<textarea id="activity-description" name="description" type="text" class="input-xlarge form-control"
+			<textarea id="activity-description" name="description" type="text" class="input-xlarge form-control" rows="5"
 				placeholder="<?php echo lang('app_activity_description_placeholder'); ?>"/><?php echo set_value('description'); 
 			?></textarea>
 		    <div class="help-block"><?php echo lang('app_activity_description_help'); ?></div>
 			<div class="alert-danger"><?php echo form_error('description'); ?></div>
 		  </div>
-		  <div class="form-group">
+<!--		  <div class="form-group">
 			<label for="image"><?php echo lang('app_activity_image'); ?></label>
 			<div class="img-preview">
 				<img src="" class="img-rounded img-responsive">
@@ -32,7 +32,7 @@
 			</span>
 		    <div class="help-block"><?php echo lang('app_activity_image_help'); ?></div>
 			<div class="alert-danger"><?php echo form_error('image'); ?></div>
-		  </div>
+</div> -->
 	    </div>
 	    <div class="modal-footer">
 	      <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('app_cancel'); ?></button>

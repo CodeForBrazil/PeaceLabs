@@ -29,7 +29,43 @@
 				<?php endif; ?>
 			</div>
 		</div>
+		
+		<div class="row">
+			<div class="col-sm-3">
+			<?php foreach ($user->get_activities() as $activity) : ?>
+				<div class="panel panel-default panel-activity">
+					<div>
+						<img src="<?php echo $activity->get_image('large'); ?>" title="<?php echo $activity->title; ?>" class="img-responsive img-rounded"/>
+					</div>
+					<div class="panel-body">
+					<h3><?php echo $activity->title; ?></h3>
+					<?php if (!empty($activity->description)) : ?>
+						<p><?php echo $activity->description; ?></p>
+					<?php endif; ?>
+					<nav class="activity-menu">
+						<ul>
+							<li>
+								<a href="#"><i class="fa fa-plus"></i></a>								
+							</li>
+							<li>
+								<small>12</small>&nbsp;<a href="#"><i class="fa fa-group"></i></a>			
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-copy"></i></a>						
+							</li>
+							<li>
+								<a href="#"><i class="fa fa-pencil-square-o"></i></a>						
+							</li>
+						</ul>
+					</nav>
+					</div>
+				</div>
+			<?php endforeach; ?>
+			</div>
+		</div>
 
 	</div>
     
 <?php $this->load->view('footer.php');
+
+

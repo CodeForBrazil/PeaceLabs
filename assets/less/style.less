@@ -68,3 +68,25 @@ top: -10px;
 font-size: 30px;
 color: #068500;
 }
+
+
+.panel-activity {
+  &:hover .activity-menu { display: block; }
+  .activity-menu {
+    font-size: 20px;
+    position: absolute;
+    top: 0;
+    right: 15px;
+    display: none;
+    ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      li {
+        float: left;
+        padding: 10px;
+      }
+    }
+  }
+  h3 { margin-top: 0; }
+}

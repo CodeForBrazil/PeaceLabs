@@ -49,6 +49,7 @@ define('UPLOAD_PATH', 'upload/');
 define('MEDIA_PATH', UPLOAD_PATH.'medias/');
 define('CACHE_PATH', UPLOAD_PATH.'cache/');
 define('DEFAULT_AVATAR', 'assets/img/avatar.png');
+define('DEFAULT_IMAGE', 'assets/img/image.png');
 define('CACHE_MEDIA', TRUE);
 
 
