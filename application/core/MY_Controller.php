@@ -80,7 +80,7 @@ class MY_Controller extends CI_Controller
 					if ($this->form_validation->run() !== FALSE) {
 						$email    = $this->input->post('login_email');
 						$password = $this->input->post('login_password');
-					
+
 						if ($current_user = $this->login($email,$password)) {
 							$redirect = $this->input->post('redirect');
 							if (!empty($redirect)) redirect($redirect);

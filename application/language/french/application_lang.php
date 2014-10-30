@@ -75,7 +75,7 @@ $lang['app_mail_password_retrieval_title'] = 'Récupération du mot de passe $ap
 $lang['app_mail_password_retrieval_content'] = "Bonjour,
 Voici votre nouveau mot de passe: %s.
 Il est conseillé de le modifier rapidement. 
-Pour cela accédez à la page de votre compte Wannago et enregistrez un nouveau mot de passe: %s
+Pour cela accédez à la page de votre compte et enregistrez un nouveau mot de passe: %s
 
 L'équipe $app_name.";
 
