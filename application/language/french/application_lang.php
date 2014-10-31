@@ -18,6 +18,8 @@ $lang['app_remove'] = "Retirer";
 $lang['app_delete'] = "Supprimer";
 $lang['app_browse'] = "Choisir une image";
 $lang['app_parameters'] = "Informations du compte";
+$lang['app_yes'] = "Oui";
+$lang['app_no'] = "Non";
 
 
 /**** Modals */
@@ -50,7 +52,6 @@ $lang['app_activity_description_placeholder'] = "Quoi? Où? Quand? Comment? Avec
 $lang['app_activity_image'] = "Image";
 $lang['app_activity_image_help'] = "Mettre une image de bonne qualité correspondant à l'activité décrite";
 
-
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";
 $lang['app_register_error'] = "L'enregistrement à échouer. Veuillez tentez avec un autre email.";
@@ -60,8 +61,10 @@ $lang['app_confirmation_ok'] = "Votre compte a été correctement activé. Nous 
 $lang['app_confirmation_error'] = "Activation de votre compte impossible. $contact_admin";
 $lang['app_user_save_success'] = "Vos paramètres utilisateur ont été correctement enregistré.";
 $lang['app_user_save_error'] = "Une erreur est survenue lors de l'enregistrement de vos paramètres. $contact_admin";
-$lang['app_new_activity_error'] = "Une erreur est survenue lors de l'enregistrement de l'activité. $contact_admin";
+$lang['app_activity_save_error'] = "Une erreur est survenue lors de l'enregistrement de l'activité. $contact_admin";
 $lang['app_no_current_user_error'] = "Vous devez être connecter pour effectuer cette action.";
+$lang['app_activity_unknown_error'] = "L'activité sélectionnée n'existe pas. $contact_admin";
+$lang['app_activity_delete'] = "Êtes-vous sur de vouloir supprimer l'activité <em>%s<em>?";
 
 /**** Emails */
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";

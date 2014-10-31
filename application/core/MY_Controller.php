@@ -49,27 +49,7 @@ class MY_Controller extends CI_Controller
 			$this->form_validation->set_error_delimiters('','');
 			switch ($this->input->post('form_name')) {
 				case 'new_activity':
-					$current_user = $this->get_data('current_user');
-					if (!$current_user) {
-						$this->errors[] = lang('app_no_current_user_error');
-					} else {
-						$this->form_validation->set_rules('title', lang('app_activity_title'), 'required');
-						
-						if ($this->form_validation->run() !== FALSE) {
-							$this->load->model('activity_Model');
-							$activity = new activity_Model();
-							$activity->title = $this->input->post('title');
-							if ($description = $this->input->post('description')) $activity->description = $description;
-							if ($activity->insert()) {
-								redirect(site_url('activity/update/'.$activity->id));
-							} else {
-								$this->errors[] = sprintf(lang('app_new_activity_error'),CONTACT_EMAIL);
-							}
-						} else {
-							$this->set_data('open_modal','newActivity');
-						}
-					}
-					
+					if (!$this->save_activity()) $this->set_data('open_modal','newActivity');
 					break;
 
 				case 'login':
@@ -197,8 +177,7 @@ class MY_Controller extends CI_Controller
   /**
    * Retrieve user password.
    *
-   * @param int $type 
-   * @param boolean $redirect 
+   * @param string $email 
    * @return boolean
    */
   protected function retrieve_password($email)
@@ -214,6 +193,42 @@ class MY_Controller extends CI_Controller
 	} else {
 		return FALSE;
 	}
+  }
+  
+  /**
+   * Update or insert an activity.
+   *
+   * @return boolean
+   */
+  protected function save_activity()
+  {
+	$current_user = $this->get_currentuser();
+	$activity_id = $this->input->post('id');
+	if (!$current_user) {
+		$this->errors[] = lang('app_no_current_user_error');
+		return FALSE;
+	} else {
+		$this->form_validation->set_rules('title', lang('app_activity_title'), 'required');
+		
+		if ($this->form_validation->run() !== FALSE) {
+			$this->load->model('activity_Model');
+			
+			$activity = new activity_Model();
+			if ($activity_id) $activity->id = $activity_id;
+			$activity->title = $this->input->post('title');
+			$activity->owner = $current_user->id;
+			if ($description = $this->input->post('description')) $activity->description = $description;
+			
+			if ($activity->save()) {
+				return TRUE;
+			} else {
+				$this->errors[] = sprintf(lang('app_activity_save_error'),CONTACT_EMAIL);
+			}
+		} else {
+			return FALSE;
+		}
+	}
+  	
   }
 
   

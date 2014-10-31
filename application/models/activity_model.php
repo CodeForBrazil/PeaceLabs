@@ -18,6 +18,9 @@ class Activity_model extends MY_Model
   public $title;
   public $description;
   public $image;
+  public $group;
+  public $privacy;
+  public $owner;
   
   public function __construct($data = array()) {
 	$this->TABLE_NAME = self::TABLE_NAME;

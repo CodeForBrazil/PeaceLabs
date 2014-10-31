@@ -6,6 +6,7 @@
 			<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 table-responsive" id="disabled_objects">
 				
 				<form id="edit_user" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
+					<input type="hidden" id="activity-id" name="id" value="<?php echo $activity -> id; ?>" />
 					<div class="form-group">
 						<label class="control-label col-sm-4" for="title"><?php echo lang('app_activity_title'); ?></label>
 						<div class="controls col-sm-8">

@@ -16,3 +16,13 @@ function previewImage(input) {
     }
 }
 
+$(document).ready( function() {
+    
+    $('.btn-confirm').click(function() {
+    	$('#confirmModal .modal-body').html($(this).attr('title'));
+    	$('#confirmModal .btn-success').attr('href',$(this).attr('href'));
+    	$('#confirmModal').modal('show');
+    	return false;
+    })
+
+});

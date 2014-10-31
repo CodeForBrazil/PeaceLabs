@@ -9,6 +9,8 @@
 
 <?php $this->load->view('modals/password'); ?>
 
+<?php $this->load->view('modals/confirm'); ?>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/assets/js/jquery.min.js"></script>

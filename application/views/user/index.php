@@ -31,12 +31,12 @@
 		</div>
 		
 		<div class="row">
-			<div class="col-sm-3">
+			<div class="col-sm-4">
 			<?php foreach ($user->get_activities() as $activity) : ?>
 				<div class="panel panel-default panel-activity">
-					<div>
+					<!--div>
 						<img src="<?php echo $activity->get_image('large'); ?>" title="<?php echo $activity->title; ?>" class="img-responsive img-rounded"/>
-					</div>
+					</div-->
 					<div class="panel-body">
 					<h3><?php echo $activity->title; ?></h3>
 					<?php if (!empty($activity->description)) : ?>
@@ -44,18 +44,28 @@
 					<?php endif; ?>
 					<nav class="activity-menu">
 						<ul>
+							<?php if ($activity->owner != $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
 							<li>
-								<a href="#"><i class="fa fa-plus"></i></a>								
+								<a href="#" class="btn btn-success btn-xs">Let's</a>								
 							</li>
-							<li>
+							<?php endif; ?>
+							<!--li>
 								<small>12</small>&nbsp;<a href="#"><i class="fa fa-group"></i></a>			
 							</li>
 							<li>
 								<a href="#"><i class="fa fa-copy"></i></a>						
+							</li-->
+							<?php if ($activity->owner == $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
+							<li>
+								<a href="<?php echo site_url('activity/update/'.$activity->id); ?>"><i class="fa fa-pencil-square-o"></i></a>						
 							</li>
 							<li>
-								<a href="#"><i class="fa fa-pencil-square-o"></i></a>						
+								<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
+									title="<?php echo sprintf(lang("app_activity_delete"),$activity->title);?>" class="btn-confirm cla">
+									<i class="fa fa-trash-o"></i>
+								</a>						
 							</li>
+							<?php endif; ?>
 						</ul>
 					</nav>
 					</div>
