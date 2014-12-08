@@ -4,6 +4,7 @@ $contact_admin = "Si le problème se répète, veuillez nous contacter: %s";
 $lang['app_home'] = "Accueil";
 
 /**** Génériques */
+$lang['app_lets'] = "Let's";
 $lang['app_close'] = "Fermer";
 $lang['app_cancel'] = "Annuler";
 $lang['app_connect'] = "Se connecter";
@@ -51,6 +52,9 @@ $lang['app_activity_description_help'] = "Décrire en détail ce que vous propos
 $lang['app_activity_description_placeholder'] = "Quoi? Où? Quand? Comment? Avec qui?";
 $lang['app_activity_image'] = "Image";
 $lang['app_activity_image_help'] = "Mettre une image de bonne qualité correspondant à l'activité décrite";
+$lang['app_lets_intro'] = "Prévenir <span class='owner'>l'organisateur</span> que vous seriez intéressé(e) pour participer à <span class='activity'>cette activité</span>";
+$lang['app_lets_comment_help'] = "Visible uniquement par l'organisateur de l'activité";
+$lang['app_lets_comment_placeholder'] = "Laisser un commentaire";
 
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";

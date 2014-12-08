@@ -11,6 +11,7 @@
 
 <?php $this->load->view('modals/confirm'); ?>
 
+<?php $this->load->view('modals/lets'); ?>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/assets/js/jquery.min.js"></script>

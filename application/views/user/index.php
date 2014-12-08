@@ -44,27 +44,31 @@
 					<?php endif; ?>
 					<nav class="activity-menu">
 						<ul>
-							<?php if ($activity->owner != $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
+							<?php if (!isset($current_user)) : ?>
 							<li>
-								<a href="#" class="btn btn-success btn-xs">Let's</a>								
+								<button type="button" data-toggle="modal" data-target="#<?php echo 'loginModal'; ?>" class="btn btn-success btn-xs">
+									<?php echo lang('app_lets'); ?>
+								</button>								
 							</li>
-							<?php endif; ?>
-							<!--li>
-								<small>12</small>&nbsp;<a href="#"><i class="fa fa-group"></i></a>			
-							</li>
-							<li>
-								<a href="#"><i class="fa fa-copy"></i></a>						
-							</li-->
-							<?php if ($activity->owner == $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
-							<li>
-								<a href="<?php echo site_url('activity/update/'.$activity->id); ?>"><i class="fa fa-pencil-square-o"></i></a>						
-							</li>
-							<li>
-								<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
-									title="<?php echo sprintf(lang("app_activity_delete"),$activity->title);?>" class="btn-confirm cla">
-									<i class="fa fa-trash-o"></i>
-								</a>						
-							</li>
+							<?php else : ?>
+								<?php if ($activity->owner != $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
+								<li>
+									<button type="button" data-toggle="modal" data-target="#<?php echo (!$current_user)?'loginModal':'letsModal'; ?>" class="btn btn-success btn-xs">
+										<?php echo lang('app_lets'); ?>
+									</button>								
+								</li>
+								<?php endif; ?>
+								<?php if ($activity->owner == $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
+								<li>
+									<a href="<?php echo site_url('activity/update/'.$activity->id); ?>"><i class="fa fa-pencil-square-o"></i></a>						
+								</li>
+								<li>
+									<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
+										title="<?php echo sprintf(lang("app_activity_delete"),$activity->title);?>" class="btn-confirm cla">
+										<i class="fa fa-trash-o"></i>
+									</a>						
+								</li>
+								<?php endif; ?>
 							<?php endif; ?>
 						</ul>
 					</nav>
