@@ -80,7 +80,7 @@ $autoload['helper'] = array('url', 'language');
 |
 */
 
-$autoload['config'] = array();
+$autoload['config'] = array('custom');
 
 
 /*

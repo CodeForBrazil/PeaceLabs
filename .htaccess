@@ -1,3 +1,5 @@
+SetEnv ENVIRONMENT heroku
+
 RewriteEngine on
 RewriteCond $1 !^(index\.php|upload|assets|robots\.txt)
 RewriteRule ^(.*)$ /index.php/$1 [L]

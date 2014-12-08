@@ -18,7 +18,11 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
-	define('ENVIRONMENT', 'development');
+if (defined('CLEARDB_DATABASE_URL'))
+ 	define('ENVIRONMENT', 'heroku');
+else
+ 	define('ENVIRONMENT', 'development');
+
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
@@ -33,6 +37,7 @@ if (defined('ENVIRONMENT'))
 	switch (ENVIRONMENT)
 	{
 		case 'development':
+		case 'heroku':
 			error_reporting(E_ALL);
 		break;
 	
