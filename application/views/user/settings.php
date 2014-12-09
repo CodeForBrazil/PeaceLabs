@@ -18,7 +18,7 @@
 						<label class="control-label col-sm-4" for="avatar"><?php echo lang('app_avatar'); ?></label>
 						<div class="controls col-sm-8">
 							<div class="avatar img-preview">
-								<img src="<?php echo site_url($user->get_avatar('medium')); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
+								<img src="<?php echo $user->get_avatar('medium'); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
 							</div>
 							<span class="btn btn-default btn-file btn-xs">
 							    <?php echo lang('app_browse'); ?> <input type="file" id="user-avatar" name="avatar" />

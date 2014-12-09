@@ -19,12 +19,14 @@ class Media_model extends MY_Model
   const STYLE_LARGE = 'large';
   
   protected $styles = array(
-  	self::STYLE_MEDIUM => array('height' => 100,'width' => 100),
-  	self::STYLE_LARGE => array('height' => 200,'width' => 200),
+  	self::STYLE_MEDIUM => array('height' => 100,'width' => 100, "crop" => "fill"),
+  	self::STYLE_LARGE => array('height' => 200,'width' => 200, "crop" => "fill"),
+  	self::STYLE_ORIGINAL => array(),
   );
 
     // Table fields
   public $id;
+  public $public_id;
   
   public function __construct($data = array()) {
 	$this->TABLE_NAME = self::TABLE_NAME;
@@ -35,6 +37,10 @@ class Media_model extends MY_Model
    * Get media path
    */
   public function get_path($style = self::STYLE_ORIGINAL) {
+  	if ($this->public_id && $style != self::STYLE_ROOT) {
+  		return cloudinary_url($this->public_id, $this->styles[$style]);
+  	}
+	
   	if (isset($this->id)) {
   		
 		$path = MEDIA_PATH.$this->id;
@@ -66,7 +72,8 @@ class Media_model extends MY_Model
 				}
 			}
 		}
-		return (($style == self::STYLE_ROOT)?ROOT_PATH:'').$path;
+		if ($style == self::STYLE_ROOT) return ROOT_PATH.$path;
+		else return site_url($path);
 		
 	} else return false;
   }
@@ -76,8 +83,11 @@ class Media_model extends MY_Model
    */
   public function insert($path) {
   	if ( !file_exists($path)) return false;
+	
+	$res = \Cloudinary\Uploader::upload($path);	
+	$this->public_id = $res['public_id'];
 
-	return (parent::insert()) && copy($path, $this->get_path(self::STYLE_ROOT));
+	return parent::insert();
   }
   
   /**
@@ -86,7 +96,12 @@ class Media_model extends MY_Model
   public function update($path) {
   	if ( !file_exists($path)) return false;
 
-	return (parent::update()) && copy($path, $this->get_path(self::STYLE_ROOT));
+	if ($this->public_id)  \Cloudinary\Uploader::destroy($this->public_id);
+	
+	$res = \Cloudinary\Uploader::upload($path);	
+	$this->public_id = $res['public_id'];
+
+	return parent::update();
   }
   
   /**
@@ -97,6 +112,8 @@ class Media_model extends MY_Model
   		if (file_exists($this->get_path(self::STYLE_ROOT)))
 		  	unlink($this->get_path(self::STYLE_ROOT));
 	}
+	if ($this->public_id)  \Cloudinary\Uploader::destroy($this->public_id);
+
 	return parent::delete();
   }
   

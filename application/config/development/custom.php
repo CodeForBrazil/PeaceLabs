@@ -16,6 +16,8 @@ define('DEFAULT_AVATAR', '/assets/img/avatar.png');
 define('DEFAULT_IMAGE', '/assets/img/image.png');
 define('CACHE_MEDIA', TRUE);
 
+putenv("CLOUDINARY_URL=cloudinary://924521254223698:s2GiPJ4TVqUzvDXCSxUY6oPTunY@lets");
+
 $config['dummy'] = TRUE;
 
 
