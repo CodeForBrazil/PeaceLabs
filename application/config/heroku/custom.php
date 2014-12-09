@@ -16,6 +16,8 @@ define('DEFAULT_AVATAR', '/assets/img/avatar.png');
 define('DEFAULT_IMAGE', '/assets/img/image.png');
 define('CACHE_MEDIA', TRUE);
 
+$config['dummy'] = TRUE;
+
 
 /* End of file custom.php */
 /* Location: ./application/config/custom.php */
