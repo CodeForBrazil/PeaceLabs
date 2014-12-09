@@ -19,8 +19,7 @@
  *
  */
  
- echo $_SERVER['CLEARDB_DATABASE_URL'];
-if (isset($_SERVER['CLEARDB_DATABASE_URL']))
+if (getenv("CLEARDB_DATABASE_URL"))
  	define('ENVIRONMENT', 'heroku');
 else
  	define('ENVIRONMENT', 'development');
