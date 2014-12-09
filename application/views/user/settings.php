@@ -1,9 +1,5 @@
 <?php $this->load->view('header'); ?>    
-<?php
-$ci = get_instance(); // CI_Loader instance
-echo $ci->config->item('smtp_user');?>
------
-<?php echo getenv('SENDGRID_USERNAME'); ?>
+
     <div class="container" role="main">
 
 		<div class="row">
