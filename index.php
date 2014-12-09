@@ -19,9 +19,8 @@
  *
  */
  
- echo CLEARDB_DATABASE_URL;
- echo json_encode($_SERVER);
-if (defined('CLEARDB_DATABASE_URL'))
+ echo $_SERVER['CLEARDB_DATABASE_URL'];
+if (isset($_SERVER['CLEARDB_DATABASE_URL']))
  	define('ENVIRONMENT', 'heroku');
 else
  	define('ENVIRONMENT', 'development');
