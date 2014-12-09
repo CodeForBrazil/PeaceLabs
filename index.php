@@ -19,10 +19,14 @@
  *
  */
  
-if (getenv("CLEARDB_DATABASE_URL"))
- 	define('ENVIRONMENT', 'heroku');
-else
+if (!getenv("CLEARDB_DATABASE_URL"))
  	define('ENVIRONMENT', 'development');
+else {
+	if (getenv('ENVIRONMENT'))
+	 	define('ENVIRONMENT', getenv('ENVIRONMENT'));
+	else
+	 	define('ENVIRONMENT', 'heroku');
+}
 
 /*
  *---------------------------------------------------------------
@@ -48,7 +52,6 @@ if (defined('ENVIRONMENT'))
 		break;
 
 		default:
-			error_reporting(E_ALL);
 			exit('The application environment is not set correctly.');
 	}
 }

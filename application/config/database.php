@@ -48,11 +48,13 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'lets';
-$db['default']['password'] = 'dsfg23d%4';
-$db['default']['database'] = 'lets';
-$db['default']['dbdriver'] = 'mysql';
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
+$db['default']['hostname'] = $url["host"];
+$db['default']['username'] = $url["user"];
+$db['default']['password'] = $url["pass"];
+$db['default']['database'] = substr($url["path"], 1);
+$db['default']['dbdriver'] = 'mysqli';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
