@@ -18,6 +18,8 @@
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+ 
+ echo CLEARDB_DATABASE_URL;
 if (defined('CLEARDB_DATABASE_URL'))
  	define('ENVIRONMENT', 'heroku');
 else
