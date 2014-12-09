@@ -18,7 +18,7 @@
 				<?php endif; ?>
 				
 				<div class="avatar avatar-large">
-					<img src="<?php echo site_url($user->get_avatar('large')); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
+					<img src="<?php echo $user->get_avatar('large'); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
 				</div>
 				<h2><?php echo $user->get_name(); ?></h2>
 				<?php if ($user->bio) : ?>

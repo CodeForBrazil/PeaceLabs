@@ -19,6 +19,14 @@ class Welcome extends MY_Controller {
 	}
 
 	/**
+	 * Page with todo list.
+	 */
+	public function todo()
+	{
+		$this->load->view('welcome/todo');
+	}
+
+	/**
 	 * Sign out action.
 	 *
 	 * @return void
