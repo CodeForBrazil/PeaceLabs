@@ -1,5 +1,7 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
+echo getenv('SENDGRID_USERNAME');
+
 $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'smtp.sendgrid.net';
 $config['smtp_user'] = getenv('SENDGRID_USERNAME');
