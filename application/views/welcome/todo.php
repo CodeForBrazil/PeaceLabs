@@ -9,10 +9,18 @@
 				<ul class="list-group">
 					<li class="list-group-item">Facebook connect</li>
 					<li class="list-group-item">Google connect</li>
+					<li class="list-group-item">User administration page</li>
 				</ul>
 				<h3>Activities</h3>
 				<ul class="list-group">
-					<li class="list-group-item">Add User list (creation & modification)</li>
+					<li class="list-group-item">
+						Add User list (creation + modification):
+						<ul>
+							<li>Créer la table "user_identities"</li>
+							<li>Autocomplete field</li>
+						</ul>
+					</li>
+					<li class="list-group-item">Unit Tests</li>
 				</ul>
 			<h2>For the project</h2>
 				<h3>Design</h3>
