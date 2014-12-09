@@ -4,7 +4,7 @@ $contact_admin = "Si le problème se répète, veuillez nous contacter: %s";
 $lang['app_home'] = "Accueil";
 
 /**** Génériques */
-$lang['app_lets'] = "Let's";
+$lang['app_lets'] = "Lets";
 $lang['app_close'] = "Fermer";
 $lang['app_cancel'] = "Annuler";
 $lang['app_connect'] = "Se connecter";
@@ -21,7 +21,6 @@ $lang['app_browse'] = "Choisir une image";
 $lang['app_parameters'] = "Informations du compte";
 $lang['app_yes'] = "Oui";
 $lang['app_no'] = "Non";
-
 
 /**** Modals */
 $lang['app_login_title'] = "Se connecter à $app_name";

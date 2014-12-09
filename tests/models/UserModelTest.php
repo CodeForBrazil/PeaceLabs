@@ -176,13 +176,7 @@ class UserModelTest extends CIUnit_TestCase
 	 * @dataProvider GetAddAvatar
 	 */
 	public function testAddAvatar($user_id,$path) {
-		copy(ROOT_PATH . 'tests/images/9999',ROOT_PATH . MEDIA_PATH . '9999');
 		$user = $this->um->get_by_id($user_id);
-		$update = !is_null($user->avatar);
-		if ($update) {
-			$old_avatar = $user->get_avatar();
-			$this->assertTrue(file_exists(ROOT_PATH.$old_avatar));
-		}
 
 		$this->assertTrue(file_exists($path));
 		$user->add_avatar($path);
@@ -190,12 +184,7 @@ class UserModelTest extends CIUnit_TestCase
 		$user = $this->um->get_by_id($user_id);
 		$this->assertNotEmpty($user->avatar);
 		$new_avatar = $user->get_avatar();
-		$this->assertTrue(file_exists(ROOT_PATH.$new_avatar));
-		
-		if ($update) {
-			$this->assertNotEquals($new_avatar,$old_avatar);
-			$this->assertFalse(file_exists(ROOT_PATH.$old_avatar),'Error checking if old avatar deleted: '.ROOT_PATH.$old_avatar);
-		}
+		$this->assertTrue(&getimagesize($new_avatar) !== FALSE,"Error checking if new avatar exists: $new_avatar");
 	}
 
 	public function getAddAvatar() {

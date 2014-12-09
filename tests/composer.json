@@ -1,2 +1,9 @@
 {
+  "require": {
+    "cloudinary/cloudinary_php": "dev-master",
+    "sendgrid/sendgrid": "2.0.5"
+  },
+  "require-dev": {
+    "heroku/heroku-buildpack-php": "*"
+  }
 }
