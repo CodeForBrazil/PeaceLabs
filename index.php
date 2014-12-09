@@ -20,6 +20,7 @@
  */
  
  echo CLEARDB_DATABASE_URL;
+ echo json_encode($_SERVER);
 if (defined('CLEARDB_DATABASE_URL'))
  	define('ENVIRONMENT', 'heroku');
 else
@@ -49,6 +50,7 @@ if (defined('ENVIRONMENT'))
 		break;
 
 		default:
+			error_reporting(E_ALL);
 			exit('The application environment is not set correctly.');
 	}
 }
