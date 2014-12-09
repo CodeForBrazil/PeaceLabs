@@ -2,8 +2,10 @@
 
 $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'smtp.sendgrid.net';
-$config['smtp_user'] = getenv('SENDGRID_USERNAME');
-$config['smtp_pass'] = getenv('SENDGRID_PASSWORD');
+//$config['smtp_user'] = getenv('SENDGRID_USERNAME');
+//$config['smtp_pass'] = getenv('SENDGRID_PASSWORD');
+$config['smtp_user'] = 'lets_dev';
+$config['smtp_pass'] = 'come2sen';
 $config['smtp_port'] = 587;
 $config['crlf'] = "\r\n";
 $config['newline'] = "\r\n";
