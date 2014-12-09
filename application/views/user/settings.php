@@ -1,6 +1,6 @@
 <?php $this->load->view('header'); ?>    
 
-<?php echo $this->config->item('smtp_user'); ?>
+<?php echo $this->config->item('smtp_user','email'); ?>
 -----
 <?php echo getenv('SENDGRID_USERNAME'); ?>
     <div class="container" role="main">
