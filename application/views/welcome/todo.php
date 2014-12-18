@@ -9,6 +9,7 @@
 				<ul class="list-group">
 					<li class="list-group-item">Facebook connect</li>
 					<li class="list-group-item">Google connect</li>
+					<li class="list-group-item">User delete account</li>
 					<li class="list-group-item">User administration page</li>
 				</ul>
 				<h3>Activities</h3>
@@ -26,7 +27,7 @@
 				<h3>Design</h3>
 				<ul class="list-group">
 					<li class="list-group-item">The "Lets" button</li>
-					<li class="list-group-item">Suggetion flyer</li>
+					<li class="list-group-item">Suggestion flyer</li>
 				</ul>
 		</div>
     </div>
