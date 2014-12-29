@@ -26,7 +26,7 @@ $lang['app_no'] = "Non";
 $lang['app_login_title'] = "Se connecter à $app_name";
 $lang['app_register_title'] = "Créer un nouveau compte $app_name";
 $lang['app_password_title'] = "Récupération du mot de passe";
-$lang['app_new_activity_title'] = "Ajouter une activité à faire avec vos amis";
+$lang['app_new_activity_title'] = "Ajouter une activité";
 
 /**** Form labels */
 $lang['app_name'] = "Nom";
@@ -46,9 +46,12 @@ $lang['app_bio_placeholder'] = "Décrire rapidement vos centres d'intérêts";
 $lang['app_activity_title'] = "Titre de l'activité";
 $lang['app_activity_title_help'] = "Ex: Faire des crêpes, Jouer au scrabble, Aller à la piscine, ...";
 $lang['app_activity_title_placeholder'] = "Titre de l'activité proposée";
+$lang['app_activity_users'] = "Avec";
+$lang['app_activity_users_help'] = "Ecrire un nom ou un email pour chaque personne intéressée par cette activité";
+$lang['app_activity_users_placeholder'] = "Liste des personnes intéressées";
 $lang['app_activity_description'] = "Description";
-$lang['app_activity_description_help'] = "Décrire en détail ce que vous proposez de faire. Vous pouvez y mettre des informations pratiques sur le lieu, les dates, le nombre de personne minimum, etc..";
-$lang['app_activity_description_placeholder'] = "Quoi? Où? Quand? Comment? Avec qui?";
+$lang['app_activity_description_help'] = "Décrire en détail ce que vous proposez de faire. Vous pouvez y mettre des informations pratiques sur le lieu, le nombre de personne minimum, etc..";
+$lang['app_activity_description_placeholder'] = "Quoi? Où? Comment? Avec qui?";
 $lang['app_activity_image'] = "Image";
 $lang['app_activity_image_help'] = "Mettre une image de bonne qualité correspondant à l'activité décrite";
 $lang['app_lets_intro'] = "Prévenir <span class='owner'>l'organisateur</span> que vous seriez intéressé(e) pour participer à <span class='activity'>cette activité</span>";

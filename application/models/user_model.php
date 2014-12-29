@@ -40,6 +40,8 @@ class User_model extends MY_Model
   public $dateadd = 0;
   public $dateupdate = 0;
   public $status = self::STATUS_ACTIVE;
+  public $creator_id = NULL;
+  public $user_id = NULL;
   
   public function __construct($data = array()) {
 	$this->TABLE_NAME = self::TABLE_NAME;
@@ -93,12 +95,30 @@ class User_model extends MY_Model
   }
   
   /**
-   * Create a new identity or link it to user if exists
+   * Create a fake user
    */
-  protected function match_identity() {
-	return true;
+  public function create_fake($name,$creator_id) {
+	$user = new User_model(array(
+		'name' => $name,
+		'creator_id' => $creator_id,
+	));
+	$user->insert();
+	return $user;
   }
+  
+  /** 
+   * Create a new user
+   */
+  public function create_user($name,$creator_id) {
+  	if ( empty($this->email) || 
+  		 empty($this->password) ) 
+  		return false;
 
+	$this->set_alias(FALSE);
+
+	return $this->insert();
+  }
+   
   /**
    * Inserts the current user on database.
    *
@@ -106,17 +126,13 @@ class User_model extends MY_Model
    */
   public function insert()
   {
-  	if (	empty($this->email) || 
-  			empty($this->password) || 
-  			$this->get_by_email($this->email)) 
+  	if ( empty($this->email) && empty($this->creator_id) ) 
   		return false;
-	
+
 	$this->dateadd = gmdate("Y-m-d H:i:s");
 	$this->dateupdate = gmdate("Y-m-d H:i:s");
-	$this->set_alias(FALSE);
+
 	$res = parent::insert();
-	
-	if ($res) $this->match_identity();
 	
 	return $res;
   }
@@ -128,18 +144,14 @@ class User_model extends MY_Model
    */
   public function update()
   {
-  	if ( empty($this->email) ) 
+  	if ( empty($this->email) && empty($this->creator_id) ) 
   		return false;
 
 	$this->dateupdate = gmdate("Y-m-d H:i:s");
-	$this->set_alias(FALSE);
+
 	$res = parent::update();
 
-	
-	if ($res) $this->match_identity();
-	
 	return $res;
-	
   }
 
   /**
@@ -265,6 +277,33 @@ class User_model extends MY_Model
 	}
 	
   }
+  
+  /**
+   * Search users from string
+   * @param $key string to search
+   * @return array of user values ('id' => user_id, 'text' => text responding to $key)
+   */
+  public function search_user($key,$user = FALSE) {
+  	
+	$extra = ($user)?" OR creator_id = ".$user->id:'';
+  	$where = "(name LIKE '%$key%' OR email LIKE '%$key%') AND (creator_id IS NULL$extra)";
+  	
+	$query = $this->db->where($where)->get(self::TABLE_NAME);
+	
+	$users = $this->get_self_results($query);
+	
+	$res = array();
+	foreach ($users as $user) {
+		if (stripos($user->name,$key) !== FALSE)
+			$res[$user->id] = array('id' => $user->id, 'text' => $user->name);
+		else {
+			if (stripos($user->email,$key) !== FALSE)
+				$res[$user->id] = array('id' => $user->id, 'text' => $user->email);
+		}
+	}
+	
+  	return array_values($res);
+  }
    
   /**
    * Format object name into url alias
@@ -275,10 +314,7 @@ class User_model extends MY_Model
 	protected function set_alias($save = TRUE) {
 		$alias = $this->alias;
 		if (empty($alias)) {
-			if (!empty($this->email)) $name = array_shift(explode('@',$this->email));
-			else if (!empty($name)) $name = $this->name;
-			else $name = 'newuser';
-
+			$max = 30;
 			$table = array(
 		        'Š'=>'S', 'š'=>'s', 'Đ'=>'Dj', 'đ'=>'dj', 'Ž'=>'Z', 'ž'=>'z', 'Č'=>'C', 'č'=>'c', 'Ć'=>'C', 'ć'=>'c',
 		        'À'=>'A', 'Á'=>'A', 'Â'=>'A', 'Ã'=>'A', 'Ä'=>'A', 'Å'=>'A', 'Æ'=>'A', 'Ç'=>'C', 'È'=>'E', 'É'=>'E',
@@ -289,17 +325,12 @@ class User_model extends MY_Model
 		        'ô'=>'o', 'õ'=>'o', 'ö'=>'o', 'ø'=>'o', 'ù'=>'u', 'ú'=>'u', 'û'=>'u', 'ý'=>'y', 'ý'=>'y', 'þ'=>'b',
 		        'ÿ'=>'y', 'Ŕ'=>'R', 'ŕ'=>'r',
 		    );
-			$alias = preg_replace("/[^a-zA-Z0-9]+/", "_", strtr($name, $table));
-			$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $alias));
-			if ($query->num_rows() > 0) {
-				$city = $this->city;
-				$alias = preg_replace("/[^a-zA-Z0-9]+/", "_", strtr($name.' '.$city, $table));
-				$base = $alias;
+			$base = substr(preg_replace("/[^a-zA-Z0-9]+/", "_", strtr($this->get_name(), $table)),0,$max);
+			$i = 1;
+			$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $base));
+			while ($query->num_rows() > 0) {
+				$alias = $base.'_'.$i++;
 				$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $alias));
-				while ($query->num_rows() > 0) {
-					$alias = $base.$i++;
-					$query = $this->db->get_where(self::TABLE_NAME,array('alias' => $alias));
-				}
 			}
 			$this->alias = $alias;
 			if ($save) $this->update();

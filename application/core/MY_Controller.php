@@ -73,7 +73,7 @@ class MY_Controller extends CI_Controller
 					break;
 				
 				case 'register':
-					$this->form_validation->set_rules('register_email', lang('app_email'), 'required|valid_email|is_unique[user.email]');
+					$this->form_validation->set_rules('register_email', lang('app_email'), 'required|valid_email');
 					$this->form_validation->set_rules('register_password', lang('app_password'), 'required|min_length[5]|max_length[15]');
 					$this->form_validation->set_rules('confirm_password', lang('app_confirm_password'), 'required|matches[register_password]');
 	
@@ -220,6 +220,10 @@ class MY_Controller extends CI_Controller
 			if ($description = $this->input->post('description')) $activity->description = $description;
 			
 			if ($activity->save()) {
+				
+				if ($activity_users = $this->input->post('activity_users'))
+					$activity->set_users(explode(',',$activity_users));
+				
 				return TRUE;
 			} else {
 				$this->errors[] = sprintf(lang('app_activity_save_error'),CONTACT_EMAIL);

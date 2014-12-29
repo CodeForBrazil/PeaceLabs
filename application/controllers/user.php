@@ -51,7 +51,7 @@ class User extends MY_Controller {
 
 			$email = $this->input->post('email');
 			if ($email != $user->email || empty($email)) {
-			    $this->form_validation->set_rules('email', lang('app_email'), 'required|valid_email|is_unique[user.email]');
+			    $this->form_validation->set_rules('email', lang('app_email'), 'required|valid_email');
 			}
 			
 			$password = $this->input->post('password');
@@ -106,7 +106,31 @@ class User extends MY_Controller {
 		}
 		$this->load->view('welcome/home',$this->get_data());
 	}
-
+	
+	/**
+	 * User identities search action
+	 * @param int $user_id
+	 * @param string $key
+	 * @return output json
+	 */
+	public function search_identities($key = NULL) {
+	  	if ($key == null && isset($_GET['q'])) $key = $_GET['q'];
+	    $key = urldecode($key);
+			
+		$this->load->model('User_model');
+		
+		$users = $this->User_model->search_user($key,$this->get_currentuser());
+		
+	    $return = array(
+	    'query' => $this->db->last_query(),
+	    'more' => false,
+	    'status' => 'OK',
+	    'results' => $users,
+		);
+	
+	    $this->output_json($return);
+	}
+	 
 	/**
 	 * if id is null and get current user
 	 * if id is int, get user by id

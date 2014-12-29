@@ -7,10 +7,14 @@
     <title>Lets - Enhanced your activities</title>
 
     <!-- Bootstrap -->
-	<link rel="stylesheet/less" type="text/css" href="/assets/less/style.less" />
-	<script src="/assets/js/less.js" type="text/javascript"></script>
+	<link rel="stylesheet/less" type="text/css" href="<?php echo base_url('/assets/less/style.less'); ?>" />
+	<script src="<?php echo base_url('/assets/js/less.js'); ?>" type="text/javascript"></script>
 	
-    <link href="/assets/css/bootstrap-theme.min.css" rel="stylesheet">
+    <script src="<?php echo base_url('/assets/js/jquery.min.js'); ?>"></script>	
+
+    <link href="<?php echo base_url('/assets/css/bootstrap-theme.min.css'); ?>" rel="stylesheet">
+	<link href="<?php echo base_url('/assets/js/select2/select2.css'); ?>" rel="stylesheet"/>
+	<link href="<?php echo base_url('/assets/js/select2/select2-bootstrap.css'); ?>" rel="stylesheet"/>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
