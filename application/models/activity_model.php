@@ -16,7 +16,7 @@ class Activity_model extends MY_Model
   
     // Table fields
   public $id;
-  public $title;
+  public $name;
   public $description;
   public $image;
   public $group;
@@ -60,6 +60,15 @@ class Activity_model extends MY_Model
    	}
 	return $users;
   }
+  
+  /**
+   * Get activity owner
+   */
+  public function get_owner() {
+  	$this->load->model('User_model');
+	return $this->User_model->get_by_id($this->owner);
+  	
+  }
 
   /**
    * Get all activities by owner user_id
@@ -83,11 +92,20 @@ class Activity_model extends MY_Model
 						$this->User_model->get_by_id($user_key):
 						$this->User_model->create_fake($user_key,$this->owner);
 			if ($user) {
-				$this->db->insert(self::ACTIVITY_USER_TABLE_NAME,array('activity_id'=>$this->id,'user_id'=>$user->id));
+				return $this->apply($user);
 			}
 	  	}
   	}
 	return TRUE;
+  }
+  
+  /**
+   * Register a user in activity
+   */
+  public function apply($user,$comment=NULL) {
+  	$activity_user = array('activity_id'=>$this->id,'user_id'=>$user->id);
+	if (!is_null($comment)) $activity_user['comment'] = $comment;
+	return $this->db->insert(self::ACTIVITY_USER_TABLE_NAME,$activity_user);
   }
   
   /**

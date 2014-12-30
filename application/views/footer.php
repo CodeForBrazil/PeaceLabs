@@ -7,7 +7,7 @@
 	</div>
 
 <!-- Modals -->
-<?php $this->load->view('modals/new_activity',array('extra_js',$extra_js)); ?>
+<?php $this->load->view('modals/new_activity'); ?>
 
 <?php $this->load->view('modals/login'); ?>
 
@@ -17,7 +17,7 @@
 
 <?php $this->load->view('modals/confirm'); ?>
 
-<?php $this->load->view('modals/lets'); ?>
+<?php $this->load->view('modals/apply'); ?>
 
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="<?php echo base_url('/assets/js/bootstrap.min.js'); ?>"></script>

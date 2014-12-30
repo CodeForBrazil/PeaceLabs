@@ -48,10 +48,6 @@ class MY_Controller extends CI_Controller
 		if ($this->is_post()) {
 			$this->form_validation->set_error_delimiters('','');
 			switch ($this->input->post('form_name')) {
-				case 'new_activity':
-					if (!$this->save_activity()) $this->set_data('open_modal','newActivity');
-					break;
-
 				case 'login':
 					$this->form_validation->set_rules('login_email', lang('app_email'), 'required|valid_email');
 					$this->form_validation->set_rules('login_password', lang('app_password'), 'required');
@@ -105,6 +101,14 @@ class MY_Controller extends CI_Controller
 					} else {
 						$this->set_data('open_modal','password');
 					}					
+					break;
+
+				case 'new_activity':
+					if (!$this->save_activity()) $this->set_data('open_modal','newActivity');
+					break;
+
+				case 'apply':
+					if (!$this->apply()) $this->set_data('open_modal','apply');
 					break;
 
 			}
@@ -215,7 +219,7 @@ class MY_Controller extends CI_Controller
 			
 			$activity = new activity_Model();
 			if ($activity_id) $activity->id = $activity_id;
-			$activity->title = $this->input->post('title');
+			$activity->name = $this->input->post('name');
 			$activity->owner = $current_user->id;
 			if ($description = $this->input->post('description')) $activity->description = $description;
 			
@@ -234,7 +238,35 @@ class MY_Controller extends CI_Controller
 	}
   	
   }
+  
+  /**
+   * Register current user for activity
+   */
+  protected function apply()
+  {
+	$current_user = $this->get_currentuser();
+	if (!$current_user) {
+		$this->errors[] = lang('app_no_current_user_error');
+		return FALSE;
+	}
+	$activity_id = $this->input->post('id');
+  	$this->load->model('activity_Model');
+	$activity = new Activity_model; //unnecessary
+	$activity = $this->activity_Model->get_by_id($activity_id);
 
+	$comment = $this->input->post('comment');
+	if (!$comment || empty($comment)) $comment = NULL;
+	
+	if ($activity && $activity->apply($current_user,$comment)) {
+		$this->messages[] = lang('app_apply_success');
+		return TRUE;
+	} else {
+		$this->errors[] = lang('app_apply_error');
+		return FALSE;
+	}
+	 
+	
+  }
   
   /**
    * Set user as current user

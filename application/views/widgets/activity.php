@@ -6,7 +6,7 @@
 		<img src="<?php echo $activity->get_image('large'); ?>" title="<?php echo $activity->title; ?>" class="img-responsive img-rounded"/>
 	</div-->
 	<div class="panel-body">
-	<h3><?php echo $activity->title; ?></h3>
+	<h3><?php echo $activity->name; ?></h3>
 	<?php $activity_users = $activity->get_users(); ?>
 	<div class="stats">
 		<i class="fa fa-group"></i>&nbsp;<?php echo count($activity_users); ?>				
@@ -29,9 +29,11 @@
 	<?php endif; ?>
 	<?php if ($is_not_owner) : ?>
 		<div class="footer">
-			<button type="button" data-toggle="modal" data-target="#<?php echo ((!isset($current_user))?'loginModal':'letsModal'); ?>" 
-				class="btn btn-success btn-sm center-block">
-				<?php echo lang('app_lets'); ?>
+			<button type="button" data-toggle="modal" data-target="#<?php echo ((!isset($current_user))?'loginModal':'applyModal'); ?>" 
+				class="btn btn-success btn-sm center-block btn-apply" data-activity-name="<?php echo $activity->name; ?>" 
+				data-activity-owner="<?php echo $activity->get_owner()->get_name(); ?>" 
+				title="<?php echo lang('app_apply_title'); ?>">
+				<?php echo lang('app_apply'); ?>
 			</button>								
 		</div>
 	<?php endif; ?>

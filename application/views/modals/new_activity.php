@@ -18,10 +18,10 @@
 	  	<input type="hidden" name="form_name" value="new_activity"/>
 	    <div class="modal-body">
 		  <div class="form-group">
-		    <input type="text" class="form-control" id="activity-title" name="title" 
-		    	placeholder="<?php echo lang('app_activity_title_placeholder'); ?>" value="<?php echo set_value('title'); ?>">
-		    <div class="help-block"><?php echo lang('app_activity_title_help'); ?></div>
-		    <div class="alert-danger"><?php echo form_error('title'); ?></div>
+		    <input type="text" class="form-control" id="activity-name" name="name" 
+		    	placeholder="<?php echo lang('app_activity_name_placeholder'); ?>" value="<?php echo set_value('name'); ?>">
+		    <div class="help-block"><?php echo lang('app_activity_name_help'); ?></div>
+		    <div class="alert-danger"><?php echo form_error('name'); ?></div>
 		  </div>
 		  <div class="form-group">
 		        <input type='hidden' id="activity_users" name="activity_users" placeholder="<?php echo lang('app_activity_users_placeholder'); ?>"  

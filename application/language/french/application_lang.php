@@ -1,10 +1,12 @@
 <?php
 $app_name = "Lets";
 $contact_admin = "Si le problème se répète, veuillez nous contacter: %s";
+
+$lang['app_site_name'] = "Lets - Pour de vrai";
 $lang['app_home'] = "Accueil";
 
 /**** Génériques */
-$lang['app_lets'] = "Lets";
+$lang['app_apply'] = "Lets";
 $lang['app_close'] = "Fermer";
 $lang['app_cancel'] = "Annuler";
 $lang['app_connect'] = "Se connecter";
@@ -47,9 +49,9 @@ $lang['app_city'] = "Ville";
 $lang['app_website'] = "Site web";
 $lang['app_bio'] = "A propos de vous";
 $lang['app_bio_placeholder'] = "Décrire rapidement vos centres d'intérêts";
-$lang['app_activity_title'] = "Titre de l'activité";
-$lang['app_activity_title_help'] = "Ex: Faire des crêpes, Jouer au scrabble, Aller à la piscine, ...";
-$lang['app_activity_title_placeholder'] = "Titre de l'activité proposée";
+$lang['app_activity_name'] = "Nom de l'activité";
+$lang['app_activity_name_help'] = "Ex: Faire des crêpes, Jouer au scrabble, Aller à la piscine, ...";
+$lang['app_activity_name_placeholder'] = "Titre de l'activité proposée";
 $lang['app_activity_users'] = "Avec";
 $lang['app_activity_users_help'] = "Ecrire un nom ou un email pour chaque personne intéressée par cette activité";
 $lang['app_activity_users_placeholder'] = "Liste des personnes intéressées";
@@ -58,9 +60,10 @@ $lang['app_activity_description_help'] = "Décrire en détail ce que vous propos
 $lang['app_activity_description_placeholder'] = "Quoi? Où? Comment? Avec qui?";
 $lang['app_activity_image'] = "Image";
 $lang['app_activity_image_help'] = "Mettre une image de bonne qualité correspondant à l'activité décrite";
-$lang['app_lets_intro'] = "Prévenir <span class='owner'>l'organisateur</span> que vous seriez intéressé(e) pour participer à <span class='activity'>cette activité</span>";
-$lang['app_lets_comment_help'] = "Visible uniquement par l'organisateur de l'activité";
-$lang['app_lets_comment_placeholder'] = "Laisser un commentaire";
+$lang['app_apply_intro'] = "Laisser un commentaire à <span class='owner-name'>l'organisateur</span> pour <span class='activity-name'>cette activité</span>";
+$lang['app_apply_comment_help'] = "Cette information est optionnelle et visible uniquement par l'organisateur de l'activité";
+$lang['app_apply_comment_placeholder'] = "Votre commentaire (facultatif)";
+$lang['app_apply_title'] = "S'inscrire à cette activité";
 
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";
@@ -75,6 +78,8 @@ $lang['app_activity_save_error'] = "Une erreur est survenue lors de l'enregistre
 $lang['app_no_current_user_error'] = "Vous devez être connecter pour effectuer cette action.";
 $lang['app_activity_unknown_error'] = "L'activité sélectionnée n'existe pas. $contact_admin";
 $lang['app_activity_delete'] = "Êtes-vous sur de vouloir supprimer l'activité <em>%s<em>?";
+$lang['app_apply_error'] = "Une erreur est survenue lors de l'inscription à une activité. $contact_admin";
+$lang['app_apply_success'] = "Vous avez été inscrit(e) à l'activité. Plus qu'à attendre qu'elle soit organisée.";
 
 /**** Emails */
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";
