@@ -45,20 +45,24 @@ class Activity_model extends MY_Model
     
   /**
    * Get users interested in activity
+   * @return array of activity_user row including a 'user' field with the user object model
    */
+  protected $_activity_users = NULL;
   public function get_users() {
-   	$users = array();
-   	if ($this->id) {
-  		$this->load->model('User_model');
-   		$query = $this->db->get_where(self::ACTIVITY_USER_TABLE_NAME, array('activity_id' => $this->id));
-    	foreach ($query->result() as $row) {
-    		$row = (array)$row;
-    		$user = $this->User_model->get_by_id($row['user_id']);
-			$row['user'] = $user;
-    		$users[] =  $row; 
-		}
-   	}
-	return $users;
+  	if (is_null($this->_activity_users)) {
+	   	$this->_activity_users = array();
+	   	if ($this->id) {
+	  		$this->load->model('User_model');
+	   		$query = $this->db->get_where(self::ACTIVITY_USER_TABLE_NAME, array('activity_id' => $this->id));
+	    	foreach ($query->result() as $row) {
+	    		$row = (array)$row;
+	    		$user = $this->User_model->get_by_id($row['user_id']);
+				$row['user'] = $user;
+	    		$this->_activity_users[$row['user_id']] =  $row; 
+			}
+	   	}
+  	}
+	return array_values($this->_activity_users);
   }
   
   /**
@@ -68,6 +72,16 @@ class Activity_model extends MY_Model
   	$this->load->model('User_model');
 	return $this->User_model->get_by_id($this->owner);
   	
+  }
+  
+  /**
+   * Check if user has applied to current activity
+   * @param $user
+   * @return boolean
+   */
+  public function has_applied($user) {
+  	$this->get_users(); // setting $this->_activity_users
+  	return (isset($this->_activity_users[$user->id]));
   }
 
   /**
@@ -104,8 +118,22 @@ class Activity_model extends MY_Model
    */
   public function apply($user,$comment=NULL) {
   	$activity_user = array('activity_id'=>$this->id,'user_id'=>$user->id);
-	if (!is_null($comment)) $activity_user['comment'] = $comment;
-	return $this->db->insert(self::ACTIVITY_USER_TABLE_NAME,$activity_user);
+	$query = $this->db->get_where(self::ACTIVITY_USER_TABLE_NAME,$activity_user);
+	$res = TRUE;
+	if ($query->num_rows() == 0) {
+		if (!is_null($comment)) $activity_user['comment'] = $comment;
+		$res = $this->db->insert(self::ACTIVITY_USER_TABLE_NAME,$activity_user);
+		if ($res) unset($this->_activity_users);
+	}
+	return $res;
+  }
+  
+  /**
+   * Unregister user from activity
+   */
+  public function disclaim($user) {
+  	$activity_user = array('activity_id'=>$this->id,'user_id'=>$user->id);
+  	return $this->db->delete(self::ACTIVITY_USER_TABLE_NAME,$activity_user);
   }
   
   /**

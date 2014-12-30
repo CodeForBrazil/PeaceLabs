@@ -108,7 +108,13 @@ class MY_Controller extends CI_Controller
 					break;
 
 				case 'apply':
-					if (!$this->apply()) $this->set_data('open_modal','apply');
+					$this->form_validation->set_rules('comment', lang('app_apply_comment'), 'max_length[1000]');
+					
+					if ($this->form_validation->run() !== FALSE) {
+						$this->apply();
+					} else {
+						$this->set_data('open_modal','apply');
+					}	
 					break;
 
 			}
@@ -341,7 +347,7 @@ class MY_Controller extends CI_Controller
    * @param mixed $var 
    * @return void
    */
-  public function output_json($var)
+  protected function output_json($var)
   {
     $json = json_encode($var);
     $this->output->set_header('Content-Type: application/json; charset='.$this->config->item('charset'));
@@ -349,6 +355,15 @@ class MY_Controller extends CI_Controller
     $this->output->set_output($json);
   }
   
+  /**
+   * Redirect to referer
+   * @param $url fallback redirect
+   */
+  protected function redirect_referer($url='/')
+  {
+	$this->load->library('user_agent');
+	redirect(($this->agent->is_referral())?$this->agent->referrer():$url);
+  }
 }
 
 /* End of file MY_Controller.php */

@@ -8,11 +8,11 @@
 				<form id="edit_user" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 					<input type="hidden" id="activity-id" name="id" value="<?php echo $activity -> id; ?>" />
 					<div class="form-group">
-						<label class="control-label col-sm-4" for="title"><?php echo lang('app_activity_title'); ?></label>
+						<label class="control-label col-sm-4" for="name"><?php echo lang('app_activity_name'); ?></label>
 						<div class="controls col-sm-8">
-							<input id="activity-title" name="title" type="text" class="input-xlarge form-control"
-								value="<?php echo set_value('title', $activity -> title); ?>" maxlength="100" />
-							 <div class="alert-danger"><?php echo form_error('title'); ?></div>
+							<input id="activity-name" name="name" type="text" class="input-xlarge form-control"
+								value="<?php echo set_value('name', $activity -> name); ?>" maxlength="100" />
+							 <div class="alert-danger"><?php echo form_error('name'); ?></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -28,7 +28,7 @@
 						<div class="controls col-sm-8 col-sm-offset-4">
 							<button type="submit" class="btn btn-success">Enregistrer</button>
 							<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
-								title="<?php echo sprintf(lang("app_activity_delete"),$activity->title);?>"  class="btn btn-danger btn-confirm pull-right">
+								title="<?php echo sprintf(lang("app_activity_delete"),$activity->name);?>"  class="btn btn-danger btn-confirm pull-right">
 								<i class="fa fa-trash-o"></i>
 							</a>						
 						</div>

@@ -3,13 +3,14 @@
     <div class="modal-content">
 	  <form role="form" method="post">
 	  	<input type="hidden" name="form_name" value="apply"/>
-	  	<input type="hidden" name="id" value="<?php echo ($activity)?$activity->id:''; ?>"/>
+	  	<input type="hidden" name="id"/>
 	    <div class="modal-body">
 	      <div><?php echo lang('app_apply_intro'); ?></div>
 		  <div class="form-group">
-			<textarea id="apply-comment" name="description" type="text" class="input-xlarge form-control" rows="5"
+			<textarea id="apply-comment" name="comment" type="text" class="input-xlarge form-control" rows="5"
 				placeholder="<?php echo lang('app_apply_comment_placeholder'); ?>"/></textarea>
 		    <div class="help-block"><?php echo lang('app_apply_comment_help'); ?></div>
+		    <div class="alert-danger"><?php echo form_error('comment'); ?></div>
 		  </div>
 	    </div>
 	    <div class="modal-footer">
@@ -24,6 +25,7 @@
 <script type="application/javascript">
 	$(document).ready(function () {
 		$('.btn-apply').click(function() {
+			if ($(this).attr('data-activity-id')) $("#applyModal input[name='id']").val($(this).attr('data-activity-id'));
 			if ($(this).attr('data-activity-name')) $('#applyModal .activity-name').html($(this).attr('data-activity-name'));
 			if ($(this).attr('data-activity-owner')) $('#applyModal .owner-name').html($(this).attr('data-activity-owner'));
 		});

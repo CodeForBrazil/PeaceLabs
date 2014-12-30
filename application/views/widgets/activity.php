@@ -29,12 +29,21 @@
 	<?php endif; ?>
 	<?php if ($is_not_owner) : ?>
 		<div class="footer">
-			<button type="button" data-toggle="modal" data-target="#<?php echo ((!isset($current_user))?'loginModal':'applyModal'); ?>" 
-				class="btn btn-success btn-sm center-block btn-apply" data-activity-name="<?php echo $activity->name; ?>" 
-				data-activity-owner="<?php echo $activity->get_owner()->get_name(); ?>" 
-				title="<?php echo lang('app_apply_title'); ?>">
-				<?php echo lang('app_apply'); ?>
-			</button>								
+			<?php if ($activity->has_applied($current_user)) : ?>
+				<a href="<?php echo site_url('activity/disclaim/'.$activity->id); ?>" 
+					class="btn btn-danger btn-sm btn-confirm center-block" 
+					title="<?php echo sprintf(lang("app_activity_disclaim"),$activity->name);?>">
+					<?php echo lang('app_disclaim'); ?>
+				</a>		
+			<?php else : ?>
+				<button type="button" data-toggle="modal" data-target="#<?php echo ((!isset($current_user))?'loginModal':'applyModal'); ?>" 
+					class="btn btn-success btn-sm center-block btn-apply" data-activity-name="<?php echo $activity->name; ?>" 
+					data-activity-owner="<?php echo $activity->get_owner()->get_name(); ?>"
+					data-activity-id="<?php echo $activity->id; ?>" 
+					title="<?php echo lang('app_apply_title'); ?>">
+					<?php echo lang('app_apply'); ?>
+				</button>		
+			<?php endif; ?>						
 		</div>
 	<?php endif; ?>
 	<?php if ($is_owner) : ?>

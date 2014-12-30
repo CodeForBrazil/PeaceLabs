@@ -33,24 +33,35 @@ class Activity extends MY_Controller {
 	 * Delete function
 	 */
 	public function delete($id) {
-		
 	 	$this->check_user();
 		$user = $this->get_currentuser();
 		
 		$id = (int) $id;
 		$this->load->model('activity_Model');
 		$activity = $this->activity_Model->get_by_id($id);
-		if (!$activity) redirect(site_url('user'));
+		if (!$activity) $this->redirect_referer(site_url('user'));
 		
-		$owner = $activity->owner;
-		if ($owner == $user->id || $user->is(User_model::ROLE_ADMIN)) {
+		if ( $activity->owner == $user->id || $user->is(User_model::ROLE_ADMIN)) {
 			$activity->delete();
 		}
 
 		redirect(site_url('user/view/'.$owner));
 	}
 
-	
+	/**
+	 * Disclaim action
+	 */
+	public function disclaim($id) {
+		$this->check_user();
+		$user = $this->get_currentuser();
+
+		$this->load->model('activity_Model');
+		$activity = $this->activity_Model->get_by_id($id);
+
+		if ($activity) $activity->disclaim($user);
+		
+		$this->redirect_referer();
+	}
 }
 
 /* End of file activity.php */
