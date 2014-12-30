@@ -5,7 +5,7 @@
 	    </div>
 	    <div class="modal-footer">
 	      <button type="button" class="btn btn-default" data-dismiss="modal"><?php echo lang('app_no'); ?></button>
-	      <a class="btn btn-success"><?php echo lang('app_yes'); ?></a>
+	      <a class="btn btn-danger"><?php echo lang('app_yes'); ?></a>
 	    </div>
     </div>
   </div>

@@ -60,7 +60,7 @@ class MY_Controller extends CI_Controller
 						if ($current_user = $this->login($email,$password)) {
 							$redirect = $this->input->post('redirect');
 							if (!empty($redirect)) redirect($redirect);
-							else redirect(site_url('user'));
+//							else redirect(site_url('user'));
 						}
 					}
 					if (!$current_user) {
@@ -218,7 +218,7 @@ class MY_Controller extends CI_Controller
 		$this->errors[] = lang('app_no_current_user_error');
 		return FALSE;
 	} else {
-		$this->form_validation->set_rules('title', lang('app_activity_title'), 'required');
+		$this->form_validation->set_rules('name', lang('app_activity_name'), 'required');
 		
 		if ($this->form_validation->run() !== FALSE) {
 			$this->load->model('activity_Model');

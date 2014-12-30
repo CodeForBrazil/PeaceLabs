@@ -18,8 +18,7 @@ class Activity extends MY_Controller {
 		if ($activity->owner == $user->id || $user->is(User_model::ROLE_ADMIN)) {
 			
 			if ($this->is_post()) {
-				if ($this->save_activity())
-					redirect(site_url('user/view/'.$activity->owner));
+				$this->save_activity();
 			}
 			
 			$this->set_data('activity',$activity);
