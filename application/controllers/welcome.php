@@ -7,6 +7,9 @@ class Welcome extends MY_Controller {
 	 */
 	public function index()
 	{
+		$this->load->model('User_model');
+		$users = $this->User_model->get_all_active();
+		$this->set_data('users',$users);
 		$this->load->view('welcome/home',$this->get_data());
 	}
 

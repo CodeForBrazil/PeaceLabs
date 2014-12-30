@@ -23,6 +23,10 @@ $(document).ready( function() {
     	$('#confirmModal .btn-success').attr('href',$(this).attr('href'));
     	$('#confirmModal').modal('show');
     	return false;
-    })
+    });
+    
+    $('.goto').click(function() {
+    	window.location.href = $(this).attr('data-goto');
+    });
 
 });

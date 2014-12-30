@@ -60,6 +60,13 @@ class User_model extends MY_Model
   }
   
   /**
+   * Returns user url
+   */
+  public function get_url() {
+  	return site_url("user/view/".$this->id);
+  }
+  
+  /**
    * Returns user avatar media model
    */
   public function get_avatar($style=NULL) {
@@ -163,6 +170,15 @@ class User_model extends MY_Model
   {
     $query = $this->db->get(self::TABLE_NAME);
 	return $this->get_self_results($query);
+  }
+  
+  /**
+   * Gets all active users (excluding fakes)
+   */
+  public function get_all_active()
+  {
+  	$this->db->where('creator_id IS NULL');
+	return $this->get_all();
   }
 
   /**

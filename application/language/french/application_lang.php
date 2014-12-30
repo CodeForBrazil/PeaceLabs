@@ -22,6 +22,10 @@ $lang['app_parameters'] = "Informations du compte";
 $lang['app_yes'] = "Oui";
 $lang['app_no'] = "Non";
 
+/**** Globals */
+$lang['app_activity'] = "Activité";
+$lang['app_activities'] = "Activités";
+
 /**** Modals */
 $lang['app_login_title'] = "Se connecter à $app_name";
 $lang['app_register_title'] = "Créer un nouveau compte $app_name";

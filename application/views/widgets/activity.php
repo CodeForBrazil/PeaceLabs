@@ -7,23 +7,24 @@
 	<?php if (!empty($activity->description)) : ?>
 		<p><?php echo $activity->description; ?></p>
 	<?php endif; ?>
+	<?php if (!isset($current_user)) : ?>
+		<div class="footer">
+			<button type="button" data-toggle="modal" data-target="#<?php echo 'loginModal'; ?>" class="btn btn-success btn-xs">
+				<?php echo lang('app_lets'); ?>
+			</button>								
+		</div>
+	<?php else : ?>
+		<?php if ($activity->owner != $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
+		<li>
+			<button type="button" data-toggle="modal" data-target="#<?php echo (!$current_user)?'loginModal':'letsModal'; ?>" class="btn btn-success btn-xs">
+				<?php echo lang('app_lets'); ?>
+			</button>								
+		</li>
+		<?php endif; ?>
+	<?php endif; ?>
 	<nav class="activity-menu">
 		<ul>
-			<?php if (!isset($current_user)) : ?>
-			<li>
-				<button type="button" data-toggle="modal" data-target="#<?php echo 'loginModal'; ?>" class="btn btn-success btn-xs">
-					<?php echo lang('app_lets'); ?>
-				</button>								
-			</li>
-			<?php else : ?>
-				<?php if ($activity->owner != $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
-				<li>
-					<button type="button" data-toggle="modal" data-target="#<?php echo (!$current_user)?'loginModal':'letsModal'; ?>" class="btn btn-success btn-xs">
-						<?php echo lang('app_lets'); ?>
-					</button>								
-				</li>
-				<?php endif; ?>
-				<?php if ($activity->owner == $current_user->id || $current_user->is(User_model::ROLE_ADMIN)) : ?>
+			<?php if (isset($current_user) && ($activity->owner == $current_user->id || $current_user->is(User_model::ROLE_ADMIN))) : ?>
 				<li>
 					<a href="<?php echo site_url('activity/update/'.$activity->id); ?>"><i class="fa fa-pencil-square-o"></i></a>						
 				</li>
@@ -33,7 +34,6 @@
 						<i class="fa fa-trash-o"></i>
 					</a>						
 				</li>
-				<?php endif; ?>
 			<?php endif; ?>
 		</ul>
 	</nav>
