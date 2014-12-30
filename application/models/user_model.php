@@ -12,6 +12,7 @@ class User_model extends MY_Model
    * Table name.
    */
   const TABLE_NAME = 'user';
+  const ACTIVITY_TABLE_NAME = 'activity';
 
   // Roles
   const ROLE_DEFAULT = 0;
@@ -177,7 +178,11 @@ class User_model extends MY_Model
    */
   public function get_all_active()
   {
-  	$this->db->where('creator_id IS NULL');
+  	$this->db->where('creator_id IS NULL')
+		->select(self::TABLE_NAME.'.*')
+  		->join(self::ACTIVITY_TABLE_NAME, self::ACTIVITY_TABLE_NAME.'.owner = '.self::TABLE_NAME.'.id','left outer')
+		->group_by(self::TABLE_NAME.'.id')
+  		->order_by('count('.self::ACTIVITY_TABLE_NAME.'.id)=0, rand()');
 	return $this->get_all();
   }
 
