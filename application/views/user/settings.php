@@ -91,6 +91,6 @@
 		</div>
     </div>
 
-<?php $data['extra_js'] = array("/assets/js/user.js"); ?>
+<?php $data['extra_js'][] = base_url("/assets/js/user.js"); ?>
 
 <?php $this->load->view('footer.php',$data);
