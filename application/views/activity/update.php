@@ -26,7 +26,11 @@
 					</div>
 					<div class="form-group">
 						<div class="controls col-sm-8 col-sm-offset-4">
-							<button type="submit" class="btn btn-danger">Enregistrer</button>
+							<button type="submit" class="btn btn-success">Enregistrer</button>
+							<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
+								title="<?php echo sprintf(lang("app_activity_delete"),$activity->title);?>"  class="btn btn-danger btn-confirm pull-right">
+								<i class="fa fa-trash-o"></i>
+							</a>						
 						</div>
 					</div>
 				</form>				

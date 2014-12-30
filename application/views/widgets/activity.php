@@ -35,20 +35,14 @@
 			</button>								
 		</div>
 	<?php endif; ?>
-	<nav class="activity-menu">
-		<ul>
-			<?php if ($is_owner) : ?>
+	<?php if ($is_owner) : ?>
+		<nav class="activity-menu">
+			<ul>
 				<li>
 					<a href="<?php echo site_url('activity/update/'.$activity->id); ?>"><i class="fa fa-gear"></i></a>						
 				</li>
-				<li>
-					<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
-						title="<?php echo sprintf(lang("app_activity_delete"),$activity->title);?>" class="btn-confirm cla">
-						<i class="fa fa-trash-o"></i>
-					</a>						
-				</li>
-			<?php endif; ?>
-		</ul>
-	</nav>
+			</ul>
+		</nav>
+	<?php endif; ?>
 	</div>
 </div>
