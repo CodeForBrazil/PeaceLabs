@@ -29,7 +29,7 @@
 	<?php endif; ?>
 	<?php if ($is_not_owner) : ?>
 		<div class="footer">
-			<?php if ($activity->has_applied($current_user)) : ?>
+			<?php if (isset($current_user) && $activity->has_applied($current_user)) : ?>
 				<a href="<?php echo site_url('activity/disclaim/'.$activity->id); ?>" 
 					class="btn btn-danger btn-sm btn-confirm center-block" 
 					title="<?php echo sprintf(lang("app_activity_disclaim"),$activity->name);?>">
