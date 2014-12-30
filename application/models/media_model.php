@@ -15,10 +15,12 @@ class Media_model extends MY_Model
   
   const STYLE_ORIGINAL = NULL;
   const STYLE_ROOT = 'root';
+  const STYLE_SMALL = 'small';
   const STYLE_MEDIUM = 'medium';
   const STYLE_LARGE = 'large';
   
   protected $styles = array(
+  	self::STYLE_SMALL => array('height' => 20,'width' => 20, "crop" => "fill"),
   	self::STYLE_MEDIUM => array('height' => 100,'width' => 100, "crop" => "fill"),
   	self::STYLE_LARGE => array('height' => 200,'width' => 200, "crop" => "fill"),
   	self::STYLE_ORIGINAL => array(),

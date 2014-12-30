@@ -47,16 +47,18 @@ class Activity_model extends MY_Model
    * Get users interested in activity
    */
   public function get_users() {
-   	$result = array();
+   	$users = array();
    	if ($this->id) {
   		$this->load->model('User_model');
    		$query = $this->db->get_where(self::ACTIVITY_USER_TABLE_NAME, array('activity_id' => $this->id));
     	foreach ($query->result() as $row) {
+    		$row = (array)$row;
     		$user = $this->User_model->get_by_id($row['user_id']);
 			$row['user'] = $user;
-    		$result[] =  $row; 
+    		$users[] =  $row; 
 		}
    	}
+	return $users;
   }
 
   /**
