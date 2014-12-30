@@ -3,7 +3,7 @@
     <div class="container" role="main">
 
 		<div class="row">
-			<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2 table-responsive" id="disabled_objects">
+			<div class="col-sm-12 col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
 				
 				<form id="edit_user" method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 					<input type="hidden" id="activity-id" name="id" value="<?php echo $activity -> id; ?>" />
@@ -34,9 +34,41 @@
 						</div>
 					</div>
 				</form>				
+
+		<?php $activity_users = $activity->get_users(); ?>
+		<?php if (count($activity_users) > 0) : ?>
+			<div class="col-sm-8 col-sm-offset-4">
+				<table class="table table-striped">
+					
+					<?php foreach($activity_users as $activity_user) : ?>
+					<?php $user = $activity_user['user']; ?>
+					<tr>
+						<td>
+							<div class="avatar avatar-small">
+								<img src="<?php echo $user->get_avatar('small'); ?>" alt="<?php echo $user->get_name(); ?>" 
+									class="img-responsive">
+							</div>
+						</td>
+						<td><?php echo $user->get_name(); ?></td>
+						<td>
+							<a href="<?php echo site_url('activity/disclaim/'.$activity->id.'/'.$user->id); ?>" 
+								title="<?php echo sprintf(lang("app_activity_user_disclaim"),$user->get_name());?>" 
+								class="btn-confirm">
+								<i class="fa fa-trash-o"></i>
+							</a>
+						</td>
+						
+					</tr>
+					<?php endforeach; ?>
+					
+				</table>
+				
+			</div>
+		<?php endif; ?>
 				
 			</div>
 		</div>
+		
     </div>
 
 <?php $data['extra_js'] = array("/assets/js/user.js"); ?>

@@ -48,6 +48,16 @@ class User_model extends MY_Model
 	$this->TABLE_NAME = self::TABLE_NAME;
     parent::__construct($data);
   }
+
+  /**
+   * A fake user is a user that has been created by another user to be added to an activity. 
+   * This user isn't a registered Lets user
+   * @return boolean
+   */
+  public function is_fake() {
+  	return !is_null($this->creator_id);
+  }
+  
   
   /**
    * Return a string with user denomination
@@ -77,7 +87,8 @@ class User_model extends MY_Model
 		if ($path = $avatar->get_path($style))
 			return $path;
   	}
-	return DEFAULT_AVATAR;
+	
+	return ($this->is_fake())?DEFAULT_AVATAR_FAKE:DEFAULT_AVATAR;
   }
   
   /**

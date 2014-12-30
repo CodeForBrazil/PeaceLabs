@@ -133,6 +133,7 @@ class Activity_model extends MY_Model
    */
   public function disclaim($user) {
   	$activity_user = array('activity_id'=>$this->id,'user_id'=>$user->id);
+	if ($user->is_fake() && count($user->get_activities()==0)) $user->delete();
   	return $this->db->delete(self::ACTIVITY_USER_TABLE_NAME,$activity_user);
   }
   

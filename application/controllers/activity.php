@@ -50,14 +50,19 @@ class Activity extends MY_Controller {
 	/**
 	 * Disclaim action
 	 */
-	public function disclaim($id) {
+	public function disclaim($activity_id,$user_id = NULL) {
 		$this->check_user();
-		$user = $this->get_currentuser();
-
-		$this->load->model('activity_Model');
-		$activity = $this->activity_Model->get_by_id($id);
-
-		if ($activity) $activity->disclaim($user);
+		if (is_null($user_id))
+			$user = $this->get_currentuser();
+		else
+			$user = $this->User_model->get_by_id($user_id);
+		
+		if ($user) {
+			$this->load->model('activity_Model');
+			$activity = $this->activity_Model->get_by_id($activity_id);
+	
+			if ($activity) $activity->disclaim($user);
+		}
 		
 		$this->redirect_referer();
 	}

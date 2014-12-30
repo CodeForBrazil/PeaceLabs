@@ -78,10 +78,11 @@ $lang['app_user_save_error'] = "Une erreur est survenue lors de l'enregistrement
 $lang['app_activity_save_error'] = "Une erreur est survenue lors de l'enregistrement de l'activité. $contact_admin";
 $lang['app_no_current_user_error'] = "Vous devez être connecter pour effectuer cette action.";
 $lang['app_activity_unknown_error'] = "L'activité sélectionnée n'existe pas. $contact_admin";
-$lang['app_activity_delete'] = "Êtes-vous sûr de vouloir supprimer l'activité <em>%s<em>?";
+$lang['app_activity_delete'] = "Êtes-vous sûr de vouloir supprimer l'activité <em>%s</em>?";
 $lang['app_apply_error'] = "Une erreur est survenue lors de l'inscription à une activité. $contact_admin";
 $lang['app_apply_success'] = "Vous avez été inscrit(e) à l'activité. Plus qu'à attendre qu'elle soit organisée.";
-$lang['app_activity_disclaim'] = "Êtes-vous sûr de ne plus vouloir <em>%s<em>?";
+$lang['app_activity_disclaim'] = "Êtes-vous sûr de ne plus vouloir <em>%s</em>?";
+$lang['app_activity_user_disclaim'] = "Êtes-vous sûr de vouloir retirer <em>%s</em> de la liste?";
 
 /**** Emails */
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";
