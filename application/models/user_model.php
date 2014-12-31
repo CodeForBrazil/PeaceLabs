@@ -145,7 +145,8 @@ class User_model extends MY_Model
    */
   public function insert()
   {
-  	if ( empty($this->email) && empty($this->creator_id) ) 
+  	if ( (empty($this->email) && empty($this->creator_id)) || 
+  		 (!empty($this->email) && $this->email_exists($this->email)) ) 
   		return false;
 
 	$this->dateadd = gmdate("Y-m-d H:i:s");
@@ -251,6 +252,16 @@ class User_model extends MY_Model
 	$this->update();
   	
   	return $password; 
+  }
+  
+  /**
+   * Check if an active account already exists with email
+   */
+  public function email_exists($email) {
+	$users = new User_model();
+	$users->db->where("LOWER(email)=LOWER('$email')");
+	$users = $users->get_all_active();
+	return count($users)>0;
   }
 
   /**

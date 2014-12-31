@@ -76,12 +76,23 @@ class MY_Controller extends CI_Controller
 					if ($this->form_validation->run() !== FALSE) {
 						$email    = $this->input->post('register_email');
 						$password = $this->input->post('register_password');
-						$current_user = $this->register($email,$password);
-						if ($current_user) {
-							$this->load->helper('email');
-							email_user_confirmation($current_user);
+
+						// check if email already exists
+						$this->load->model('User_model');
+						if ($this->User_model->email_exists($email)) {
+							$this->errors[] = sprintf(lang('app_register_email_exists_error'),$email);
+							$this->set_data('open_modal','register');
 						} else {
-							$this->errors[] = sprintf(lang('app_register_error'),$email);
+							$current_user = $this->register($email,$password);
+							if ($current_user) {
+								$this->load->helper('email');
+								email_user_confirmation($current_user);
+								admin_report("New user: $email","Check his profil: ".$current_user->get_url());
+								redirect(site_url('user/settings'));
+							} else {
+								$this->errors[] = sprintf(lang('app_register_error'),$email);
+								$this->set_data('open_modal','register');
+							}
 						}
 					} else {
 						$this->set_data('open_modal','register');

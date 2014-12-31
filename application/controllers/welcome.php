@@ -10,7 +10,7 @@ class Welcome extends MY_Controller {
 		$this->load->model('User_model');
 		$users = $this->User_model->get_all_active();
 		$this->set_data('users',$users);
-		$this->set_data('open_modal','login');
+		if (isset($_GET['from'])) $this->set_data('open_modal','login');
 		$this->load->view('welcome/home',$this->get_data());
 	}
 

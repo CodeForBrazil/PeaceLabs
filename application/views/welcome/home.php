@@ -11,15 +11,14 @@
 						$arr[$i++][] = $user;
 						if ($i == 3) $i = 0;
 					}
-				}
-			?>
-			<?php for ($i=0; $i < 3; $i++) : ?>
-				<div class="col-sm-4">
-				<?php 
-					foreach ($arr[$i] as $user) $this->load->view("widgets/user",array('user' => $user)); 
-				?>
-				</div>
-			<?php endfor; ?>
+					for ($i=0; $i < 3; $i++) : ?>
+						<div class="col-sm-4">
+						<?php 
+							foreach ($arr[$i] as $user) $this->load->view("widgets/user",array('user' => $user)); 
+						?>
+						</div>
+					<?php endfor;
+				} ?>
 			
 
 		</div>

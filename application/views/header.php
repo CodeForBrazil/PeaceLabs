@@ -58,6 +58,7 @@
                 <li class="visible-xs"><a href="<?php echo site_url('user/settings'); ?>"><?php echo lang('app_parameters'); ?></a></li>
                 <li class="visible-xs"><a href="<?php echo site_url('welcome/out'); ?>"><?php echo lang('app_disconnect'); ?></a></li>
           	<?php else : ?>
+              <li><a href="#register" data-toggle="modal" data-target="#registerModal"><?php echo lang('app_register'); ?></a></li>
               <li><a href="#login" data-toggle="modal" data-target="#loginModal"><?php echo lang('app_connect'); ?></a></li>
             <?php endif; ?>
           </ul>

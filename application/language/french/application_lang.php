@@ -70,7 +70,8 @@ $lang['app_apply_title'] = "S'inscrire à cette activité";
 
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";
-$lang['app_register_error'] = "L'enregistrement à échouer. Veuillez tentez avec un autre email.";
+$lang['app_register_error'] = "L'enregistrement à échouer.";
+$lang['app_register_email_exists_error'] = "Il existe déjà un compte avec l'email %s.";
 $lang['app_retrieve_password_success'] = "Votre mot de passe a été envoyé à l'adresse '%s'";
 $lang['app_retrieve_password_error'] = "Aucun compte utilisateur ne correspond à l'email '%s'.";
 $lang['app_confirmation_ok'] = "Votre compte a été correctement activé. Nous vous en remercions.";

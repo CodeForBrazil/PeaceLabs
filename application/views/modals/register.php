@@ -8,6 +8,14 @@
 	  <form role="form" method="post">
 	  	<input type="hidden" name="form_name" value="register"/>
 	    <div class="modal-body">
+		  <?php if ( ! empty($errors)) : ?>
+			<div class="alert alert-danger alert-dismissable">
+				<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+				<?php foreach ($errors as $error) : ?>
+					<p><?php echo $error; ?></p>
+				<?php endforeach; ?>
+			</div>
+		  <?php endif; ?>
 		  <div class="form-group">
 		    <label for="registerEmail"><?php echo lang('app_email'); ?></label>
 		    <input type="email" class="form-control" id="registerEmail" name="register_email" 
