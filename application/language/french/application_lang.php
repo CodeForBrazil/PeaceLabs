@@ -1,6 +1,7 @@
 <?php
 $app_name = "Lets";
 $contact_admin = "Si le problème se répète, veuillez nous contacter: %s";
+$site_url = site_url('');
 
 $lang['app_site_name'] = "Lets - Pour de vrai";
 $lang['app_home'] = "Accueil";
@@ -24,6 +25,7 @@ $lang['app_browse'] = "Choisir une image";
 $lang['app_parameters'] = "Informations du compte";
 $lang['app_yes'] = "Oui";
 $lang['app_no'] = "Non";
+$lang['app_back_to_profile'] = "Retour à mon profil";
 
 /**** Globals */
 $lang['app_activity'] = "Activité";
@@ -85,21 +87,34 @@ $lang['app_activity_disclaim'] = "Êtes-vous sûr de ne plus vouloir <em>%s</em>
 $lang['app_activity_user_disclaim'] = "Êtes-vous sûr de vouloir retirer <em>%s</em> de la liste?";
 
 /**** Emails */
+$signature = "
+L'équipe $app_name
+$site_url";
+
 $lang['email_user_confirmation_title'] = "Veuillez confirmer votre adresse email";
 $lang['email_user_confirmation_content'] = "Bonjour, 
 Merci d'avoir rejoint $app_name ! 
 Pour terminer la procédure d'inscription, il vous suffit de confirmer que votre adresse e-mail est correcte en cliquant sur le lien suivant: %s .
+$signature";
 
-L'équipe $app_name";
-
-$lang['app_mail_password_retrieval_title'] = 'Récupération du mot de passe $app_name';
+$lang['app_mail_password_retrieval_title'] = "Récupération du mot de passe $app_name";
 $lang['app_mail_password_retrieval_content'] = "Bonjour,
 Voici votre nouveau mot de passe: %s.
 Il est conseillé de le modifier rapidement. 
 Pour cela accédez à la page de votre compte et enregistrez un nouveau mot de passe: %s
+$signature";
 
-L'équipe $app_name.";
-
+$lang['app_mail_apply_activity_title'] = "%s est intéressé pour %s";
+$lang['app_mail_apply_activity_content'] = "Bonjour %s,
+Nous vous informons que %s est intéressé(e) pour %s. N'oubliez pas de le/la contacter la prochaine fois. %s
+Pour voir tous les inscrits rendez-vous sur: %s.
+$signature";
+$lang['app_mail_apply_user_comment'] = "
+%s vous a laissé le commentaire suivant:
+------------------------------
+%s
+------------------------------
+";
 
 /* End of file application_lang.php */
 /* Location: ./application/language/french/application_lang.php */

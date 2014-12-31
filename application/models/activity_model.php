@@ -75,6 +75,13 @@ class Activity_model extends MY_Model
   }
   
   /**
+   * Get activity update url
+   */
+  public function get_update_url() {
+  	return site_url('activity/update/'.$this->id);
+  }
+  
+  /**
    * Check if user has applied to current activity
    * @param $user
    * @return boolean

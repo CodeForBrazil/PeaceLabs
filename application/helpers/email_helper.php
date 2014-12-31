@@ -68,5 +68,36 @@ if ( ! function_exists('email_user_password'))
 	$ci->email->send();
 	
   }
+  
+}
+
+if ( ! function_exists('email_activity_apply'))
+{
+
+  /**
+   * Email send to an activity owner when a user applied to it
+   * @param $activity
+   * @param $user applying to activity
+   * @param $comment send by the user (NULL if empty)
+   */
+  function email_activity_apply($activity,$user,$comment) {
+	$ci = get_instance();
+	$ci->load->library('email');
+	
+	$owner = $activity->get_owner();
+	
+	$ci->email->from(SENDER_EMAIL);
+	$ci->email->to($owner->email);
+	$ci->email->subject(sprintf(lang('app_mail_apply_activity_title'),$user->get_name(),$activity->name));
+	
+	if (is_null($comment) || empty($comment)) $comment = '';
+	else $comment = sprintf(lang('app_mail_apply_user_comment'),$user->get_name(),$comment);
+	
+	$ci->email->message(sprintf(lang('app_mail_apply_activity_content'),
+							$owner->get_name(),$user->get_name(),$activity->name,$comment,$activity->get_update_url()));	
+	
+	$ci->email->send();
+	
+  }
 
 }

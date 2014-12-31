@@ -58,7 +58,7 @@ class MY_Controller extends CI_Controller
 						$password = $this->input->post('login_password');
 
 						if ($current_user = $this->login($email,$password)) {
-							$redirect = $this->input->post('redirect');
+							$redirect = $_GET['from'];
 							if (!empty($redirect)) redirect($redirect);
 //							else redirect(site_url('user'));
 						}
@@ -265,6 +265,8 @@ class MY_Controller extends CI_Controller
 	
 	if ($activity && $activity->apply($current_user,$comment)) {
 		$this->messages[] = lang('app_apply_success');
+		$this->load->helper('email');
+		email_activity_apply($activity,$current_user,$comment);
 		return TRUE;
 	} else {
 		$this->errors[] = lang('app_apply_error');

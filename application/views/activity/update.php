@@ -42,9 +42,9 @@
 					</div>
 					<div class="form-group">
 						<div class="controls col-sm-8 col-sm-offset-4">
-							<button type="submit" class="btn btn-success">Enregistrer</button>
-							<a href="<?php echo site_url('user/view/'.$activity->owner); ?>" class="btn btn-default">
-								Retour à mon profil
+							<button type="submit" class="btn btn-success"><?php echo lang('app_save'); ?></button>
+							<a href="<?php echo site_url('user/view/'.$user->id); ?>" class="btn btn-default">
+								<?php echo lang('app_back_to_profile'); ?>
 							</a>
 							<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
 								title="<?php echo str_replace('"','“',sprintf(lang("app_activity_delete"),$activity->name)); ?>" 

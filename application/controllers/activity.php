@@ -9,7 +9,7 @@ class Activity extends MY_Controller {
 	{
 	 	$this->check_user();
 		$user = $this->get_currentuser();
-		
+
 		$id = (int) $id;
 		$this->load->model('activity_Model');
 		$activity = $this->activity_Model->get_by_id($id);

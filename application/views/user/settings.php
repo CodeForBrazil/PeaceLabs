@@ -82,7 +82,10 @@
 					</div>
 					<div class="form-group">
 						<div class="controls col-sm-8 col-sm-offset-4">
-							<button type="submit" class="btn btn-danger">Enregistrer</button>
+							<button type="submit" class="btn btn-danger"><?php echo lang('app_save'); ?></button>
+							<a href="<?php echo site_url('user/view/'.$user->id); ?>" class="btn btn-default">
+								<?php echo lang('app_back_to_profile'); ?>
+							</a>
 						</div>
 					</div>
 				</form>				
