@@ -22,6 +22,7 @@ class Activity extends MY_Controller {
 			}
 			
 			$this->set_data('activity',$activity);
+			$this->set_data('hide_new_activity_btn',TRUE);
 			$this->load->view('activity/update',$this->get_data());
 		} else {
 			redirect(site_url('user/view/'.$activity->owner));

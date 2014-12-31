@@ -1,5 +1,14 @@
 <?php $this->load->view('header'); ?>    
-    
+ 
+<?php
+	$activity_users = $activity->get_users();
+	$user_list = array();
+	foreach ($activity_users as $i => $activity_user) {
+		$user = $activity_user['user'];
+		$user_list[$i] = array('id' => $user->id, 'text' => $user->get_name());
+	}
+?> 
+   
     <div class="container" role="main">
 
 		<div class="row">
@@ -16,6 +25,13 @@
 						</div>
 					</div>
 					<div class="form-group">
+						<div class="controls col-sm-8 col-sm-offset-4">
+						  	<?php $this->load->view('widgets/activity_autocomplete',
+						  			array('name'=>'activity_users2','user_list'=>$user_list)); ?>
+						    <div class="help-block"><?php echo lang('app_activity_users_help'); ?></div>
+						</div>
+					</div>
+					<div class="form-group">
 						<label class="control-label col-sm-4" for="description"><?php echo lang('app_activity_description'); ?></label>
 						<div class="controls col-sm-8">
 							<textarea id="activity-description" name="description" type="text" class="input-xlarge form-control"
@@ -27,15 +43,18 @@
 					<div class="form-group">
 						<div class="controls col-sm-8 col-sm-offset-4">
 							<button type="submit" class="btn btn-success">Enregistrer</button>
+							<a href="<?php echo site_url('user/view/'.$activity->owner); ?>" class="btn btn-default">
+								Retour à mon profil
+							</a>
 							<a href="<?php echo site_url('activity/delete/'.$activity->id); ?>" 
-								title="<?php echo str_replace('"','“',sprintf(lang("app_activity_delete"),$activity->name)); ?>" class="btn btn-danger btn-confirm pull-right">
+								title="<?php echo str_replace('"','“',sprintf(lang("app_activity_delete"),$activity->name)); ?>" 
+								class="btn btn-danger btn-confirm pull-right">
 								<i class="fa fa-trash-o"></i>
 							</a>						
 						</div>
 					</div>
 				</form>				
 
-		<?php $activity_users = $activity->get_users(); ?>
 		<?php if (count($activity_users) > 0) : ?>
 			<div class="col-sm-8 col-sm-offset-4">
 				<table class="table table-striped">
@@ -49,7 +68,13 @@
 									class="img-responsive">
 							</div>
 						</td>
-						<td><?php echo $user->get_name(); ?></td>
+						<td>
+							<?php echo $user->get_name(); ?>
+							<?php if (($comment = $activity_user['comment']) && !empty($comment)) : ?>
+								<div class="comment"><?php echo $activity_user['comment']; ?></div>
+							<?php endif; ?>
+							
+						</td>
 						<td>
 							<a href="<?php echo site_url('activity/disclaim/'.$activity->id.'/'.$user->id); ?>" 
 								title="<?php echo sprintf(lang("app_activity_user_disclaim"),$user->get_name());?>" 

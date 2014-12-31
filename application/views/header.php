@@ -35,12 +35,14 @@
           </button>
           <a class="navbar-brand" href="/" id="logo"><img src="/assets/img/lets-do-it.png" /></a>
         </div>
-        <div>
-        	<a href="#new" data-toggle="modal" data-target="#<?php echo (isset($current_user)?'newActivity':'login');?>Modal" 
-        		class="new-activity-btn" title="<?php echo lang('app_new_activity_title'); ?>">
-        		<i class="fa fa-plus"></i>
-        	</a>
-        </div>
+        <?php if (!isset($hide_new_activity_btn) || !$hide_new_activity_btn) : ?>
+	        <div>
+	        	<a href="#new" data-toggle="modal" data-target="#<?php echo (isset($current_user)?'newActivity':'login');?>Modal" 
+	        		class="new-activity-btn" title="<?php echo lang('app_new_activity_title'); ?>">
+	        		<i class="fa fa-plus"></i>
+	        	</a>
+	        </div>
+	    <?php endif; ?>
         <div class="navbar-collapse collapse">
           <ul class="nav navbar-nav pull-right">
           	<?php if (isset($current_user)) : ?>

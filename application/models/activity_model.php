@@ -95,20 +95,33 @@ class Activity_model extends MY_Model
   }
   
   /**
-   * Set the activity user list
+   * Set the activity user list by applying all new user and disclaiming all user not in $user_list
+   * @param $user_list : list of user keys. Keys can be either a number for the user id or a string for a new fake user to create
+   * 
    */
   public function set_users($user_list) {
   	if ($this->id) {
 	  	$this->load->model('User_model');
-		$this->db->delete(self::ACTIVITY_USER_TABLE_NAME,array('activity_id'=>$this->id));
+		$users = $this->get_users();
+		$users_ids = array_keys($this->_activity_users);
+//		$this->db->delete(self::ACTIVITY_USER_TABLE_NAME,array('activity_id'=>$this->id));
 	  	foreach($user_list as $user_key) {
-			$user = (is_numeric($user_key))?
-						$this->User_model->get_by_id($user_key):
-						$this->User_model->create_fake($user_key,$this->owner);
-			if ($user) {
-				return $this->apply($user);
+	  		if (!in_array($user_key,$users_ids)) {
+				$user = (is_numeric($user_key))?
+							$this->User_model->get_by_id($user_key):
+							$this->User_model->create_fake($user_key,$this->owner);
+				if ($user)
+					$this->apply($user);
+				else return FALSE;
+	  		} else {
+				if(($key = array_search($user_key, $users_ids)) !== false) unset($users_ids[$key]);
 			}
 	  	}
+		foreach ($users_ids as $user_id) {
+			$user = $this->User_model->get_by_id($user_id);
+			if ($user) $this->disclaim($user);
+			else return FALSE;
+		}
   	}
 	return TRUE;
   }
