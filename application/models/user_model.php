@@ -97,6 +97,7 @@ class User_model extends MY_Model
   public function get_activities() {
   	if (isset($this->id)) {
 	  	$this->load->model('Activity_model');
+		$this->Activity_model->db->order_by('id DESC');
 		return $this->Activity_model->get_by_owner($this->id);
   	}
 	return false;
