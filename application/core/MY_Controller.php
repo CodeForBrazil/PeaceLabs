@@ -58,9 +58,7 @@ class MY_Controller extends CI_Controller
 						$password = $this->input->post('login_password');
 
 						if ($current_user = $this->login($email,$password)) {
-							$redirect = $_GET['from'];
-							if (!empty($redirect)) redirect($redirect);
-//							else redirect(site_url('user'));
+							if (isset($_GET['from']) && ($redirect = $_GET['from'])) redirect($redirect);
 						}
 					}
 					if (!$current_user) {
@@ -242,8 +240,9 @@ class MY_Controller extends CI_Controller
 			
 			if ($activity->save()) {
 				
-				if ($activity_users = $this->input->post('activity_users'))
-					$activity->set_users(explode(',',$activity_users));
+				$activity_users = $this->input->post('activity_users');
+				$activity_users = ($activity_users)?explode(',',$activity_users):array();
+				$activity->set_users($activity_users);
 				
 				return TRUE;
 			} else {

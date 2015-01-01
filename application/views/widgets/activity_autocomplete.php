@@ -1,7 +1,7 @@
 
 <input type='hidden' id="<?php echo $name; ?>" name="activity_users" 
 	placeholder="<?php echo lang('app_activity_users_placeholder'); ?>"  
-	value="<?php echo (isset($user_list)?set_value('activity_users',array('id'=>1,'text'=>'Test')):set_value('activity_users')); ?>" 
+	value="<?php echo (isset($user_list)?set_value('activity_users',$user_list):set_value('activity_users')); ?>" 
 	class="input-xlarge form-control"/>
 
 <?php if (!isset($light) || !$light) : ?>

@@ -113,6 +113,8 @@ class Activity_model extends MY_Model
 		$users_ids = array_keys($this->_activity_users);
 //		$this->db->delete(self::ACTIVITY_USER_TABLE_NAME,array('activity_id'=>$this->id));
 	  	foreach($user_list as $user_key) {
+	  		$user_key = trim($user_key);
+  			if (empty($user_key)) continue;
 	  		if (!in_array($user_key,$users_ids)) {
 				$user = (is_numeric($user_key))?
 							$this->User_model->get_by_id($user_key):
