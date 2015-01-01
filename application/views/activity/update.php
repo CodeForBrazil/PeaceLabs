@@ -22,6 +22,7 @@
 							<input id="activity-name" name="name" type="text" class="input-xlarge form-control"
 								value="<?php echo set_value('name', $activity -> name); ?>" maxlength="100" />
 							 <div class="alert-danger"><?php echo form_error('name'); ?></div>
+						    <div class="help-block"><?php echo lang('app_activity_name_help'); ?></div>
 						</div>
 					</div>
 					<div class="form-group">
@@ -34,10 +35,26 @@
 					<div class="form-group">
 						<label class="control-label col-sm-4" for="description"><?php echo lang('app_activity_description'); ?></label>
 						<div class="controls col-sm-8">
-							<textarea id="activity-description" name="description" type="text" class="input-xlarge form-control"
-								placeholder="<?php echo lang('app_description_placeholder'); ?>"/><?php echo set_value('description', $activity -> description); 
+							<?php /*
+								$data = array(
+							      'name'        => 'description',
+							      'id'          => 'activity-description',
+							      'value'       => set_value('description',$activity -> description),
+							      'class'       => 'input-xlarge form-control',
+							      'placeholder' => lang('app_description_placeholder'),
+							    );
+							
+							  echo form_textarea($data); */
+  							?>
+							<textarea id="activity-description" name="description" class="input-xlarge form-control"
+								placeholder="<?php echo lang('app_description_placeholder'); ?>"/><?php 
+
+								echo trim((isset($_POST['description'])?$_POST['description']:$activity -> description));
+								// This didn't work! -> echo set_value('description',$activity -> description);
+
 							?></textarea>
-							 <div class="alert-danger"><?php echo form_error('description'); ?></div>
+						    <div class="help-block"><?php echo lang('app_activity_description_help'); ?></div>
+							<div class="alert-danger"><?php echo form_error('description'); ?></div>
 						</div>
 					</div>
 					<div class="form-group">

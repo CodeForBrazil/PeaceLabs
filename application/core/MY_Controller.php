@@ -236,7 +236,7 @@ class MY_Controller extends CI_Controller
 			if ($activity_id) $activity->id = $activity_id;
 			$activity->name = $this->input->post('name');
 			$activity->owner = $current_user->id;
-			if ($description = $this->input->post('description')) $activity->description = $description;
+			if ($description = $this->input->post('description')) $activity->description = trim($description);
 			
 			if ($activity->save()) {
 				

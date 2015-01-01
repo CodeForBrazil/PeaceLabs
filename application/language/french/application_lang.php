@@ -25,7 +25,7 @@ $lang['app_browse'] = "Choisir une image";
 $lang['app_parameters'] = "Informations du compte";
 $lang['app_yes'] = "Oui";
 $lang['app_no'] = "Non";
-$lang['app_back_to_profile'] = "Retour à mon profil";
+$lang['app_back_to_profile'] = "Retour au profil";
 
 /**** Globals */
 $lang['app_activity'] = "Activité";
