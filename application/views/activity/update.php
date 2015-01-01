@@ -70,7 +70,7 @@
 						</td>
 						<td>
 							<?php echo $user->get_name(); ?>
-							<?php if (($comment = $activity_user['comment']) && !empty($comment)) : ?>
+							<?php if ((isset($activity_user['comment'])) && ($comment = $activity_user['comment']) && !empty($comment)) : ?>
 								<div class="comment"><?php echo $activity_user['comment']; ?></div>
 							<?php endif; ?>
 							
