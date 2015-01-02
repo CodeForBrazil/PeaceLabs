@@ -4,8 +4,8 @@
  * CUSTOM CONSTANTS
  **/
 
-define('SENDER_EMAIL', 'thierry@thde.pro');
-define('CONTACT_EMAIL', 'thierry@thde.pro');
+define('SENDER_EMAIL', 'hhlets@gmail.com');
+define('CONTACT_EMAIL', 'hhlets@gmail.com');
 define('ADMIN_EMAIL', 'thierry@thde.pro');
 define('ENCODE_CODE_WORD', 'azerty123456');
 define('ROOT_PATH',APPPATH.'../');
