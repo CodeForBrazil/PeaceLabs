@@ -1,10 +1,12 @@
 
+<?php if (isset($current_user) && $current_user->is(User_model::ROLE_ADMIN)) : ?>
 	<div class="container">
 		<ul id="footer_menu">
 			<li><a href="<?php echo site_url('welcome/todo'); ?>">To do</a></li>
 			<li><a href="<?php echo site_url('welcome/theme'); ?>">Theme</a></li>
 		</ul>
 	</div>
+<?php endif; ?>
 
 <!-- Modals -->
 <?php $this->load->view('modals/new_activity'); ?>
