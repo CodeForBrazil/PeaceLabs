@@ -4,8 +4,15 @@
 
 		<div class="row">
 			
+			<?php $app_name = "Lets"; ?>
+			<?php if (isset($current_user)) : ?>
 			<div class="jumbotron">
-				<?php $app_name = "Lets"; ?>
+				<p>
+					<strong>Bienvenue sur <?php echo $app_name.' <em>'.$current_user->get_name().'</em>'; ?> !</strong>
+				</p>
+			</div>
+			<?php else : ?>
+			<div class="jumbotron">
 				<p>
 					<strong>Bienvenue sur <?php echo $app_name; ?>!</strong> Ceci n'est qu'un prototype mais c'est un <em>bon début</em>. 
 					Le but de ce site est de passer plus
@@ -32,6 +39,7 @@
 				</p>
 				
 			</div>
+			<?php endif; ?>
 
 			<?php
 				if (isset($users) && is_array($users)) {
