@@ -84,7 +84,7 @@ class User extends MY_Controller {
 					}
 		        	$this->messages[] = lang('app_user_save_success');
 		        } else {
-		        	$this->errors[] = sprintf(lang('app_user_save_error'),CONTACT_EMAIL);;
+		        	$this->errors[] = sprintf(lang('app_user_save_error'),$this->config->item('contact_email'));;
 				}
 			}
 		}
@@ -102,7 +102,7 @@ class User extends MY_Controller {
 			$this->set_currentuser($user);
 			$this->messages[] = lang('app_confirmation_ok');
 		} else {
-			$this->errors[] = sprintf(lang('app_confirmation_error'),CONTACT_EMAIL);
+			$this->errors[] = sprintf(lang('app_confirmation_error'),$this->config->item('contact_email'));
 		}
 		$this->load->view('welcome/home',$this->get_data());
 	}

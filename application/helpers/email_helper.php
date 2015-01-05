@@ -12,8 +12,8 @@ if ( ! function_exists('admin_report'))
 	$ci = get_instance();
 	$ci->load->library('email');
 	
-	$ci->email->from(SENDER_EMAIL);
-	$ci->email->to(ADMIN_EMAIL);
+	$ci->email->from($ci->config->item('sender_email'));
+	$ci->email->to($ci->config->item('admin_email'));
 	$ci->email->subject($title);
 	$ci->email->message($content);
 	
@@ -35,7 +35,7 @@ if ( ! function_exists('email_user_confirmation'))
 	$ci = get_instance();
 	$ci->load->library('email');
 	
-	$ci->email->from(SENDER_EMAIL);
+	$ci->email->from($ci->config->item('sender_email'));
 	$ci->email->to($user->email);
 	$ci->email->subject(lang('email_user_confirmation_title'));
 	$url = site_url('user/confirmation/'.$user->confirmation);
@@ -60,7 +60,7 @@ if ( ! function_exists('email_user_password'))
 	$ci = get_instance();
 	$ci->load->library('email');
 	
-	$ci->email->from(SENDER_EMAIL);
+	$ci->email->from($ci->config->item('sender_email'));
 	$ci->email->to($email);
 	$ci->email->subject(lang('app_mail_password_retrieval_title'));
 	$ci->email->message(sprintf(lang('app_mail_password_retrieval_content'),$password,site_url('/user')));	
@@ -86,7 +86,7 @@ if ( ! function_exists('email_activity_apply'))
 	
 	$owner = $activity->get_owner();
 	
-	$ci->email->from(SENDER_EMAIL);
+	$ci->email->from($ci->config->item('sender_email'));
 	$ci->email->to($owner->email);
 	$ci->email->subject(sprintf(lang('app_mail_apply_activity_title'),$user->get_name(),$activity->name));
 	

@@ -28,7 +28,7 @@
 					<em>Inscrivez-vous</em> et testez! en vous rappelant que c'est un embryon de site, qu'il n'y a que 5% 
 					des <strong>idées fantastiques</strong> que nous voulons y mettre. 
 					Si vous avez des suggestions, des conseils, de problèmes, 
-					faites le nous savoir par mail: <em><?php echo CONTACT_EMAIL; ?></em>.
+					faites le nous savoir par mail: <em><?php echo 'hhlets@gmail.com'; ?></em>.
  				</p>
 				<p>
 					<strong>A venir</strong>: rangement des activité par <em>Thèmes</em>, liste d'amis et <em>Privacité</em>, Partage et connexion avec 

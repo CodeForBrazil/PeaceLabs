@@ -184,7 +184,7 @@ class UserModelTest extends CIUnit_TestCase
 		$user = $this->um->get_by_id($user_id);
 		$this->assertNotEmpty($user->avatar);
 		$new_avatar = $user->get_avatar();
-		$this->assertTrue(&getimagesize($new_avatar) !== FALSE,"Error checking if new avatar exists: $new_avatar");
+		$this->assertTrue(getimagesize($new_avatar) !== FALSE,"Error checking if new avatar exists: $new_avatar");
 	}
 
 	public function getAddAvatar() {

@@ -40,7 +40,7 @@ class Activity_model extends MY_Model
 		if ($path = $image->get_path($style))
 			return $path;
   	}
-	return DEFAULT_IMAGE;
+	return $this->config->item('default_image');
   }
     
   /**

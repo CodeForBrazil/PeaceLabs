@@ -88,7 +88,7 @@ class User_model extends MY_Model
 			return $path;
   	}
 	
-	return ($this->is_fake())?DEFAULT_AVATAR_FAKE:DEFAULT_AVATAR;
+	return $this->config->item(($this->is_fake())?'default_avatar_fake':'default_avatar');
   }
   
   /**
@@ -232,7 +232,7 @@ class User_model extends MY_Model
   public function encrypt_password($password)
   {
     $sql = "SELECT ENCODE(?, ?) AS `password`";
-    $query = $this->db->query($sql, array($password, ENCODE_CODE_WORD));
+    $query = $this->db->query($sql, array($password, $this->config->item('encode_code_word')));
     return $query->num_rows() > 0 ? $query->row()->password : null;
   }
   

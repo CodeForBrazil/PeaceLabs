@@ -14,7 +14,7 @@ class Media_model extends MY_Model
   const TABLE_NAME = 'media';
   
   const STYLE_ORIGINAL = NULL;
-  const STYLE_ROOT = 'root';
+//  const STYLE_ROOT = 'root';
   const STYLE_SMALL = 'small';
   const STYLE_MEDIUM = 'medium';
   const STYLE_LARGE = 'large';
@@ -39,17 +39,17 @@ class Media_model extends MY_Model
    * Get media path
    */
   public function get_path($style = self::STYLE_ORIGINAL) {
-  	if ($this->public_id && $style != self::STYLE_ROOT) {
+//  	if ($this->public_id && $style != self::STYLE_ROOT) {
   		return cloudinary_url($this->public_id, $this->styles[$style]);
-  	}
-	
+//  	}
+	/*
   	if (isset($this->id)) {
   		
 		$path = MEDIA_PATH.$this->id;
 		
 		if (!in_array($style,array(self::STYLE_ORIGINAL,self::STYLE_ROOT))) {
 			$cache_path = CACHE_PATH.$this->id.'_'.$style;
-			if (CACHE_MEDIA && file_exists(ROOT_PATH.$cache_path)) {
+			if ($this->config->item('cache_media') && file_exists(ROOT_PATH.$cache_path)) {
 				log_message('debug','Using image cache: '.$cache_path);
 				$path = $cache_path;
 			} else {
@@ -77,7 +77,7 @@ class Media_model extends MY_Model
 		if ($style == self::STYLE_ROOT) return ROOT_PATH.$path;
 		else return site_url($path);
 		
-	} else return false;
+	} else return false;*/
   }
   
   /**
@@ -110,10 +110,10 @@ class Media_model extends MY_Model
    * Delete media
    */
   public function delete() {
-  	if (isset($this->id)) {
+/*  	if (isset($this->id)) {
   		if (file_exists($this->get_path(self::STYLE_ROOT)))
 		  	unlink($this->get_path(self::STYLE_ROOT));
-	}
+	}*/
 	if ($this->public_id)  \Cloudinary\Uploader::destroy($this->public_id);
 
 	return parent::delete();

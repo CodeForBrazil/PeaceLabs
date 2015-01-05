@@ -54,6 +54,7 @@ class MY_Controller extends CI_Controller
 	}
 	$ci->session->set_userdata(array('lang'=>$lang));
 
+	$available_locales = $ci->config->item('available_locales');
 	if ( in_array($lang,array_keys($available_locales)) ) {
 		setlocale(LC_ALL, $available_locales[$lang]);
 	} else {
@@ -278,7 +279,7 @@ class MY_Controller extends CI_Controller
 				
 				return TRUE;
 			} else {
-				$this->errors[] = sprintf(lang('app_activity_save_error'),CONTACT_EMAIL);
+				$this->errors[] = sprintf(lang('app_activity_save_error'),$this->config->item('contact_email'));
 			}
 		} else {
 			return FALSE;

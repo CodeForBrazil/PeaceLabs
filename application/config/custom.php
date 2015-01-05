@@ -1,9 +1,25 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-/********
- * CUSTOM CONSTANTS
- **/
+define('UPLOAD_PATH', 'upload/');
 
+$config['sender_email'] = 'hhlets@gmail.com';
+$config['contact_email'] = 'hhlets@gmail.com';
+$config['admin_email'] = 'thierry@thde.pro';
+$config['encode_code_word'] = 'azerty123456';
+$config['default_avatar'] = '/assets/img/avatar.png';
+$config['default_avatar_fake'] = '/assets/img/avatar_fake.png';
+$config['default_image'] = '/assets/img/image.png';
+
+
+/*
+$config['root_path'] = APPPATH.'../';
+$config['upload_path'] = 'upload/';
+$config['media_path'] = UPLOAD_PATH.'medias/';
+$config['cache_path'] = UPLOAD_PATH.'cache/';
+$config['cache_media'] = TRUE;
+*/
+
+/* old custom.php file
 define('SENDER_EMAIL', 'hhlets@gmail.com');
 define('CONTACT_EMAIL', 'hhlets@gmail.com');
 define('ADMIN_EMAIL', 'thierry@thde.pro');
@@ -16,9 +32,7 @@ define('DEFAULT_AVATAR', '/assets/img/avatar.png');
 define('DEFAULT_AVATAR_FAKE', '/assets/img/avatar_fake.png');
 define('DEFAULT_IMAGE', '/assets/img/image.png');
 define('CACHE_MEDIA', TRUE);
-
-$config['dummy'] = TRUE;
-
+*/
 
 /* End of file custom.php */
 /* Location: ./application/config/custom.php */
