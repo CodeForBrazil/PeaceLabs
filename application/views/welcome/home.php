@@ -16,12 +16,12 @@
 				<p>
 					<strong>Bienvenue sur <?php echo $app_name; ?>!</strong> Ceci n'est qu'un prototype mais c'est un <em>bon début</em>. 
 					Le but de ce site est de passer plus
-					de <em>temps entre amis</em>, de <em>mieux les connaître</em>, de construire de <em>nouveaux souvenirs</em>, de discuter 
+					de <em>temps entre amis</em>, de <em>mieux les connaître</em>, de construire de <em>nouveaux souvenirs</em>, de se rencontrer 
 					<strong>pour de vrai</strong>.
 				</p>
 				<p>
-					<em><?php echo $app_name; ?></em> vous permet de noter <strong>ce que vous aimez ou aimeriez faire</strong>, d'y associé
-					la liste des amis que vous savez intéressés. D'autres amis pourront ensuite s'y inscrire spontanéement. 
+					<em><?php echo $app_name; ?></em> vous permet de noter <strong>ce que vous aimez ou aimeriez faire</strong>, d'y associer
+					les amis que vous savez intéressés. Ensuite, d'autres amis pourront s'y ajouter spontanéement. 
 					Le jour voulu vous saurez qui prévenir.
 				</p>
 				<p>

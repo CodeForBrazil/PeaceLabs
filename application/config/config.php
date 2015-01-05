@@ -69,7 +69,11 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
+
+$config['available_languages'] = array('fr' => 'french','pt' => 'portugues-br');
 $config['language']	= 'french';
+$config['available_locales'] = array('fr' => 'fr_FR','pt' => 'pt_BR');
+$config['locale'] = 'fr_FR';
 
 /*
 |--------------------------------------------------------------------------

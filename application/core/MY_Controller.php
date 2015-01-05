@@ -24,7 +24,9 @@ class MY_Controller extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-	setlocale(LC_ALL, "fr_FR");
+	
+	$this->initialize_lang();
+	
     $user_id = $this->session->userdata('user_id');
     if ( ! empty($user_id))
     {
@@ -34,8 +36,38 @@ class MY_Controller extends CI_Controller
     $this->output->set_header('Content-Type: text/html; charset='.$this->config->item('charset'));
 
 	$this->check_post();
-  }
+  }  
+  
+  /**
+   * Language initializer
+   */
+  function initialize_lang() 
+  {
+	$ci =& get_instance();
+ 
+	$available_languages = $ci->config->item('available_languages');
+	if (isset($_GET['lang']) && in_array($_GET['lang'],array_keys($available_languages))) {
+		$lang = $_GET['lang'];
+	} else {
+        $lang = $ci->session->userdata('lang');
+        if (!$lang) $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+	}
+	$ci->session->set_userdata(array('lang'=>$lang));
 
+	if ( in_array($lang,array_keys($available_locales)) ) {
+		setlocale(LC_ALL, $available_locales[$lang]);
+	} else {
+	 	setlocale(LC_ALL, $ci->config->item('locale'));
+	}
+
+	if ( in_array($lang,array_keys($available_languages)) ) {
+		$lang_dir = $available_languages[$lang];
+		if ($lang != $ci->config->item('language')) {
+			$ci->lang->switch_lang($lang_dir);
+		}
+	}
+  }
+  
 	/**
 	 * check if post is cross-site (like login, register, password retrieval)
 	 *
