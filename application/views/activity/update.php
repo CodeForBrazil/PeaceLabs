@@ -92,13 +92,13 @@
 							<?php endif; ?>
 							
 						</td>
-						<td>
+						<!--td>
 							<a href="<?php echo site_url('activity/disclaim/'.$activity->id.'/'.$user->id); ?>" 
 								title="<?php echo sprintf(lang("app_activity_user_disclaim"),$user->get_name());?>" 
 								class="btn-confirm">
 								<i class="fa fa-trash-o"></i>
 							</a>
-						</td>
+						</td-->
 						
 					</tr>
 					<?php endforeach; ?>

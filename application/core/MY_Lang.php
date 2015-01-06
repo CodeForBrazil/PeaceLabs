@@ -5,11 +5,6 @@ if ( ! defined('BASEPATH'))
 class MY_Lang extends CI_Lang
 {
     
-    public function __construct()
-    {
-        parent::__construct();
-    }
-    
     public function switch_lang($idiom)
     {
         $CI =& get_instance();

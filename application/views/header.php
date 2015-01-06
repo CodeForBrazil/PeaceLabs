@@ -61,6 +61,31 @@
               <li><a href="#register" data-toggle="modal" data-target="#registerModal"><?php echo lang('app_register'); ?></a></li>
               <li><a href="#login" data-toggle="modal" data-target="#loginModal"><?php echo lang('app_connect'); ?></a></li>
             <?php endif; ?>
+            
+            <?php 
+				$available_languages = $this->config->item('available_languages');
+            	$current_lang = $this->config->item('language');
+				$current_lang = array_search($current_lang, $available_languages);
+	            if ($current_lang && is_array($available_languages) && (count($available_languages)>1) ) : ?>
+              <li>
+              	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              		<img src="<?php echo base_url('assets/img/flags/'.$current_lang.'.png'); ?>" height="20px;" />
+              		<span class="caret"></span>
+              	</a>
+          		<ul class="dropdown-menu dropdown-menu-right menu-lang" role="menu">
+		            <li>
+		            <?php foreach ( $available_languages as $lang => $name) : ?>
+		              <?php if ($lang != $current_lang) : ?>
+	            		<a href="?lang=<?php echo $lang; ?>" class="switch-lang">
+	            			<img src="<?php echo base_url('assets/img/flags/'.$lang.'.png'); ?>" height="20px;" />
+	            		</a>
+		              <?php endif; ?>
+		            <?php endforeach; ?>
+	            	</li>
+          		</ul>
+              </li>
+            	
+            <?php endif; ?>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
