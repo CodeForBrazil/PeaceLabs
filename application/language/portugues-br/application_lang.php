@@ -117,5 +117,37 @@ $lang['app_mail_apply_user_comment'] = "
 ------------------------------
 ";
 
+/***** Home page */
+$lang['app_home_intro'] = "
+<p>
+	<strong>Bienvenue sur $app_name!</strong> Ceci n'est qu'un prototype mais c'est un <em>bon début</em>. 
+	Le but de ce site est de passer plus
+	de <em>temps entre amis</em>, de <em>mieux les connaître</em>, de construire de <em>nouveaux souvenirs</em>, de se rencontrer 
+	<strong>pour de vrai</strong>.
+</p>
+<p>
+	<em>$app_name</em> vous permet de noter <strong>ce que vous aimez ou aimeriez faire</strong>, d'y associer
+	les amis que vous savez intéressés. Ensuite, d'autres amis pourront s'y ajouter spontanéement. 
+	Le jour voulu vous saurez qui prévenir.
+</p>
+<p>
+	<em>Inscrivez-vous</em> et testez! en vous rappelant que c'est un embryon de site, qu'il n'y a que 5% 
+	des <strong>idées fantastiques</strong> que nous voulons y mettre. 
+	Si vous avez des suggestions, des conseils, de problèmes, 
+	faites le nous savoir par mail: <em><<app_contact>></em>.
+</p>
+<p>
+	<strong>A venir</strong>: rangement des activité par <em>Thèmes</em>, liste d'amis et <em>Privacité</em>, Partage et connexion avec 
+	<em>Facebook</em>. 
+</p>
+";
+$lang['app_home_intro_connected'] = "
+<p>
+	<strong>Bienvenue sur $app_name <em><<user_name>></em>'; ?> !</strong>
+</p>
+";
+$lang['app_create_your_account'] = "Allez-y créer votre compte!";
+
+
 /* End of file application_lang.php */
 /* Location: ./application/language/french/application_lang.php */
