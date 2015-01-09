@@ -13,7 +13,7 @@ $lang['app_close'] = "Fermer";
 $lang['app_cancel'] = "Annuler";
 $lang['app_connect'] = "Se connecter";
 $lang['app_disconnect'] = "Se déconnecter";
-$lang['app_register'] = "S'inscrire";
+$lang['app_register'] = "Créer son profil";
 $lang['app_already_account'] = "Déjà un compte?";
 $lang['app_my_account'] = "Mon profil et mes activités";
 $lang['app_retrieve_password'] = "Mot de passe oublié?";
@@ -66,11 +66,11 @@ $lang['app_activity_image_help'] = "Mettre une image de bonne qualité correspon
 $lang['app_apply_intro'] = "Laisser un commentaire à <span class='owner-name'>l'organisateur</span> pour <span class='activity-name'>cette activité</span>";
 $lang['app_apply_comment_help'] = "Cette information est optionnelle et visible uniquement par l'organisateur de l'activité";
 $lang['app_apply_comment_placeholder'] = "Votre commentaire (facultatif)";
-$lang['app_apply_title'] = "S'inscrire à cette activité";
+$lang['app_apply_title'] = "Participer de cette activité";
 
 /**** Messages */
 //$lang['app_sigin_error'] = "Connexion refusée";
-$lang['app_register_error'] = "L'enregistrement à échouer.";
+$lang['app_register_error'] = "L'enregistrement a échoué.";
 $lang['app_register_email_exists_error'] = "Il existe déjà un compte avec l'email %s.";
 $lang['app_retrieve_password_success'] = "Votre mot de passe a été envoyé à l'adresse '%s'";
 $lang['app_retrieve_password_error'] = "Aucun compte utilisateur ne correspond à l'email '%s'.";
@@ -102,7 +102,7 @@ $lang['app_mail_password_retrieval_title'] = "Récupération du mot de passe $ap
 $lang['app_mail_password_retrieval_content'] = "Bonjour,
 Voici votre nouveau mot de passe: %s.
 Il est conseillé de le modifier rapidement. 
-Pour cela accédez à la page de votre compte et enregistrez un nouveau mot de passe: %s
+Pour cela accédez à la page de votre compte et choisissez un nouveau mot de passe: %s
 $signature";
 
 $lang['app_mail_apply_activity_title'] = "%s est intéressé pour %s";
@@ -137,7 +137,7 @@ $lang['app_home_intro'] = "
 	faites le nous savoir par mail: <em><<app_contact>></em>.
 </p>
 <p>
-	<strong>A venir</strong>: rangement des activité par <em>Thèmes</em>, liste d'amis et <em>Privacité</em>, Partage et connexion avec 
+	<strong>A venir</strong>: rangement des activités par <em>Thèmes</em>, liste d'amis et <em>Privacité</em>, Partage et connexion avec 
 	<em>Facebook</em>. 
 </p>
 ";
@@ -146,7 +146,7 @@ $lang['app_home_intro_connected'] = "
 	<strong>Bienvenue sur $app_name <em><<user_name>></em>'; ?> !</strong>
 </p>
 ";
-$lang['app_create_your_account'] = "Allez-y créer votre compte!";
+$lang['app_create_your_account'] = "Allez-y créer votre profil";
 
 
 
