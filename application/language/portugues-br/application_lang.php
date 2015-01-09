@@ -56,7 +56,7 @@ $lang['app_activity_name'] = "Nome da atividade";
 $lang['app_activity_name_help'] = "Ex: Fazer crêpes, Jogar imagem e ação, Ir na piscina, ...";
 $lang['app_activity_name_placeholder'] = "Título da atividade proposta";
 $lang['app_activity_users'] = "Com";
-$lang['app_activity_users_help'] = "Escreva um nome ou um email para cada pessoa interessada por esta atividade";
+$lang['app_activity_users_help'] = "Escreva um nome ou um email para cada pessoa interessada nesta atividade";
 $lang['app_activity_users_placeholder'] = "Lista des pessoas interessadas";
 $lang['app_activity_description'] = "Descrição";
 $lang['app_activity_description_help'] = "Descreva em detalhes o que você propõe. Você pode colocar informações práticas sobre o lugar, o número mínimo de pessoas, etc..";
@@ -83,7 +83,7 @@ $lang['app_no_current_user_error'] = "Você deve se conectar para efetuar esta a
 $lang['app_activity_unknown_error'] = "A atividade selecionada não existe. $contact_admin";
 $lang['app_activity_delete'] = "Você tem certeza que quer deletar esta atividade <em>%s</em>?";
 $lang['app_apply_error'] = "Um erro ocorreu na sua inscrição para esta atividade. $contact_admin";
-$lang['app_apply_success'] = "Você se inscreveu a esta atividade. Agira é esperar pra que ela seja organizada.";
+$lang['app_apply_success'] = "Você se inscreveu a esta atividade. Agora esperar que ela seja organizada.";
 $lang['app_activity_disclaim'] = "Você tem certeza de não querer mais <em>%s</em>?";
 $lang['app_activity_user_disclaim'] = "Você tem certeza que quer retirar <em>%s</em> da lista?";
 
@@ -122,29 +122,29 @@ $lang['app_home_intro'] = "
 <p>
 	<strong>Bem-vindo(a) ao $app_name!</strong> Este site é somente um protótipo mas é um <em>bom começo</em>. 
 	O objetivo deste site é nos ajudar a passar mais
-	 tempo <em> com amigos</em>, de <em>melhor conhecê-los</em>, criar <em>novas lembranças</em>, se encontrar 
+	 tempo <em> com amigos</em>, <em>melhor conhecê-los</em>, criar <em>novas lembranças</em>, se encontrar 
 	<strong>de verdade</strong>.
 </p>
 <p>
 	<em>$app_name</em> te possibilita anotar <strong> o que você gosta ou gostaria de fazer</strong>, de associar
 	os amigos que se interessam pelas mesmas atividades. Em seguida, outros amigos poderão se juntar espontaneamente. 
 	No dia da atividade, você saberá quem chamar.             
-	<em>Inscreva-se</em> e experimente! lembrando que este é um site embrião, só temos 5% 
-	de <strong>ideias fantásticas</strong> que queremos realizar. 
+	<em>Inscreva-se</em> e experimente! lembrando que este é um site embrião, só fizemos 5% 
+	das <strong>ideias fantásticas</strong> que queremos realizar. 
 	Se você tem sugestões, conselhos, problemas, 
 	nos deixe saber por email: <em><<app_contact>></em>.
 </p>
 <p>
-	<strong>Em breve</strong>: disposição das atividades por <em>Temas</em>, lista de amigos et <em>Privacidade</em>, Compartilhar e conexão com 
+	<strong>Em breve</strong>: disposição das atividades por <em>Temas</em>, lista de amigos e <em>Privacidade</em>, Compartilhar e conexão com 
 	<em>Facebook</em>. 
 </p>
 ";
 $lang['app_home_intro_connected'] = "
 <p>
-	<strong>Bem-vindo ao $app_name <em><<user_name>></em>'; ?> !</strong>
+	<strong>Bem-vindo ao $app_name <em><<user_name>></em> !</strong>
 </p>
 ";
-$lang['app_create_your_account'] = "Crie seu perfil no lets!";
+$lang['app_create_your_account'] = "Hey ho Let's go! Crie seu perfil!";
 
 
 /* End of file application_lang.php */

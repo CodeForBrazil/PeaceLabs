@@ -143,10 +143,10 @@ $lang['app_home_intro'] = "
 ";
 $lang['app_home_intro_connected'] = "
 <p>
-	<strong>Bienvenue sur $app_name <em><<user_name>></em>'; ?> !</strong>
+	<strong>Bienvenue sur $app_name <em><<user_name>></em> !</strong>
 </p>
 ";
-$lang['app_create_your_account'] = "Allez-y créer votre profil";
+$lang['app_create_your_account'] = "Hey ho Let's go! Crée ton profil!";
 
 
 
