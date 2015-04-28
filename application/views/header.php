@@ -24,9 +24,6 @@
     <![endif]-->
   </head>
   <body>
-  	smldkfjqslfjsqdflkj
-  	--<?php echo getenv('SENDGRID_USERNAME'); ?>
-  	--<?php echo getenv('SENDGRID_PASSWORD'); ?>
 	<div class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container">
         <div class="navbar-header">
