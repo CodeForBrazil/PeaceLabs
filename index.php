@@ -20,15 +20,10 @@
  */
  
  
- var_dump(getenv('ENVIRONMENT')); 
-if (!getenv("CLEARDB_DATABASE_URL"))
- 	define('ENVIRONMENT', 'development');
-else {
-	if (getenv('ENVIRONMENT'))
-	 	define('ENVIRONMENT', getenv('ENVIRONMENT'));
-	else
-	 	define('ENVIRONMENT', 'heroku');
-}
+if (getenv('ENVIRONMENT'))
+ 	define('ENVIRONMENT', getenv('ENVIRONMENT'));
+else
+ 	define('ENVIRONMENT', 'heroku');
 
 /*
  *---------------------------------------------------------------
