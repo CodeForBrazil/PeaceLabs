@@ -19,6 +19,8 @@
  *
  */
  
+ 
+ var_dump(getenv('ENVIRONMENT')); 
 if (!getenv("CLEARDB_DATABASE_URL"))
  	define('ENVIRONMENT', 'development');
 else {
