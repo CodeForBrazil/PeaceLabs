@@ -76,7 +76,7 @@ class User_model extends MY_Model
 			return $path;
   	}
 	
-	return $this->config->item(($this->is_fake())?'default_avatar_fake':'default_avatar');
+	return $this->config->item('default_avatar');
   }
   
   /**
