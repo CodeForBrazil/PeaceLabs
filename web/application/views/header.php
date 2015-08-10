@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo lang('app_site_name'); ?></title>
 
-    <!-- Bootstrap -->
 	<link rel="stylesheet/less" type="text/css" href="<?php echo base_url('/assets/less/style.less'); ?>" />
 	<script src="<?php echo base_url('/assets/js/less.js'); ?>" type="text/javascript"></script>
 	
     <script src="<?php echo base_url('/assets/js/jquery.min.js'); ?>"></script>	
 
+    <!-- Bootstrap -->
     <link href="<?php echo base_url('/assets/css/bootstrap-theme.min.css'); ?>" rel="stylesheet">
 	<link href="<?php echo base_url('/assets/js/select2/select2.css'); ?>" rel="stylesheet"/>
 	<link href="<?php echo base_url('/assets/js/select2/select2-bootstrap.css'); ?>" rel="stylesheet"/>
