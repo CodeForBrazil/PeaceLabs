@@ -34,8 +34,6 @@ else
  * By default development will show errors but testing and live will hide them.
  */
  
- echo ENVIRONMENT.'------';
-
 if (defined('ENVIRONMENT'))
 {
 	switch (ENVIRONMENT)
