@@ -8,3 +8,5 @@ So to solve this problem, in its latest iteration, the startup is now launching 
 https://youtu.be/wHIkLzUbwxA
 
 Welcome to PeaceLabs.co! We are happy to count on you and all Peace Ambassadors around the world to develop this community!
+
+General files at: https://drive.google.com/a/peacelabs.co/folderview?id=0B2fJ6Nq0nCZlfkZsQzJTZWVSc1ZucFJDQmxsN2EtRF9KYU9nMENPMzdEY25zTzAtTzhXNW8&usp=sharing
