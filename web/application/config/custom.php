@@ -12,7 +12,7 @@ $config['default_image'] = '/assets/img/image.png';
 
 $config['available_languages'] = array('fr' => 'french','pt' => 'portugues-br'); //, 'en' => 'english');
 $config['available_locales'] = array('fr' => 'fr_FR','pt' => 'pt_BR'); //, 'en' => 'en_US');
-$config['locale'] = 'fr_FR';
+$config['locale'] = 'pt_BR';
 
 /*
 $config['root_path'] = APPPATH.'../';
