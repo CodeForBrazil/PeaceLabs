@@ -20,4 +20,4 @@
     </div>
     
     
-<?php //$this->load->view('footer.php');
+<?php //$this->load->view('footer.php'); ?>
