@@ -1,5 +1,5 @@
 # PeaceLabs
-This space is design to co-create PeaceLabs.co, platform that uses collaboration technologies, such as crowdsourcing and crowdfunding, to improve the chances of success of social, environmental and economic communities projects.
+This space is design to co-create PeaceLabs.co, platform that uses collaboration technologies, such as crowdsourcing and crowdfunding, to improve the chances of success of social, environmental and economic community projects.
 
 After several social projects developed, crowdfunded & executed over 2014 #CheerForPeace, a startup social enterprise, learned that crowdfunding successfully is a very difficult task & that this is especially true for social projects.
 
