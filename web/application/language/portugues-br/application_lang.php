@@ -1,14 +1,12 @@
 <?php
-$app_name = "Lets";
+$app_name = "PeaceLabs";
 $contact_admin = "Se o problema persistir, por favor entre em contato atraves deste email %s"; 
 $site_url = site_url('');
 
-$lang['app_site_name'] = "Lets - De verdade";
+$lang['app_site_name'] = "PeaceLabs";
 $lang['app_home'] = "Página Inicial";
 
 /**** Génériques */
-$lang['app_apply'] = "Lets";
-$lang['app_disclaim'] = '<span class="disclaim">Lets</span>';
 $lang['app_close'] = "Fechar";
 $lang['app_cancel'] = "Cancelar";
 $lang['app_connect'] = "Entrar";

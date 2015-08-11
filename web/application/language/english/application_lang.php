@@ -1,5 +1,5 @@
 <?php
-$app_name = "Lets";
+$app_name = "PeaceLabs";
 $lang['app_home'] = "Home";
 
 /**** Génériques */
