@@ -23,11 +23,11 @@ $ git update-index --assume-unchanged web/.htaccess
 ```
 
 
-### Environment Configuration
+### Environment Configuration Directory
 
-- Add a directory with the environment name in `web/application/config`
-- Copy of the config files with server specific values like `database.php`, `email.php` and `environment.php`
-- Edit those files
+1. Add a directory with the environment name in `web/application/config`
+2. Copy of the config files with server specific values like `database.php`, `email.php` and `environment.php`
+3. Edit those files
 
 
 # Documentation
