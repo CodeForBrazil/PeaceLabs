@@ -11,19 +11,23 @@ Execute scripts from `db/scripts`
 
 Define the environment name in an environment variable.
 For example you can add the following line to the `web/.htaccess`:
+
 ```
 SetEnv ENVIRONMENT development
 ```
+
 In that case, you may want to configure git so the `.htaccess` file doesn't appear in the modified files to commit:
+
 ```
 $ git update-index --assume-unchanged web/.htaccess 
 ```
 
+
 ### Environment Configuration
 
-Add a directory with the environment name in `web/application/config`
-Copy of the config files with server specific values like `database.php`, `email.php` and `environment.php`
-Edit those files
+- Add a directory with the environment name in `web/application/config`
+- Copy of the config files with server specific values like `database.php`, `email.php` and `environment.php`
+- Edit those files
 
 
 # Documentation
