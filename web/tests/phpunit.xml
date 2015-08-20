@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit 
+    colors="true" 
+    stopOnFailure="false" 
+    bootstrap="../application/third_party/CIUnit/bootstrap_phpunit.php">
+    <php>
+        <server name="SERVER_NAME" value="http://lets" />
+    </php>
+    <testsuites>
+        <testsuite name="ModelTests">
+            <directory suffix=".php">models</directory>
+        </testsuite>
+        <testsuite name="SystemTests">
+            <directory suffix=".php">system</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
