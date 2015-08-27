@@ -221,10 +221,10 @@ class User_model extends MY_Model
    * Check if an active account already exists with email
    */
   public function email_exists($email) {
-	$users = new User_model();
-	$users->db->where("LOWER(email)=LOWER('$email')");
-	$users = $users->db->get(self::TABLE_NAME);
-	return count($users)>0;
+	$model = new User_model();
+	$model->db->where("LOWER(email)=LOWER('$email')");
+	$query = $model->db->get(self::TABLE_NAME);
+	return $query->num_rows>0;
   }
 
   /**
