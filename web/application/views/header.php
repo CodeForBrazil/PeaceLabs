@@ -34,7 +34,8 @@
             <span class="icon-bar"></span>
           </button>
           <a href="/" id="logo">
-          	<h1>Legiscon</h1>
+          	<h1>PeaceLabs</h1>
+          	<h2 class="tsN fwR fsI show">Powered by #CheerForPeace</h2>
           </a>
         </div>
         <div class="navbar-collapse collapse">
