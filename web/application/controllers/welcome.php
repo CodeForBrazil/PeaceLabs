@@ -1,43 +1,49 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+<?php if (!defined('BASEPATH')) {
+    exit('No direct script access allowed');
+}
 
-class Welcome extends MY_Controller {
+class Welcome extends MY_Controller
+{
 
-	/**
-	 * Index Page for this controller.
-	 */
-	public function index()
-	{
-		if (isset($_GET['from'])) $this->set_data('open_modal','login');
-		$this->load->view('welcome/home',$this->get_data());
-	}
+    /**
+     * Index Page for this controller.
+     */
+    public function index()
+    {
+        if (isset($_GET['from'])) {
+            $this->set_data('open_modal', 'login');
+        }
 
-	/**
-	 * Page displaying the current theme.
-	 */
-	public function theme()
-	{
-		$this->load->view('welcome/theme');
-	}
+        $this->load->view('welcome/home', $this->get_data());
+    }
 
-	/**
-	 * Page with todo list.
-	 */
-	public function todo()
-	{
-		$this->load->view('welcome/todo');
-	}
+    /**
+     * Page displaying the current theme.
+     */
+    public function theme()
+    {
+        $this->load->view('welcome/theme');
+    }
 
-	/**
-	 * Sign out action.
-	 *
-	 * @return void
-	 */
-	public function out()
-	{
-	    $this->session->sess_destroy();
-	    redirect('/');
-	}
-	
+    /**
+     * Page with todo list.
+     */
+    public function todo()
+    {
+        $this->load->view('welcome/todo');
+    }
+
+    /**
+     * Sign out action.
+     *
+     * @return void
+     */
+    public function out()
+    {
+        $this->session->sess_destroy();
+        redirect('/');
+    }
+
 }
 
 /* End of file welcome.php */
