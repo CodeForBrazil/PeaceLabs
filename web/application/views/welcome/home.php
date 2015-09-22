@@ -12,7 +12,7 @@
 						</a>
 					</p>
 				<?php else: ?>
-					<div class="btn btn-info" data-toggle="modal" data-target="#novoProjetoModal">Novo Projeto</div>
+					<div class="btn btn-info" data-toggle="modal" data-target="#newProjectModal">Novo Projeto</div>
 				<?php endif;?>
 
 			</div>

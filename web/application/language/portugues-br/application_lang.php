@@ -1,6 +1,6 @@
 <?php
 $app_name = "PeaceLabs";
-$contact_admin = "Se o problema persistir, por favor entre em contato atraves deste email %s"; 
+$contact_admin = "Se o problema persistir, por favor entre em contato atraves deste email %s";
 $site_url = site_url('');
 
 $lang['app_site_name'] = "PeaceLabs";
@@ -15,7 +15,7 @@ $lang['app_register'] = "Criar perfil";
 $lang['app_already_account'] = "Já tenho um perfil";
 $lang['app_my_account'] = "Meu perfil e minhas atividades";
 $lang['app_retrieve_password'] = "Esqueceu sua senha?";
-$lang['app_save'] = "Salvar";//?
+$lang['app_save'] = "Salvar"; //?
 $lang['app_send'] = "Enviar";
 $lang['app_remove'] = "Retirar";
 $lang['app_delete'] = "Deletar";
@@ -34,6 +34,15 @@ $lang['app_login_title'] = "Conectar-se a $app_name";
 $lang['app_register_title'] = "Criar um novo perfil $app_name";
 $lang['app_password_title'] = "Recuperação da senha";
 $lang['app_new_activity_title'] = "Acrescentar uma atividade";
+
+// ------------------------------------------------------------------ PROJETOS
+$lang['newProjectTitle'] = "Criar Novo Projeto";
+$lang['newProject_projectName'] = 'Nome';
+$lang['newProject_projectProfile_image'] = 'Imagem';
+$lang['newProject_projectFolder_image'] = 'Capa';
+$lang['newProject_projectDescription'] = 'Descrição';
+$lang['newProject_projectExecution_date'] = 'Data';
+$lang['newProject_projectPublic'] = 'Publico?';
 
 /**** Form labels */
 $lang['app_name'] = "Nome";
@@ -91,15 +100,15 @@ A equipe $app_name
 $site_url";
 
 $lang['email_user_confirmation_title'] = "Confirme seu email";
-$lang['email_user_confirmation_content'] = "Olá, 
-Obrigada por juntar-se a nós $app_name ! 
+$lang['email_user_confirmation_content'] = "Olá,
+Obrigada por juntar-se a nós $app_name !
 Para terminar a inscrição, só resta confirmar que seu email está correto clicando neste link: %s .
 $signature";
 
 $lang['app_mail_password_retrieval_title'] = "Recuperação da senha $app_name";
 $lang['app_mail_password_retrieval_content'] = "Olá,
 Esta é sua nova senha: %s.
-Conselho: troque sua senha rapidamente. 
+Conselho: troque sua senha rapidamente.
 Para fazer isso, vá até a página do seu perfil e escolha uma nova: %s
 $signature";
 
@@ -118,23 +127,23 @@ $lang['app_mail_apply_user_comment'] = "
 /***** Home page */
 $lang['app_home_intro'] = "
 <p>
-	<strong>Bem-vindo(a) ao $app_name!</strong> Este site é somente um protótipo mas é um <em>bom começo</em>. 
+	<strong>Bem-vindo(a) ao $app_name!</strong> Este site é somente um protótipo mas é um <em>bom começo</em>.
 	O objetivo deste site é nos ajudar a passar mais
-	 tempo <em> com amigos</em>, <em>melhor conhecê-los</em>, criar <em>novas lembranças</em>, se encontrar 
+	 tempo <em> com amigos</em>, <em>melhor conhecê-los</em>, criar <em>novas lembranças</em>, se encontrar
 	<strong>de verdade</strong>.
 </p>
 <p>
 	<em>$app_name</em> te possibilita anotar <strong> o que você gosta ou gostaria de fazer</strong>, de associar
-	os amigos que se interessam pelas mesmas atividades. Em seguida, outros amigos poderão se juntar espontaneamente. 
-	No dia da atividade, você saberá quem chamar.             
-	<em>Inscreva-se</em> e experimente! lembrando que este é um site embrião, só fizemos 5% 
-	das <strong>ideias fantásticas</strong> que queremos realizar. 
-	Se você tem sugestões, conselhos, problemas, 
+	os amigos que se interessam pelas mesmas atividades. Em seguida, outros amigos poderão se juntar espontaneamente.
+	No dia da atividade, você saberá quem chamar.
+	<em>Inscreva-se</em> e experimente! lembrando que este é um site embrião, só fizemos 5%
+	das <strong>ideias fantásticas</strong> que queremos realizar.
+	Se você tem sugestões, conselhos, problemas,
 	nos deixe saber por email: <em><<app_contact>></em>.
 </p>
 <p>
-	<strong>Em breve</strong>: disposição das atividades por <em>Temas</em>, lista de amigos e <em>Privacidade</em>, Compartilhar e conexão com 
-	<em>Facebook</em>. 
+	<strong>Em breve</strong>: disposição das atividades por <em>Temas</em>, lista de amigos e <em>Privacidade</em>, Compartilhar e conexão com
+	<em>Facebook</em>.
 </p>
 ";
 $lang['app_home_intro_connected'] = "
@@ -143,7 +152,6 @@ $lang['app_home_intro_connected'] = "
 </p>
 ";
 $lang['app_create_your_account'] = "Hey ho Let's go! Crie seu perfil!";
-
 
 /* End of file application_lang.php */
 /* Location: ./application/language/french/application_lang.php */
