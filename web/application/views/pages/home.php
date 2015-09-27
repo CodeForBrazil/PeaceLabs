@@ -112,6 +112,24 @@
     		<li class="col-sm-4">
     			<article class="teaser">
     				<header>
+    					<img class="capa" src="/assets/img/kartao_capa.jpg"/>
+						<img src="/assets/img/kartao.jpg" class="profile img-responsive"/>
+    					<h2>Kartão</h2>
+    				</header>
+    				<div class="teaser-body">
+    					<p>
+    						Project Vizin is about community security network, including your neighbors, government, 
+    						private security. Join this project.
+    					</p>
+    				</div>
+    				<footer>
+    					<a href="#">Saber mais sobre este projeto</a>
+    				</footer>
+    			</article>
+    		</li>
+    		<li class="col-sm-4">
+    			<article class="teaser">
+    				<header>
     					<img class="capa" src="/assets/img/politikei_capa.png"/>
 						<img src="/assets/img/politikei.jpg" class="profile img-responsive"/>
     					<h2>Polotikei</h2>
@@ -160,23 +178,23 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-4 text-center">
+      <div class="col-sm-4 text-center">
         <div class="featurette-item">
-          <i class="icon-rocket"></i>
+          <i class="fa fa-lightbulb-o"></i>
           <h4>Ideas</h4>
           <p>Up-up-and-away with this starter template.</p>
         </div>
       </div>
-      <div class="col-md-4 text-center">
+      <div class="col-sm-4 text-center">
         <div class="featurette-item">
-          <i class="icon-magnet"></i>
-          <h4>Skills</h4>
+          <i class="fa fa-paw"></i>
+          <h4>Habilidades</h4>
           <p>For you are a magnet and I am steel.</p>
         </div>
       </div>
-      <div class="col-md-4 text-center">
+      <div class="col-sm-4 text-center">
         <div class="featurette-item">
-          <i class="icon-shield"></i>
+          <i class="fa fa-dollar"></i>
           <h4>Dinheiro</h4>
           <p>Protect yourself. Don't design like it's 1999.</p>
         </div>
@@ -199,26 +217,26 @@
 	        <label for="InputName">Seu nome</label>
 	        <div class="input-group">
 	          <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-	          <span class="input-group-addon"><i class="icon-ok"></i></span></div>
+	          <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
 	      </div>
 	      <div class="form-group">
 	        <label for="InputEmail">Seu email</label>
 	        <div class="input-group">
 	          <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
-	          <span class="input-group-addon"><i class="icon-ok"></i></span></div>
+	          <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
 	      </div>
 	      <div class="form-group">
 	        <label for="InputMessage">Mensagem</label>
 	        <div class="input-group"
 	>
 	          <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
-	          <span class="input-group-addon"><i class="icon-ok"></i></span></div>
+	          <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
 	      </div>
 	      <div class="form-group">
 	        <label for="InputReal">O que faz 4+3?</label>
 	        <div class="input-group">
 	          <input type="text" class="form-control" name="InputReal" id="InputReal" required>
-	          <span class="input-group-addon"><i class="icon-ok"></i></span></div>
+	          <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
 	      </div>
 	      <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info center">
 	    </div>
