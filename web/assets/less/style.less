@@ -3,154 +3,87 @@
 @import "font-awesome/font-awesome.less";
 @fa-font-path: "/assets/fonts";
 
+@import url(http://fonts.googleapis.com/css?family=Voltaire);
+
 @import "global.less";
 
-.navbar-header {
-  h1 {
-    font-family: Oswald;
-    font-style: normal;
-    line-height: 40px;
-    font-size: 40px;
-    text-shadow: none;
-    margin: 0;
-    padding: 0px 0px;
-    color: #3ba7bf;
-  }
-  h2 {
-    font-family: 'Crimson Text';
-    font-style: italic;
-    line-height: 14px;
-    font-size: 14px;
-    text-shadow: none;
-    margin: 0;
-    padding-left: 5px;
-    border-color: #d9d9d9;
-    color: #000000;
-  }
-  a:hover { text-decoration: none; }
+/* use special fonts in certain elements */
+h1,h2,h3,h4,.lead,.btn,.navbar a {
+  text-transform:uppercase;
+  font-family:'Voltaire',Arial,sans-serif;
+  letter-spacing:2px;
 }
 
-
-.dropdown-menu > li > a { padding: 10px 20px; }
-
-.btn-file {
-  overflow: hidden;
-  position: absolute;
-  bottom: 0;
-  left: 120px;
-  input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    filter: alpha(opacity=0);
-    opacity: 0;
-    outline: none;
-    background: white;
-    cursor: inherit;
-    display: block;
-  }
+.navbar  { background-color: white; }
+.blurb, .featurette, .callout {
+  & > .container { padding-top: 50px; }
 }
 
-.avatar {
-  height: 100px; width: 100px; float: left; margin-right: 10px;
-  &.avatar-large { height: 200px; width: 200px; margin-right: 15px; }
-  &.avatar-small { height: 20px; width: 20px; margin-right: 5px; }
-}
-
-.img-preview {
-  display:block;
-  max-height:100px;
-  overflow:hidden;
-  img {
-    width:100%;
-    min-height:100px;    
-  }
-}
-
-.container .jumbotron { 
-  background-color: white; 
-  &.header { padding: 0px }
-  p { padding-right: 10px; font-size: 18px; }
-}
-
-.user-header {
-  .avatar { float: left; display:block; margin-right: 10px; }
-  min-height: 200px;
-  h2 { padding-top: 10px; }
-}
-
-.navbar .new-activity-btn {
-left: 50%;
-margin-left: 20px;
-margin-top: 21px;
-position: absolute;
-top: -10px;
-font-size: 30px;
-color: #068500;
-}
-
-.panel-activity {
-  position: relative;
-  .activity-menu {
-    font-size: 20px;
-    position: absolute;
-    top: 0;
-    right: 5px;
-    ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      li {
-        float: left;
-        padding: 5px;
-      }
-    }
-  }
-  h3 { margin-top: 0; }
-  .users {
-    border: 1px solid lightgray;
-    li { margin: 5px; }
-  }
-}
-
-#footer_menu {
-  list-style: none;
-  margin: auto;
-  margin-top: 50px;
-  width: 140px;
-  li { float: left; padding: 5px; }
-}
-
-.panel-user {
-  .avatar { margin-bottom: 10px; }
-  h3 { margin-top: 0px; }
-  &:hover {
-    background-color: #FFC066;
-    cursor: pointer;
-  }
-  a { color: #885000; }
-}
-
-.owner-name, .activity-name { font-style: italic; }
-
-.disclaim { text-decoration: line-through; }
-
-a.center-block { display: table; }
-
-.comment { font-size: 0.8em; }
-
-.home .jumbotron {
-  p { font-size: 1.2em; } 
-  em { font-size: 1.3em; font-weight: bold;}
-  strong { font-size: 1.6em; }
-} 
-
-.menu-lang {
-  min-width: initial;
+.blurb .container { padding-bottom: 50px; }
+.callout {
+  color: #ffffff;
+  padding-top:7%;
+  height: 100%;
   width: 100%;
-  .switch-lang { padding: 5px 20px; }
+  background: url('/assets/img/peace.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
+
+.header > .container {
+    margin-top: 50px;
+}
+
+ul.teasers {
+  padding: 0;
+    list-style-type: none;
+}
+
+ul.teasers li {
+  padding: 10px;
+}
+
+.teaser {
+  border: 1px solid #DDD;
+}
+.teaser header {
+  height: 120px;
+    position: relative;
+    border-bottom: 1px solid #DDD;  
+}
+
+.teaser header .capa{
+    background: url(/assets/img/vizin.png) top center;
+    background-size: 100%;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.teaser .profile {
+  height: 50px;
+  width: 50px;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+.teaser h2 {
+  position: absolute;
+    left: 80px;
+    top: 80px;
+    margin: 5px 0;
+}
+
+.teaser .teaser-body {
+    margin: 10px;
+    height: 120px;
+}
+
+.teaser footer {
+    padding: 10px;
+    border-top: 1px solid #DDD;
+}
+
+

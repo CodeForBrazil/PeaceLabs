@@ -6,14 +6,16 @@
 		<title>PeaceLabs - Open Brazil</title>
 		<meta name="generator" content="Bootply" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-		<link href="/assets/css/bootstrap.min.css" rel="stylesheet">
-		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+
+		<link rel="stylesheet/less" type="text/css" href="/assets/less/style.less" />
+		<script src="/assets/js/less.js" type="text/javascript"></script>
+
+		<!--link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet"-->
 		<!--[if lt IE 9]>
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 
-		<!-- LESS -->
-		<link rel="stylesheet" href="/assets/css/styles.css" />
 	</head>
 	<body>
 
@@ -147,7 +149,7 @@
   </div>
 </div>
 
-<div class="featurette" id="sec2">
+<div class="callout" id="sec2">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center">
