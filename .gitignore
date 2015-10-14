@@ -1,3 +1,4 @@
 vendor/
 .env
 .settings
+node_modules/
