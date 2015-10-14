@@ -3,7 +3,11 @@
 /**
  * Frontend Controllers.
  */
-get('/', 'FrontendController@index')->name('home');
+get('/', function () {
+    return view('frontend');
+});
+
+get('/new', 'FrontendController@index')->name('home');
 get('macros', 'FrontendController@macros');
 
 /*
