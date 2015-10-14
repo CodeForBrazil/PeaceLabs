@@ -20,8 +20,6 @@
         <!-- Icons-->
         <link rel="apple-touch-icon" href="apple-touch-icon.png">
         <!-- Place favicon.ico in the root directory -->
-
-        {!! HTML::script("js/vendor/modernizr-2.8.3.min.js") !!}
     </head>
     <body>
         <!--[if lt IE 8]>

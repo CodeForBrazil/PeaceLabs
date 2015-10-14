@@ -2,3 +2,4 @@ vendor/
 .env
 .settings
 node_modules/
+!public/js/vendor/*
