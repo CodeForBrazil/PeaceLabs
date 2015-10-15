@@ -22,7 +22,7 @@ class ProjectTableSeeder extends Seeder
 			DB::table('projects')->insert([
                 'name' => str_replace('.', '_', $faker->unique()->userName),  
                 'description' => $faker->paragraph(1),  
-                'category' => $faker->randomElement($array = array ('a','b','c')),  
+                'category' => $faker->randomElement($array = array ('social','ambiental','economic')),  
                 'profile' => $faker->imageUrl($width = 300, $height = 300),  
                 'cover' => $faker->imageUrl($width = 1024, $height = 720),  
                 'hashtag' => str_random(10), 
