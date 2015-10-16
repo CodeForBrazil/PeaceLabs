@@ -54,25 +54,32 @@
 <div id="sec1" class="blurb">
   <div class="container">
     <div class="row">
-      <ul class="teasers">
-        <li class="col-sm-4">
-          <article class="teaser">
-            <header>
-              <img class="capa" src="/assets/img/vizin_capa.png"/>
-            <img src="/assets/img/vizin.png" class="profile img-responsive"/>
-              <h2>Vizin</h2>
-            </header>
-            <div class="teaser-body">
-              <p>
-                Project Vizin is about community security network, including your neighbors, government,
-                private security. Join this project.
-              </p>
-            </div>
-            <footer>
-              <a href="#">Saber mais sobre este projeto</a>
-            </footer>
-          </article>
-        </li>
+
+    @if ( !$projects->count() )
+        Ainda não tem projetos
+    @else
+		<ul class="teasers">
+            @foreach( $projects as $project )
+		        <li class="col-sm-4">
+		          <article class="teaser">
+		            <header>
+		              <img class="capa" src"{{ $project->cover }}"/>
+		            <img src="{{ $project->profile }}" class="profile img-responsive"/>
+		              <h2><a href="{{ route('projects.show', $project->id) }}">{{ $project->name }}</a></h2>
+		            </header>
+		            <div class="teaser-body">
+		              <p>
+		                {{ $project->description }}
+		              </p>
+		            </div>
+		            <footer>
+		              <a href="{{ route('projects.show', $project->id) }}">Saber mais sobre este projeto</a>
+		            </footer>
+		          </article>
+		        </li>
+            @endforeach
+        </ul>
+    @endif 
         <li class="col-sm-4">
           <article class="teaser">
             <header>

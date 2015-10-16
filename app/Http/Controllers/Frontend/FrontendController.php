@@ -4,11 +4,14 @@ namespace app\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 
+use App\Project;
+
 /**
  * Class FrontendController.
  */
 class FrontendController extends Controller
 {
+
     /**
      * @return \Illuminate\View\View
      */
@@ -21,6 +24,14 @@ class FrontendController extends Controller
         return view('frontend.index');
     }
 
+    /**
+     * @return \Illuminate\View\View
+     */
+    public function home()
+    {
+    	$projects = Project::limit(9)->get();
+        return view('frontend.home', compact('projects'));
+    }
     /**
      * @return \Illuminate\View\View
      */

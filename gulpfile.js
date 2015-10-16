@@ -1,6 +1,9 @@
 var elixir = require('laravel-elixir');
 
-elixir(function(mix) {
+/**
+ * Uncomment for LESS version
+ */
+/*elixir(function(mix) {
     mix
         // Copy webfont files from /vendor directories to /public directory.
         .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
@@ -36,11 +39,9 @@ elixir(function(mix) {
         // Apply version control
         .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
 });
+*/
 
-/**
- * Uncomment for LESS version
- */
-/*elixir(function(mix) {
+elixir(function(mix) {
     mix
         // Copy webfont files from /vendor directories to /public directory.
         .copy('vendor/fortawesome/font-awesome/fonts', 'public/build/fonts/font-awesome')
@@ -74,4 +75,4 @@ elixir(function(mix) {
 
         // Apply version control
         .version(["public/css/frontend.css", "public/js/frontend.js", "public/css/backend.css", "public/js/backend.js"]);
-});*/
+});
