@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
-use App\Project;
+use App\Models\Project;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+
+use Input;
+use Redirect;
 
 class ProjectsController extends Controller
 {
@@ -16,7 +19,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-    	$projects = Project::all();
+    	$projects = Project::orderBy('created_at', 'desc')->get();
         return view('frontend.projects.index', compact('projects'));
     }
 
@@ -27,7 +30,7 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('projects.create');
+        return view('frontend.projects.create');
     }
 
     /**
@@ -38,7 +41,10 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$input = Input::all();
+		Project::create( $input );
+	 
+		return Redirect::to('')->with('message', 'Projeto criado');
     }
 
     /**
@@ -49,7 +55,7 @@ class ProjectsController extends Controller
      */
     public function show(Project $project)
     {
-        return view('projects.show', compact('project'));
+        return view('frontend.projects.show', compact('project'));
     }
 
     /**
@@ -60,7 +66,7 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('projects.edit', compact('project'));
+        return view('frontend.projects.edit', compact('project'));
     }
 
     /**
@@ -72,7 +78,10 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        //
+		$input = array_except(Input::all(), '_method');
+		$project->update($input);
+
+		return Redirect::route('projects.show', $project->slug)->with('message', 'Projeto atualizado.');
     }
 
     /**
@@ -83,6 +92,8 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-        //
+		$project->delete();
+	 
+		return Redirect::route('projects.index')->with('message', 'Projeto apagado.');
     }
 }

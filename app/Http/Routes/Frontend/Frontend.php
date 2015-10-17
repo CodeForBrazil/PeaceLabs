@@ -8,7 +8,9 @@ get('/new', 'FrontendController@index')->name('home');
 get('macros', 'FrontendController@macros');
 get('/', 'FrontendController@home');
 
-Route::model('projects', 'Project');
+use App\Models\Project;
+
+Route::model('projects', 'App\Models\Project');
 /* uncomment this to use pretty URL
 Route::bind('projects', function($value, $route) {
 	return App\Project::whereSlug($value)->first();

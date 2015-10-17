@@ -45,7 +45,7 @@
     <h1>Peacelabs: Code For Brazil</h1>
       <p class="lead">Plataforma colaborativa dos projetos do Code For Brazil</p>
       <div>&nbsp;</div>
-      <a href="#sec1" class="btn btn-default btn-lg">Nossos projetos</a>
+      <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
   </div>
 </div>
 
@@ -63,8 +63,8 @@
 		        <li class="col-sm-4">
 		          <article class="teaser">
 		            <header>
-		              <img class="capa" src"{{ $project->cover }}"/>
-		            <img src="{{ $project->profile }}" class="profile img-responsive"/>
+		              <img class="capa" src="{{ $project->cover }}"/>
+		              <img src="{{ $project->profile }}" class="profile img-responsive"/>
 		              <h2><a href="{{ route('projects.show', $project->id) }}">{{ $project->name }}</a></h2>
 		            </header>
 		            <div class="teaser-body">

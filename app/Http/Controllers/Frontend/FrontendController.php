@@ -4,7 +4,7 @@ namespace app\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 
-use App\Project;
+use App\Models\Project;
 
 /**
  * Class FrontendController.
@@ -29,7 +29,7 @@ class FrontendController extends Controller
      */
     public function home()
     {
-    	$projects = Project::limit(9)->get();
+    	$projects = Project::limit(9)->orderBy('created_at', 'desc')->get();
         return view('frontend.home', compact('projects'));
     }
     /**
