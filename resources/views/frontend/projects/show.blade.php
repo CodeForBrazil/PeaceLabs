@@ -44,22 +44,26 @@
     <section class="project-description">
     <!-- MENU PROJECT PAGE -->
       <div class="container">
-      <ul class="list-group">
-        <li class="list-group-item"><a href="#">Informações Gerais</a></li>
-        <li class="list-group-item"><a href="#">Atividade</a></li>
-        <li class="list-group-item"><a href="#">Contribuidores</a></li>
-        <li class="list-group-item"><a href="#">Comentário</a></li>
-      </ul>
-        <div class="project-details">
-          <ul class="list-inline">
-            <li><span class="project-details-label">Data da Criação</span> 17/07/2013</li>
-            <li><span class="project-details-label">Categoria</span> Social</li>
-            <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li>
-            <li><span class="project-details-label">Data de Execução</span> 30/03/2014</li>
+        <div class="sidebar-project hidden-xs col-sm-3">
+          <ul class="list-group">
+            <li class="list-group-item"><a href="#">Informações</a></li>
+            <li class="list-group-item"><a href="#">Atividade</a></li>
+            <li class="list-group-item"><a href="#">Contribuidores</a></li>
+            <li class="list-group-item"><a href="#">Comentário</a></li>
           </ul>
         </div>
-        <div class="description">
-          <p>{{ $project->description }}</p>
+        <div class="content-project col-sm-9">
+          <div class="project-details">
+            <ul class="list-inline">
+              <li><span class="project-details-label">Data da Criação</span> 17/07/2013</li>
+              <li><span class="project-details-label">Categoria</span> Social</li>
+              <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li>
+              <li><span class="project-details-label">Data de Execução</span> 30/03/2014</li>
+            </ul>
+          </div>
+          <div class="description">
+            <p>{{ $project->description }}</p>
+          </div>
         </div>
       </div>
     </section>
