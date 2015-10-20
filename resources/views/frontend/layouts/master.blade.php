@@ -28,10 +28,24 @@
 
         @include('frontend.includes.nav')
 
-        <div class="container-fluid">
             @include('includes.partials.messages')
             @yield('content')
-        </div><!-- container -->
+
+      <section class="footer">
+        <ul class="list-inline">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Terms</a></li>
+          <li><a href="#">Privacy</a></li>
+        </ul>
+        <ul class="list-inline social">
+          <li><a href="#"></a><i class="fa fa-facebook"></i></li>
+          <li><a href="#"></a><i class="fa fa-twitter"></i></li>
+        </ul>
+        <div class="copyright">
+          <p>Copyright ©2015, Peace Enterprises, Inc. All rights reserved.</p>
+        </div>
+      </section>
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>

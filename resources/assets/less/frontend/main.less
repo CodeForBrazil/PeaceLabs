@@ -5,3 +5,231 @@
 @import 'variable-overrides';
 
 // Front-end LESS goes here.
+//@FontAwesomePath:   "../bower_components/font-awesome/fonts";
+
+@font-family-sans-serif: "Roboto";
+
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-info: #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger: #d9534f;
+@white: #fff;
+
+
+body {
+  background: @white;
+}
+
+/* NAVBAR */
+
+@navbar-default-color: @gray-lighter;
+@navbar-default-brand-color: @white;
+@navbar-default-brand-hover-color: @white;
+@navbar-default-toggle-hover-bg: @white;
+@navbar-default-link-color: @gray-lighter;
+@navbar-default-link-hover-color: @brand-primary;
+@navbar-default-link-active-bg: rgba(0,0,0,0.4);
+@navbar-default-link-active-color: @white;
+
+.navbar {
+   background-color: rgba(0,0,0,0.5);
+   background: rgba(0,0,0,0.5);
+   border-color: rgba(0,0,0,0.5);
+}
+
+.navbar li { color: #000 } 
+
+.navbar-default .navbar-toggle {
+  border-color: #fff !important;
+  border: none;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: @white !important;
+}
+
+/*.navbar-brand img {*/
+  /*width: 3.5em;*/
+/*}*/
+
+.navbar-brand
+{
+  position: absolute;
+  left: 50%;
+}
+
+/* PROJECT SHOW */
+
+.loves .fa-heart {
+  color: #9e2424;
+}
+
+.poster {
+  width: 80px;
+  box-shadow: 0 0 30px #333;
+  border: 4px solid #fff;
+}
+
+.cover {
+  padding-top: 26em; 
+  background-size: cover;
+  background-position: top center;
+}
+
+.project-title {
+  position: absolute;
+  margin-bottom: 70px;
+  left: 105px;
+  bottom: 1em;
+  color: @gray-lighter;
+}
+
+.project-title h1 {
+  font-size: 1.6em;
+}
+
+.kpis, .loves {
+  padding: .5em;  
+  font-weight: 300;
+  font-size: 1.2em;
+  background: rgba(0,0,0,0.5);
+  color: @gray-lighter;
+}
+
+.loves {
+  margin-top: .5em;
+}
+
+.kpis strong {
+  color: @white;
+  font-weight: 400;
+}
+
+/* DESCRIPTION */
+
+.project-description {
+  .clearfix();
+	clear: both;
+}
+
+.project-description .description {
+  margin: 1em 0;
+  display: inline-block;
+  clear: both; /*.clearfix()*/
+}
+
+.project-description .project-details {
+  margin-top: 1em;
+  display: inline-block;
+}
+
+.project-description .project-details li {
+  display: block;
+  line-height: 2em;
+}
+
+.project-description .project-details .project-details-label {
+  text-transform: uppercase;
+  color: lighten(@gray-base, 66.7%);
+  font-weight: 700;
+}
+
+/* PEOPLE */
+
+.people {
+  padding: 1em;
+  border-top: 1px solid @gray-light;
+  background: @gray-lighter;
+}
+
+.people strong {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+/* PROJECT CREATE */
+
+.main.container-fluid {
+  margin-top: 60px;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 1em;
+  background-color: @gray-darker;
+  color: @gray-lighter;
+}
+
+.footer .social {
+  font-size: 1.5em;
+}
+
+.footer a {
+  text-transform: uppercase;
+  color: @gray-lighter;
+}
+
+.footer a:hover {
+  color: @brand-primary;
+}
+
+.footer .copyright {
+  font-size: .8em;
+  color: @gray-light;
+}
+
+@media(min-width:768px){
+  .nav.brand-left {
+    position: absolute;
+    right: 50%;
+  }
+
+  .nav.brand-right {
+    position: absolute;
+    left: 60%;
+  }
+  
+  .loves .container, .kpis .container {
+    position: relative;
+    left: 160px;
+  }
+
+  /* HEADER > 768px */
+  
+  .poster {
+    width: 140px;
+    position: absolute;
+  }
+
+  .project-title {
+    position: relative;
+    top: 2em;
+    bottom: 0em;
+    left: 150px;
+    margin-bottom: 45px;
+    font-size: 1.7em;
+  }
+
+	.sidebar-project {
+    margin-top: 2em;
+    padding-left: 0px;
+    width: 157px;
+	}
+
+}
+
+@media(max-width:767px){
+  .navbar-brand {
+    left: 40%;
+  }
+  
+}
+
+@media(max-width:480px){
+  .navbar-brand {
+    left: 30%;
+  }
+  
+}
