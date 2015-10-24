@@ -22,8 +22,8 @@ class UserTableSeeder extends Seeder
         $users = [
             [
                 'name'              => 'Admin Istrator',
-                'email'             => 'admin@admin.com',
-                'password'          => bcrypt('123qwe'),
+                'email'             => 'admin@peacelabs.co',
+                'password'          => bcrypt('123wxc'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
                 'created_at'        => Carbon::now(),
@@ -31,8 +31,8 @@ class UserTableSeeder extends Seeder
             ],
             [
                 'name'              => 'Default User',
-                'email'             => 'user@user.com',
-                'password'          => bcrypt('123qwe'),
+                'email'             => 'user@peacelabs.co',
+                'password'          => bcrypt('123wxc'),
                 'confirmation_code' => md5(uniqid(mt_rand(), true)),
                 'confirmed'         => true,
                 'created_at'        => Carbon::now(),
