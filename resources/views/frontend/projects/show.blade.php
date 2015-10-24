@@ -12,7 +12,14 @@
       <div class="row project-title">
         <div class="container">
           <div class="col-xs-12">
-            <h1>{{ $project->name }}</h1>
+            {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
+	            <h1>
+	            	{{ $project->name }}
+					{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
+					{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+	            </h1>
+			{!! Form::close() !!}
+
           </div>
         </div>
       </div>
@@ -74,10 +81,24 @@
           <!-- PROJECT PANELS -->
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Ingredientes Faltando</h3>
+              <h3 class="panel-title">Precisamos de ajuda para</h3>
             </div>
             <div class="panel-body">
-              Panel content
+			    @if ( !$project->tasks->count() )
+			        Não tem tarefa
+			    @else
+			        <ul>
+			            @foreach( $project->tasks as $task )
+			                <li>
+		                        <a href="{{ route('projects.tasks.show', [$project->slug, $task->slug]) }}">{{ $task->name }}</a>
+			 				</li>
+			            @endforeach
+			        </ul>
+			    @endif
+			    <p>
+			           {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug) !!}
+			    </p>
+ 
             </div>
           </div>
           <div class="panel panel-default">

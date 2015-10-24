@@ -3,6 +3,10 @@
     {!! Form::text('name') !!}
 </div>
 <div class="form-group">
+    {!! Form::label('slug', 'Slug:') !!}
+    {!! Form::text('slug') !!}
+</div>
+<div class="form-group">
     {!! Form::label('description', 'Descrição:') !!}
     {!! Form::textarea('description') !!}
 </div>

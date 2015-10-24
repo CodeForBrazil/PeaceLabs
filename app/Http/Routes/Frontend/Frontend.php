@@ -9,15 +9,20 @@ get('macros', 'FrontendController@macros');
 get('/', 'FrontendController@home');
 
 use App\Models\Project;
+use App\Models\Task;
 
 Route::model('projects', 'App\Models\Project');
-/* uncomment this to use pretty URL
-Route::bind('projects', function($value, $route) {
-	return App\Project::whereSlug($value)->first();
-});
- */
-Route::resource('projects', 'ProjectsController');
+Route::model('tasks', 'App\Models\Task');
 
+Route::bind('tasks', function($value, $route) {
+	return App\Models\Task::whereSlug($value)->first();
+});
+Route::bind('projects', function($value, $route) {
+	return App\Models\Project::whereSlug($value)->first();
+});
+
+Route::resource('projects', 'ProjectsController');
+Route::resource('projects.tasks', 'TasksController');
 
 /*
  * These frontend controllers require the user to be logged in

@@ -16,10 +16,10 @@ class CreateProjectTable extends Migration
 			$table->increments('id');
             $table->string('name');
             $table->string('description');
-            $table->string('category');
-            $table->string('profile');
-            $table->string('cover');
-            $table->string('hashtag');
+            $table->string('category')->nullable();
+            $table->string('profile')->nullable();
+            $table->string('cover')->nullable();
+            $table->string('hashtag')->nullable();
             $table->timestamps();
 		});
     }

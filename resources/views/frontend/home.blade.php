@@ -65,7 +65,7 @@
 		            <header>
 		              <img class="capa" src="{{ $project->cover }}"/>
 		              <img src="{{ $project->profile }}" class="profile img-responsive"/>
-		              <h2><a href="{{ route('projects.show', $project->id) }}">{{ $project->name }}</a></h2>
+		              <h2><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></h2>
 		            </header>
 		            <div class="teaser-body">
 		              <p>
@@ -73,7 +73,7 @@
 		              </p>
 		            </div>
 		            <footer>
-		              <a href="{{ route('projects.show', $project->id) }}">Saber mais sobre este projeto</a>
+		              <a href="{{ route('projects.show', $project->slug) }}">Saber mais sobre este projeto</a>
 		            </footer>
 		          </article>
 		        </li>

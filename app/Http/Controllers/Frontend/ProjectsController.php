@@ -20,6 +20,7 @@ class ProjectsController extends Controller
     public function index()
     {
     	$projects = Project::orderBy('created_at', 'desc')->get();
+		
         return view('frontend.projects.index', compact('projects'));
     }
 
@@ -73,7 +74,7 @@ class ProjectsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  Project $project
+     * @param  \App\Models\Project $project
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Project $project)
@@ -87,7 +88,7 @@ class ProjectsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Project $project
+     * @param  \App\Model\Project $project
      * @return \Illuminate\Http\Response
      */
     public function destroy(Project $project)
