@@ -7,6 +7,7 @@
 get('/new', 'FrontendController@index')->name('home');
 get('macros', 'FrontendController@macros');
 get('/', 'FrontendController@home');
+get('/root', 'FrontendController@home');
 
 use App\Models\Project;
 use App\Models\Task;

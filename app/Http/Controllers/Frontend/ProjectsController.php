@@ -12,6 +12,12 @@ use Redirect;
 
 class ProjectsController extends Controller
 {
+
+	protected $rules = [
+		'name' => ['required', 'min:3'],
+		'slug' => ['required'],
+	];
+	
     /**
      * Display a listing of the resource.
      *
@@ -42,10 +48,12 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+		$this->validate($request, $this->rules);
+
 		$input = Input::all();
 		Project::create( $input );
 	 
-		return Redirect::to('')->with('message', 'Projeto criado');
+		return Redirect::to('')->flash_success('message', 'Projeto criado');
     }
 
     /**
@@ -79,10 +87,12 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
+		$this->validate($request, $this->rules);
+
 		$input = array_except(Input::all(), '_method');
 		$project->update($input);
 
-		return Redirect::route('projects.show', $project->slug)->with('message', 'Projeto atualizado.');
+		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto atualizado.');
     }
 
     /**
@@ -95,6 +105,6 @@ class ProjectsController extends Controller
     {
 		$project->delete();
 	 
-		return Redirect::route('projects.index')->with('message', 'Projeto apagado.');
+		return Redirect::route('root')->with('flash_success', 'Projeto apagado.');
     }
 }

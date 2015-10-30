@@ -22,7 +22,7 @@
 <div class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
   <div class="container">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Code For Brazil</a>
+      <a href="#" class="navbar-brand">Open Brazil</a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -38,6 +38,12 @@
     </div>
    </div>
 </div>
+
+@if (Session::has('message'))
+	<div class="flash alert-info">
+		<p>{{ Session::get('message') }}</p>
+	</div>
+@endif
 
 <div class="header alt vert">
   <div class="container">
