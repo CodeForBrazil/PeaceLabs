@@ -19,7 +19,10 @@ Route::bind('tasks', function($value, $route) {
 	return App\Models\Task::whereSlug($value)->first();
 });
 Route::bind('projects', function($value, $route) {
-	return App\Models\Project::whereSlug($value)->first();
+	if (is_int($value))
+		return App\Models\Project::whereId($value)->first();
+	else
+		return App\Models\Project::whereSlug($value)->first();
 });
 
 Route::resource('projects', 'ProjectsController');

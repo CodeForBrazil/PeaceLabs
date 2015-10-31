@@ -51,9 +51,9 @@ class ProjectsController extends Controller
 		$this->validate($request, $this->rules);
 
 		$input = Input::all();
-		Project::create( $input );
+		$project = Project::create( $input );
 	 
-		return Redirect::to('')->flash_success('message', 'Projeto criado');
+		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto criado');
     }
 
     /**
@@ -105,6 +105,6 @@ class ProjectsController extends Controller
     {
 		$project->delete();
 	 
-		return Redirect::route('root')->with('flash_success', 'Projeto apagado.');
+		return Redirect::to('/')->with('flash_success', 'Projeto apagado.');
     }
 }

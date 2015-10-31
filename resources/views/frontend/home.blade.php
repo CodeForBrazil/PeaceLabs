@@ -50,10 +50,16 @@
             @foreach( $projects as $project )
 		        <li class="col-sm-4">
 		          <article class="teaser">
+		            {!! Form::open(array('class' => 'form-inline menu', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
+								{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
+								{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+					{!! Form::close() !!}
 		            <header>
 		              <img class="capa" src="{{ $project->cover }}"/>
 		              <img src="{{ $project->profile }}" class="profile img-responsive"/>
-		              <h2><a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a></h2>
+		              <h2>
+		              	<a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a>
+		              </h2>
 		            </header>
 		            <div class="teaser-body">
 		              <p>
