@@ -4,6 +4,7 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
+@import url(http://fonts.googleapis.com/css?family=Voltaire);
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -4496,29 +4497,29 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   border-color: #e7e7e7;
 }
 .navbar-default .navbar-brand {
-  color: #fff;
+  color: #777;
 }
 .navbar-default .navbar-brand:hover,
 .navbar-default .navbar-brand:focus {
-  color: #fff;
+  color: #5e5e5e;
   background-color: transparent;
 }
 .navbar-default .navbar-text {
-  color: #eeeeee;
+  color: #777;
 }
 .navbar-default .navbar-nav > li > a {
-  color: #eeeeee;
+  color: #777;
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
-  color: #428bca;
+  color: #333;
   background-color: transparent;
 }
 .navbar-default .navbar-nav > .active > a,
 .navbar-default .navbar-nav > .active > a:hover,
 .navbar-default .navbar-nav > .active > a:focus {
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.4);
+  color: #555;
+  background-color: #e7e7e7;
 }
 .navbar-default .navbar-nav > .disabled > a,
 .navbar-default .navbar-nav > .disabled > a:hover,
@@ -4531,7 +4532,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #fff;
+  background-color: #ddd;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888;
@@ -4543,23 +4544,23 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
 .navbar-default .navbar-nav > .open > a,
 .navbar-default .navbar-nav > .open > a:hover,
 .navbar-default .navbar-nav > .open > a:focus {
-  background-color: rgba(0, 0, 0, 0.4);
-  color: #fff;
+  background-color: #e7e7e7;
+  color: #555;
 }
 @media (max-width: 767px) {
   .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #eeeeee;
+    color: #777;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #428bca;
+    color: #333;
     background-color: transparent;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
   .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #fff;
-    background-color: rgba(0, 0, 0, 0.4);
+    color: #555;
+    background-color: #e7e7e7;
   }
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a,
   .navbar-default .navbar-nav .open .dropdown-menu > .disabled > a:hover,
@@ -4569,17 +4570,17 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   }
 }
 .navbar-default .navbar-link {
-  color: #eeeeee;
+  color: #777;
 }
 .navbar-default .navbar-link:hover {
-  color: #428bca;
+  color: #333;
 }
 .navbar-default .btn-link {
-  color: #eeeeee;
+  color: #777;
 }
 .navbar-default .btn-link:hover,
 .navbar-default .btn-link:focus {
-  color: #428bca;
+  color: #333;
 }
 .navbar-default .btn-link[disabled]:hover,
 fieldset[disabled] .navbar-default .btn-link:hover,
@@ -8722,7 +8723,7 @@ button.close {
 }
 body {
   background: #fff;
-  margin-top: 60px;
+  margin-top: 120px;
 }
 .link-external a:after {
   content: "\f08e";
@@ -8734,28 +8735,30 @@ body {
   color: #f0ad4e;
   padding-left: 5px;
 }
+h1,
+h2,
+h3,
+h4,
+.lead,
+.btn,
+.navbar a {
+  text-transform: uppercase;
+  font-family: 'Voltaire', Arial, sans-serif;
+  letter-spacing: 2px;
+}
 /* NAVBAR */
 .navbar {
-  background-color: rgba(0, 0, 0, 0.5);
-  background: rgba(0, 0, 0, 0.5);
-  border-color: rgba(0, 0, 0, 0.5);
+  background-color: white;
+  border-bottom: 1px solid #DDD;
 }
 .navbar li {
-  color: #000;
+  margin-bottom: 5px;
 }
-.navbar-default .navbar-toggle {
-  border-color: #fff !important;
-  border: none;
+.navbar li.active a {
+  border-bottom: 2px solid #428bca;
 }
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #fff !important;
-}
-/*.navbar-brand img {*/
-/*width: 3.5em;*/
-/*}*/
-.navbar-brand {
-  position: absolute;
-  left: 50%;
+.icon-bar {
+  background-color: #428bca;
 }
 /* PROJECT SHOW */
 .loves .fa-heart {

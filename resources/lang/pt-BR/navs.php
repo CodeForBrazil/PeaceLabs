@@ -23,5 +23,6 @@ return [
     'macros' => 'Macros',
     'register' => 'Registre-se',
     'button' => 'Botão',
+    'create' => 'Novo projeto',
 
 ];

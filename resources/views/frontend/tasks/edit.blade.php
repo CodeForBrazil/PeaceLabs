@@ -2,7 +2,7 @@
 
 @section('content')
 
-  <div class="main container-fluid">
+  <div class="main container">
     <h2>Editar a tarefa <em>{{ $task->name }}</em></h2>
  
     {!! Form::model($task, ['method' => 'PATCH', 'route' => ['projects.tasks.update', $project->slug, $task->slug]]) !!}

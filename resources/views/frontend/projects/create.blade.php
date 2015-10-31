@@ -2,10 +2,10 @@
 
 @section('content')
 
-  <div class="main container-fluid">
+  <div class="main container">
     <h2>Criar um projeto</h2>
  
-    {!! Form::model(new App\Models\Project, ['route' => ['projects.store']]) !!}
+    {!! Form::model(new App\Models\Project, ['route' => ['projects.store'], 'class' => 'form-horizontal']) !!}
         @include('frontend/projects/partials/_form', ['submit_text' => 'Criar um projeto'])
     {!! Form::close() !!}
   </div>

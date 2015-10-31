@@ -19,25 +19,7 @@
   </head>
   <body>
 
-<div class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
-  <div class="container">
-    <div class="navbar-header">
-      <a href="#" class="navbar-brand">Open Brazil</a>
-      <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </a>
-    </div>
-    <div class="navbar-collapse collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#sec1">Projetos</a></li>
-        <li><a href="#sec2">PeaceLabs</a></li>
-        <li><a href="#sec3">Contato</a></li>
-      </ul>
-    </div>
-   </div>
-</div>
+@include('frontend.includes.nav')
 
 @if (Session::has('message'))
 	<div class="flash alert-info">
@@ -57,7 +39,7 @@
 
 <hr>
 
-<div id="sec1" class="blurb">
+<div id="projetos" class="blurb">
   <div class="container">
     <div class="row">
 
@@ -91,7 +73,7 @@
   </div>
 </div>
 
-<div class="callout" id="sec2">
+<div class="callout" id="peacelabs">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 text-center">
@@ -127,7 +109,7 @@
   </div>
 </div>
 
-<div class="blurb" id="sec3">
+<div class="blurb" id="contato">
   <div class="container">
   <div class="row">
     <div class="col-md-12">
