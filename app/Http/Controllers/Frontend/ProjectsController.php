@@ -54,17 +54,7 @@ class ProjectsController extends Controller
 	    return $count ? "{$slug}-{$count}" : $slug;
 	}
 
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-		$this->validate($request, $this->rules);
-
+	protected function filter_project_input() {
 		$input = Input::all();
 
 		$input['slug'] = $this->makeSlugFromTitle($input['name']);
@@ -79,6 +69,21 @@ class ProjectsController extends Controller
 				unset($input[$name]);
 			}
 		}
+
+		return $input;	
+	}
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+		$this->validate($request, $this->rules);
+
+		$input = $this->filter_project_input();
 		
 		$project = Project::create( $input );
 	 
@@ -118,7 +123,10 @@ class ProjectsController extends Controller
     {
 		$this->validate($request, $this->rules);
 
-		$input = array_except(Input::all(), '_method');
+		$input = $this->filter_project_input();
+
+		$input = array_except($input, '_method');
+
 		$project->update($input);
 
 		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto atualizado.');
