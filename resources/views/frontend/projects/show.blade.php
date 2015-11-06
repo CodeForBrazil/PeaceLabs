@@ -3,11 +3,11 @@
 @section('content')
 
     <!-- HEADER PROJECT PROFILE -->
-    <section class="col-xs-12 cover" style="background-image: url('{{ $project->cover }}')">
+    <section class="col-xs-12 cover" style="background-image: url('{{ $project->cover->url() }}')">
 
       <!-- LOGO AND TITLE -->
       <div class="container">
-        <img class="poster" src="{{ $project->profile }}" alt="{{ $project->name }} logo" />
+        <img class="poster" src="{{ $project->profile->url(['width' => 280, 'height' => 280, 'crop' => 'fill']) }}" alt="{{ $project->name }} logo" />
       </div>
       <div class="row project-title">
         <div class="container">

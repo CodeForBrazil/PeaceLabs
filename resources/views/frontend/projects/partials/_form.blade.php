@@ -22,6 +22,23 @@
 	    {!! Form::text('profile', NULL, array('class' => 'form-control', 'placeholder' => 'Imagem de perfil')) !!}
     </div>
 </div>
+
+<div class="form-group">
+    {!! Form::label('profile', 'Imagem de perfil', array('class' => 'col-sm-2 control-label')) !!}
+	<div class="controls col-sm-10">
+		<div class="avatar img-preview">
+			<img src="<?php echo $user->get_avatar('medium'); ?>" alt="<?php echo $user->get_name(); ?>" class="img-rounded img-responsive">
+		</div>
+		<span class="btn btn-default btn-file btn-xs">
+		    <?php echo lang('app_browse'); ?> 
+		    {!! Form::file('profile') !!}
+		    <input type="file" id="user-avatar" name="avatar" />
+		</span>
+		<div class="alert-danger">
+			<?php echo form_error('avatar'); ?>
+		</div>
+	</div>
+</div>
 <div class="form-group">
     {!! Form::label('cover', 'Imagem da capa', array('class' => 'col-sm-2 control-label')) !!}
     <div class="col-sm-10">

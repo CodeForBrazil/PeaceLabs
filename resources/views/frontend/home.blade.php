@@ -55,8 +55,8 @@
 								{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
 					{!! Form::close() !!}
 		            <header>
-		              <img class="capa" src="{{ $project->cover }}"/>
-		              <img src="{{ $project->profile }}" class="profile img-responsive"/>
+		              <img class="capa" src="{{ $project->cover->url(['height' => 160,'width' => 720, 'crop' => 'fill' ]) }}"/>
+		              <img src="{{ $project->profile->url(['height' => 50,'width' => 50, 'crop' => 'fill']) }}" class="profile img-responsive"/>
 		              <h2>
 		              	<a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a>
 		              </h2>

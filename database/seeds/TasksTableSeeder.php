@@ -23,5 +23,6 @@ class TasksTableSeeder extends Seeder
         );
  
         //// Uncomment the below to run the seeder
-        DB::table('tasks')->insert($tasks);    }
+        DB::table('tasks')->insert($tasks);    
+	}
 }
