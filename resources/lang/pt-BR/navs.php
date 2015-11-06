@@ -25,4 +25,6 @@ return [
     'button' => 'Botão',
     'create' => 'Novo projeto',
 
+    'projects' => 'Projetos',
+    'contact' => 'Contacto',
 ];

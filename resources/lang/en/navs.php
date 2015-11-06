@@ -24,4 +24,6 @@ return [
     'register' => 'Register',
     'button' => 'Button',
 
+    'projects' => 'Projects',
+    'contact' => 'Contact us',
 ];

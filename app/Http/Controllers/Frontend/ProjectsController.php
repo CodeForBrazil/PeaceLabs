@@ -4,18 +4,19 @@ namespace App\Http\Controllers\Frontend;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
+use App\Models\Media;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use Input;
 use Redirect;
+use Illuminate\Support\Str;
 
 class ProjectsController extends Controller
 {
 
 	protected $rules = [
 		'name' => ['required', 'min:3'],
-		'slug' => ['required'],
 	];
 	
     /**
@@ -40,6 +41,20 @@ class ProjectsController extends Controller
         return view('frontend.projects.create');
     }
 
+	/**
+	 * Create a conversation slug.
+	 *
+	 * @param  string $title
+	 * @return string
+	 */
+	protected function makeSlugFromTitle($title)
+	{
+	    $slug = Str::slug($title);
+	    $count = Project::whereRaw("slug LIKE '{$slug}-%' OR slug = '{$slug}'")->count();
+	    return $count ? "{$slug}-{$count}" : $slug;
+	}
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -51,9 +66,23 @@ class ProjectsController extends Controller
 		$this->validate($request, $this->rules);
 
 		$input = Input::all();
+
+		$input['slug'] = $this->makeSlugFromTitle($input['name']);
+
+		foreach ( ['profile','cover'] as $name) {
+			if (Input::file($name) && Input::file($name)->isValid()) {
+				$res = \Cloudinary\Uploader::upload(Input::file($name)->getRealPath());	
+				if ($res && isset($res['public_id'])) {
+					$media = Media::create( ['public_id' => $res['public_id']] );
+					$input[$name.'_media_id'] = $media->id;
+				}
+				unset($input[$name]);
+			}
+		}
+		
 		$project = Project::create( $input );
 	 
-		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto criado');
+		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto criado ');
     }
 
     /**

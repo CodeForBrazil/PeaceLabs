@@ -5,7 +5,7 @@ use Illuminate\Database\Seeder;
 // composer require laracasts/testdummy
 use Laracasts\TestDummy\Factory as TestDummy;
 
-class ProjectTableSeeder extends Seeder
+class ProjectsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,6 +18,8 @@ class ProjectTableSeeder extends Seeder
 
         DB::table('projects')->delete();
 		
+		$media_id = DB::table('medias')->orderBy('id','asc')->first()->id;
+		
         foreach(range(1,5) as $index)  
         {  
 			DB::table('projects')->insert([
@@ -25,8 +27,8 @@ class ProjectTableSeeder extends Seeder
                 'slug' => $faker->lexify('?????'),
                 'description' => $faker->paragraph(1),  
                 'category' => $faker->randomElement($array = array ('social','ambiental','economic')),  
-                'profile_media_id' => rand(1,20),  
-                'cover_media_id' => rand(1,20),  
+                'profile_media_id' => rand($media_id,$media_id+20),  
+                'cover_media_id' => rand($media_id,$media_id+20),  
                 'hashtag' => str_random(10), 
                 'created_at' => $faker->dateTimeThisMonth(),  
                 'updated_at' => $faker->dateTimeThisMonth(),  

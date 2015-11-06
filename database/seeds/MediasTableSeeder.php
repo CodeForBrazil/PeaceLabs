@@ -14,7 +14,7 @@ class MediasTableSeeder extends Seeder
  		$medias = array();
         foreach(range(1,20) as $id) {
 			$image = \Cloudinary\Uploader::upload("http://lorempixel.com/1024/720/?82533");	
-        	$medias[] = ['id' => $id, 'public_id' => $image['public_id'], 'created_at' => new DateTime, 'updated_at' => new DateTime];
+        	$medias[] = ['public_id' => $image['public_id'], 'created_at' => new DateTime, 'updated_at' => new DateTime];
         } 
  
         //// Uncomment the below to run the seeder
