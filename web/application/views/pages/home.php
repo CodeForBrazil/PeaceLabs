@@ -181,7 +181,7 @@
       <div class="col-sm-4 text-center">
         <div class="featurette-item">
           <i class="fa fa-lightbulb-o"></i>
-          <h4>Ideias</h4>
+          <h4>Ideas</h4>
           <p>Up-up-and-away with this starter template.</p>
         </div>
       </div>
