@@ -1,0 +1,318 @@
+@import '../../../../vendor/twbs/bootstrap/less/bootstrap';
+@import '../../../../vendor/fortawesome/font-awesome/less/font-awesome';
+
+// Any Bootstrap or FontAwesome-specific variables added here will overwrite the defaults.
+@import 'variable-overrides';
+
+@import url(http://fonts.googleapis.com/css?family=Voltaire);
+
+// Front-end LESS goes here.
+//@FontAwesomePath:   "../bower_components/font-awesome/fonts";
+
+@font-family-sans-serif: "Roboto";
+
+@brand-primary: #428bca;
+@brand-success: #5cb85c;
+@brand-info: #5bc0de;
+@brand-warning: #f0ad4e;
+@brand-danger: #d9534f;
+@white: #fff;
+
+
+body {
+  background: @white;
+  margin-top: 60px;
+}
+
+.link-external a:after {
+  content: "\f08e";
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-decoration: inherit;
+  color: @brand-warning;
+  padding-left: 5px;
+}
+
+h1,h2,h3,h4,.lead,.btn,.navbar a {
+  text-transform:uppercase;
+  font-family:'Voltaire',Arial,sans-serif;
+  letter-spacing:2px;
+}
+
+/* NAVBAR */
+
+.navbar  { background-color: white; border-bottom: 1px solid #DDD; }
+
+.navbar li {
+  margin-bottom: 5px;
+  &.active a { border-bottom: 2px solid #428bca; }
+}
+.icon-bar { background-color: #428bca; }
+
+/* PROJECT SHOW */
+
+.loves .fa-heart {
+  color: #9e2424;
+}
+
+.poster {
+  width: 80px;
+  box-shadow: 0 0 30px #333;
+  border: 4px solid #fff;
+}
+
+.cover {
+  margin-top: -60px;
+  padding-top: 26em; 
+  background-size: cover;
+  background-position: top center;
+}
+
+.project-title {
+  position: absolute;
+  margin-bottom: 70px;
+  left: 105px;
+  bottom: 1em;
+  color: @gray-lighter;
+}
+
+.project-title h1 {
+  font-size: 1.6em;
+}
+
+.kpis, .loves {
+  padding: .5em;  
+  font-weight: 300;
+  font-size: 1.2em;
+  background: rgba(0,0,0,0.5);
+  color: @gray-lighter;
+}
+
+.loves {
+  margin-top: .5em;
+}
+
+.kpis strong {
+  color: @white;
+  font-weight: 400;
+}
+
+/* DESCRIPTION */
+
+.project-description {
+  .clearfix();
+	clear: both;
+}
+
+.project-description .description {
+  margin: 1em 0;
+  display: inline-block;
+  clear: both; /*.clearfix()*/
+}
+
+.project-description .project-details {
+  margin-top: 1em;
+  display: inline-block;
+}
+
+.project-description .project-details li {
+  display: block;
+  line-height: 2em;
+}
+
+.project-description .project-details .project-details-label {
+  text-transform: uppercase;
+  color: lighten(@gray-base, 66.7%);
+  font-weight: 700;
+}
+
+/* PEOPLE */
+
+.people {
+  padding: 1em;
+  border-top: 1px solid @gray-light;
+  background: @gray-lighter;
+}
+
+.people strong {
+  font-size: 2em;
+  font-weight: 300;
+}
+
+.people .contrib-person img {
+  display: block;
+  width: 100%;
+  border: solid 3px #464646;
+  background-color: #464646;
+  margin-bottom: 5px;
+  border-radius: 50%;
+}
+
+li.contrib-person {
+  width: 5em;
+}
+
+/* TEAM */
+
+li.team-person {
+  margin-right: .1em;
+  text-align: center;
+}
+
+li.team-person img {
+  width: 5em;
+}
+
+li.team-person a {
+  padding: .3em;
+  display: block;
+}
+
+/* RELATED PROJECT */
+
+.related-project {
+}
+
+li.related-project img {
+  width: 300px;
+}
+
+li.related-project a {
+    width: 300px;
+}
+
+.related-project span {
+  display: block;
+  position: absolute;
+  margin-top: -40px;
+}
+
+/* COMMENTS */
+
+.comment .fa {
+  font-size: 4em;
+}
+
+.comment {
+  clear: both;
+  padding: 1em 0 2em 0;
+}
+
+/* OTHER PROJECTS */
+
+.other-projects {
+  margin-top: 3em;
+  padding: 1em 2em 3em 2em;
+  background: @gray-lighter;
+  border-top: 1px solid @gray-light;
+}
+
+span.other-projects-title {
+  position: relative;
+  left: 20px;
+  bottom: 50px;
+  font-size: 2em;
+  font-weight: 700;
+}
+
+/* SEARCH PROJECTS */
+
+.search-projects {
+  padding: 3em 3em 5em 3em;
+  background: @brand-primary;
+}
+
+.search-projects {
+  color: @gray-lighter;
+}
+
+.search-projects h3 {
+  padding-bottom: 1em;
+}
+
+/* FOOTER */
+
+.footer {
+  padding: 1em;
+  background-color: @gray-darker;
+  color: @gray-lighter;
+}
+
+.footer .social {
+  font-size: 1.5em;
+}
+
+.footer a {
+  text-transform: uppercase;
+  color: @gray-lighter;
+}
+
+.footer a:hover {
+  color: @brand-primary;
+}
+
+.footer .copyright {
+  font-size: .8em;
+  color: @gray-light;
+}
+
+@media(min-width:768px){
+  .nav.brand-left {
+    position: absolute;
+    right: 50%;
+  }
+
+  .nav.brand-right {
+    position: absolute;
+    left: 60%;
+  }
+  
+  .loves .container, .kpis .container {
+    position: relative;
+    left: 160px;
+  }
+
+  /* HEADER > 768px */
+  
+  .poster {
+    width: 140px;
+    position: absolute;
+  }
+
+  .project-title {
+    position: relative;
+    top: 2em;
+    bottom: 0em;
+    left: 150px;
+    margin-bottom: 45px;
+    font-size: 1.7em;
+  }
+
+	.sidebar-project {
+    margin-top: 2em;
+    padding-left: 0px;
+    width: 157px;
+	}
+  
+  .sidebar-project .list-unstyled li {
+    padding: .5em;
+    padding-left: 1em;
+  }
+
+}
+
+@media(max-width:767px){
+  .navbar-brand {
+    left: 40%;
+  }
+  
+}
+
+@media(max-width:480px){
+  .navbar-brand {
+    left: 30%;
+  }
+  
+}

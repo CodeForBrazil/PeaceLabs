@@ -1,0 +1,117 @@
+@import "bootstrap/bootstrap.less";
+
+@import "font-awesome/font-awesome.less";
+@fa-font-path: "/assets/fonts";
+
+@import url(http://fonts.googleapis.com/css?family=Voltaire);
+
+@import "global.less";
+
+/* use special fonts in certain elements */
+h1,h2,h3,h4,.lead,.btn,.navbar a {
+  text-transform:uppercase;
+  font-family:'Voltaire',Arial,sans-serif;
+  letter-spacing:2px;
+}
+
+.navbar  { background-color: white; }
+
+.navbar li {
+  margin-bottom: 5px;
+  &.active a { border-bottom: 2px solid #428bca; }
+}
+.icon-bar { background-color: #428bca; }
+.blurb, .featurette, .callout {
+  & > .container { padding-top: 50px; }
+}
+
+.blurb .container { padding-bottom: 50px; }
+.callout {
+  color: #ffffff;
+  padding-top:7%;
+  height: 100%;
+  width: 100%;
+  background: url('/assets/img/peace.jpg') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.featurette-item > i {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle; 
+  text-align: center;
+}
+
+.featurette-item > i:hover {
+  font-size: 68px;
+}
+
+.header > .container {
+    margin-top: 50px;
+}
+
+ul.teasers {
+  padding: 0;
+    list-style-type: none;
+}
+
+ul.teasers li {
+  padding: 10px;
+}
+
+.teaser {
+  border: 1px solid #DDD;
+  .menu {
+    position: absolute;
+    z-index: 10;
+    right: 15px;
+    top: 15px;
+}
+}
+.teaser header {
+  height: 120px;
+    position: relative;
+    border-bottom: 1px solid #DDD;  
+}
+
+.teaser header .capa{
+    background: url(/assets/img/vizin.png) top center;
+    background-size: 100%;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+.teaser .profile {
+  height: 50px;
+  width: 50px;
+    position: absolute;
+    top: 60px;
+    left: 10px;
+}
+.teaser h2 {
+  position: absolute;
+    left: 80px;
+    top: 80px;
+    margin: 5px 0;
+}
+
+.teaser .teaser-body {
+    margin: 10px;
+    height: 120px;
+}
+
+.teaser footer {
+    padding: 10px;
+    border-top: 1px solid #DDD;
+}
+
+
