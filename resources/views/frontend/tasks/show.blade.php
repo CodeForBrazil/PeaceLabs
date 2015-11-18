@@ -13,6 +13,14 @@
  	{!! Form::close() !!}
  
     {{ $task->description }}
+
+      <!-- COMMENT -->
+      <div class="comments">
+
+		@include('frontend/includes/comments')
+
+      </div>
+      <!-- /COMMENT -->
     
   </div>
     
