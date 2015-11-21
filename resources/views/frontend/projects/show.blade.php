@@ -37,8 +37,7 @@
         <div class="container">
           <div class="col-xs-12">
             <span class="kpi"><strong>2564</strong> views</span>
-            <span class="kpi"><strong>123</strong> cheers</span>
-            <span class="kpi"><strong>87</strong> followers</span>
+
           </div>
         </div>
       </div>
@@ -57,12 +56,6 @@
             <li class="list-group-item"><a href="#">Atividade</a></li>
             <li class="list-group-item"><a href="#">Contribuidores</a></li>
             <li class="list-group-item"><a href="#">Comentário</a></li>
-          </ul>
-          <ul class="list-unstyled">
-            <li class="link-external"><a href="#">Informações</a></li>
-            <li class="link-external"><a href="#">Atividade</a></li>
-            <li class="link-external"><a href="#">Contribuidores</a></li>
-            <li class="link-external"><a href="#">Comentário</a></li>
           </ul>
         </div>
         <div class="content-project col-sm-9">
@@ -100,15 +93,7 @@
 			    </p>
  
             </div>
-          </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Fazer...</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
+          
           <!-- /PROJECT PANELS -->
 
           <!-- PEOPLE -->
