@@ -4,9 +4,9 @@
  * Frontend Controllers.
  */
 
-get('/new', 'FrontendController@index')->name('home');
+get('/old', 'FrontendController@home')->name('old');
 get('macros', 'FrontendController@macros');
-get('/', 'FrontendController@home');
+get('/', 'FrontendController@home')->name('home');
 get('/root', 'FrontendController@home');
 
 use App\Models\Project;
