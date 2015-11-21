@@ -35,4 +35,5 @@ $router->group(['middleware' => 'auth'], function () {
     get('dashboard', 'DashboardController@index')->name('frontend.dashboard');
     get('profile/edit', 'ProfileController@edit')->name('frontend.profile.edit');
     patch('profile/update', 'ProfileController@update')->name('frontend.profile.update');
+    get('projects/create', 'ProjectsController@create')->name('projects.create');
 });
