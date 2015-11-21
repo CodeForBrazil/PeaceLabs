@@ -30,7 +30,7 @@
 <div class="header alt vert">
   <div class="container">
 
-    <h1>Peacelabs: Code For Brazil</h1>
+    <h1>Peacelabs: Code For Brazil - HACKATON CURITIBA</h1>
       <p class="lead">Plataforma colaborativa dos projetos: Code For Brazil</p>
       <div>&nbsp;</div>
       <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
