@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Media;
 
 class Project extends Model
 {
@@ -12,6 +11,11 @@ class Project extends Model
 	public function tasks()
 	{
 		return $this->hasMany('App\Models\Task');
+	}
+	
+	public function members()
+	{
+		return $this->belongsToMany('App\Models\Access\User\User','project_users')->withTimestamps();
 	}
 	
 	public function profile() 

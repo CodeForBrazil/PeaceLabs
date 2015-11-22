@@ -81,13 +81,19 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
-		$this->validate($request, $this->rules);
-
-		$input = $this->filter_project_input();
-		
-		$project = Project::create( $input );
-	 
-		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto criado ');
+    	if ($user = auth()->user()) {
+			$this->validate($request, $this->rules);
+	
+			$input = $this->filter_project_input();
+			
+			$project = Project::create( $input );
+			
+			$project->members()->attach($user->id,['role' => 'owner']);
+		 
+			return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto criado.');
+    	} else {
+			return Redirect::route('home')->with('flash_error','Operação não permitida.');
+		}
     }
 
     /**
