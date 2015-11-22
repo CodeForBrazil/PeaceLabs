@@ -26,7 +26,20 @@
 		<p>{{ Session::get('message') }}</p>
 	</div>
 @endif
-
+<style type="text/css">
+     .header {
+       background-size: 100% auto;
+       background-repeat: no-repeat;
+       color: #EE3051 ;
+       background-image: url(assets/img/hackathon.jpg);
+       }
+   </style>
+   <center>
+   <h1>HACKATHON CURITIBA 2015</h1>
+     <p class="lead">Plataforma colaborativa de projetos: Hackathon Curitiba 2015</p>
+      <p class="lead">Coloque sua ideia em prática! <br> Convide sua rede para colaborar no projeto dos seus sonhos.</p>
+     <div>&nbsp;</div>
+     </center>
 <div class="header alt vert">
   <div class="container">
 
