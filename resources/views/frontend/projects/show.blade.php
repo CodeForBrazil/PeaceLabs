@@ -17,6 +17,13 @@
 	            	{{ $project->name }}
 					{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
 					{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+	            	@if ( !$project->hasliked(auth()->user()) )
+						{!! link_to_route('projects.like', 'Curtir', array($project->slug), 
+						array('class' => 'btn btn-success btn-xs')) !!}
+				    @else
+						{!! link_to_route('projects.dislike', 'Descurtir', array($project->slug), 
+						array('class' => 'btn btn-default btn-xs')) !!}
+				    @endif
 	            </h1>
 			{!! Form::close() !!}
 

@@ -100,11 +100,14 @@ class ProjectsController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @param  Project $project
      * @return \Illuminate\Http\Response
      */
-    public function show(Project $project)
+    public function show(Request $request, Project $project)
     {
+		$user_id =  ( auth()->user() )? auth()->user()->id : 0;
+    	$project->views()->attach($user_id,['ip' => $request->ip()]);
         return view('frontend.projects.show', compact('project'));
     }
 
@@ -199,6 +202,42 @@ class ProjectsController extends Controller
 			$error = 'Operação não permitida.';
 		return Redirect::route('projects.show', $project->slug)->with('flash_danger', $error);    	
     	
+	}
+
+    /**
+     * Current user likes a project.
+     *
+     * @param  \App\Model\Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function like(Project $project)
+    {
+		$this->middleware('auth');
+    	if ($user = auth()->user()) {
+			$project->likes()->sync([$user->id],false);
+			return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Você curtiu o projeto.');    	
+		} else
+			$error = 'Operação não permitida.';
+		
+		return Redirect::route('projects.show', $project->slug)->with('flash_danger', $error);    	
+	}
+
+    /**
+     * Current user dislikes a project.
+     *
+     * @param  \App\Model\Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function dislike(Project $project)
+    {
+		$this->middleware('auth');
+    	if ($user = auth()->user()) {
+			$project->likes()->detach($user->id);
+			return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Você descurtiu o projeto.');    	
+		} else
+			$error = 'Operação não permitida.';
+		
+		return Redirect::route('projects.show', $project->slug)->with('flash_danger', $error);    	
 	}
 
 }
