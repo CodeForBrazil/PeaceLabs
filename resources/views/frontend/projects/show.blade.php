@@ -89,7 +89,7 @@
 			        </ul>
 			    @endif
 			    <p>
-			           {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug) !!}
+			           {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug, array('class' => 'btn btn-info btn-xs')) !!}
 			    </p>
  
             </div>
