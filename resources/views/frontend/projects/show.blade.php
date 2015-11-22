@@ -30,12 +30,6 @@
         <div class="container">
           <div class="col-xs-12">
             <span class="kpi"><i class="fa fa-heart"></i> <strong>64</strong> loves</span>
-          </div>
-        </div>
-      </div>
-      <div class="row kpis">
-        <div class="container">
-          <div class="col-xs-12">
             <span class="kpi"><strong>2564</strong> views</span>
             <span class="kpi"><strong>123</strong> cheers</span>
             <span class="kpi"><strong>87</strong> followers</span>
@@ -69,8 +63,8 @@
           <div class="project-details">
             <ul class="list-inline">
               <li><span class="project-details-label">Data da Criação</span> {{ date('d/m/Y', strtotime($project->created_at)) }}</li>
-              <li><span class="project-details-label">Categoria</span> Social</li>
-              <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li>
+              <!--li><span class="project-details-label">Categoria</span> Social</li>
+              <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li-->
             </ul>
           </div>
           <div class="description jumbotron">

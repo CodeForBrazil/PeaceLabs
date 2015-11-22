@@ -8826,10 +8826,7 @@ h4,
   clear: both;
 }
 .project-description .description {
-  margin: 1em 0;
-  display: inline-block;
-  clear: both;
-  /*.clearfix()*/
+  font-size: 1.2em;
 }
 .project-description .project-details {
   margin-top: 1em;
@@ -8960,14 +8957,18 @@ span.other-projects-title {
   .poster {
     width: 140px;
     position: absolute;
+    z-index: 2;
   }
   .project-title {
     position: relative;
-    top: 2em;
+    top: 45px;
     bottom: 0em;
-    left: 150px;
+    left: 0;
     margin-bottom: 45px;
     font-size: 1.7em;
+    background: rgba(0, 0, 0, 0.5);
+    color: #eeeeee;
+    padding-left: 210px;
   }
   .sidebar-project {
     margin-top: 2em;
