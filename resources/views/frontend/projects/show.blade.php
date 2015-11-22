@@ -52,7 +52,7 @@
     <!-- MENU PROJECT PAGE -->
       <div class="container">
         <div class="sidebar-project hidden-xs col-sm-3">
-          <ul class="list-group">
+          <!--ul class="list-group">
             <li class="list-group-item"><a href="#">Informações</a></li>
             <li class="list-group-item"><a href="#">Atividade</a></li>
             <li class="list-group-item"><a href="#">Contribuidores</a></li>
@@ -63,19 +63,18 @@
             <li class="link-external"><a href="#">Atividade</a></li>
             <li class="link-external"><a href="#">Contribuidores</a></li>
             <li class="link-external"><a href="#">Comentário</a></li>
-          </ul>
+          </ul-->
         </div>
         <div class="content-project col-sm-9">
           <div class="project-details">
             <ul class="list-inline">
-              <li><span class="project-details-label">Data da Criação</span> 17/07/2013</li>
+              <li><span class="project-details-label">Data da Criação</span> {{ date('d/M/Y', strtotime($project->created_at)) }}</li>
               <li><span class="project-details-label">Categoria</span> Social</li>
               <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li>
-              <li><span class="project-details-label">Data de Execução</span> 30/03/2014</li>
             </ul>
           </div>
-          <div class="description">
-            <p>{{ $project->description }}</p>
+          <div class="description jumbotron">
+            {{ $project->description }}
           </div>
 
           <!-- PROJECT PANELS -->
@@ -104,7 +103,7 @@
           <!-- /PROJECT PANELS -->
 
           <!-- PEOPLE -->
-          <div class="people">
+          <!--div class="people">
             <span><strong>16</strong> CONTRIBUIDORES</span>
             <ul class="list-unstyled list-inline">
               <li class="contrib-person"><a href="#"><img src="https://secure.gravatar.com/avatar/61bde54bc933a749f0b706b0dbb31c8c?d=https%3A%2F%2Fwalter.trakt.us%2Fplaceholders%2Fmedium%2Ffry.png&r=pg&s=256"/></a></li>
@@ -112,7 +111,7 @@
               <li class="contrib-person"><a href="#"><img src="https://secure.gravatar.com/avatar/61bde54bc933a749f0b706b0dbb31c8c?d=https%3A%2F%2Fwalter.trakt.us%2Fplaceholders%2Fmedium%2Ffry.png&r=pg&s=256"/></a></li>
               <li class="contrib-person"><a href="#"><img src="https://secure.gravatar.com/avatar/61bde54bc933a749f0b706b0dbb31c8c?d=https%3A%2F%2Fwalter.trakt.us%2Fplaceholders%2Fmedium%2Ffry.png&r=pg&s=256"/></a></li>
             </ul>
-          </div>
+          </div-->
           <!-- /PEOPLE -->
 
           <!-- TEAM -->
@@ -152,7 +151,7 @@
       </div>
 
       <!-- OTHER PROJECTS -->
-      <div class="other-projects">
+      <!--div class="other-projects">
         <h3>Conheça outros projetos</h3>
         <ul class="list-unstyled list-inline">
           <li class="related-project">
@@ -168,14 +167,14 @@
             <span class="loves"><i class="fa fa-heart"></i> <strong>60%</strong></span>
           </li>
         </ul>
-      </div>
+      </div-->
       <!-- /OTHER PROJECTS -->
 
       <!-- SEARCH PROJECTS -->
-      <div class="search-projects">
+      <!--div class="search-projects">
         <h3>Encontre um projeto</h3>
         <input type="text" class="form-control" placeholder="Busque por Vizin, Kartão ou outros..."/>
-      </div>
+      </div-->
       <!-- /OTHER PROJECTS -->
     </section>
     <!-- /PROJECT DESCRIPTION -->
