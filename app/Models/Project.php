@@ -18,6 +18,19 @@ class Project extends Model
 		return $this->belongsToMany('App\Models\Access\User\User','project_users')->withTimestamps();
 	}
 	
+	public function ismember($user,$role = NULL) {
+		if (!$user) return FALSE;
+		
+		if (is_null($role))
+		{
+			return ($this->members()->where('user_id', $user->id)->get()->count() > 0);
+		} 
+		else 
+		{
+			return ($this->members()->where('user_id', $user->id)->where('role',$role)->get()->count() > 0);
+		}
+	}
+	
 	public function profile() 
 	{
 		return $this->hasOne('App\Models\Media', 'id', 'profile_media_id');

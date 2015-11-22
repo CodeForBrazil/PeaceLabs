@@ -81,6 +81,7 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+		$this->middleware('auth');
     	if ($user = auth()->user()) {
 			$this->validate($request, $this->rules);
 	
@@ -92,7 +93,7 @@ class ProjectsController extends Controller
 		 
 			return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto criado.');
     	} else {
-			return Redirect::route('home')->with('flash_error','Operação não permitida.');
+			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
 		}
     }
 
@@ -150,4 +151,54 @@ class ProjectsController extends Controller
 	 
 		return Redirect::to('/')->with('flash_success', 'Projeto apagado.');
     }
+
+    /**
+     * Current user join project as member.
+     *
+     * @param  \App\Model\Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function join(Project $project)
+    {
+		$this->middleware('auth');
+    	if ($user = auth()->user()) {
+    		if ($project->ismember($user)) 
+				$error = 'Você já faz parte do time do projeto/';
+			else {
+				$project->members()->attach($user->id,['role' => 'member']);
+				return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Você entrou no time do projeto.');    	
+			}
+		} else
+			$error = 'Operação não permitida.';
+		
+		return Redirect::route('projects.show', $project->slug)->with('flash_danger', $error);    	
+	}
+
+    /**
+     * Current user leave project.
+     *
+     * @param  \App\Model\Project $project
+     * @return \Illuminate\Http\Response
+     */
+    public function leave(Project $project)
+    {
+		$this->middleware('auth');
+    	if ($user = auth()->user()) {
+    		if ($project->ismember($user,'member')) {
+				$project->members()->detach($user->id);
+				return Redirect::route('projects.show', $project->slug)
+							->with('flash_success', 'Você saiu do time do projeto.');    	
+    		} else {
+    			if ($project->ismember($user,'owner')) {
+    				$error = 'Donos de projeto não podem sair do time.';
+    			} else {
+    				$error = 'Você não faz parte do time do projeto.';
+    			}
+			}
+		} else
+			$error = 'Operação não permitida.';
+		return Redirect::route('projects.show', $project->slug)->with('flash_danger', $error);    	
+    	
+	}
+
 }

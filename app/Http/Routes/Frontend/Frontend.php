@@ -36,4 +36,6 @@ $router->group(['middleware' => 'auth'], function () {
     get('profile/edit', 'ProfileController@edit')->name('frontend.profile.edit');
     patch('profile/update', 'ProfileController@update')->name('frontend.profile.update');
     get('projects/create', 'ProjectsController@create')->name('projects.create');
+    get('projects/{projects}/join', 'ProjectsController@join')->name('projects.join');
+    get('projects/{projects}/leave', 'ProjectsController@leave')->name('projects.leave');
 });

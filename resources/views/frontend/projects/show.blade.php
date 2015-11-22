@@ -101,14 +101,6 @@
  
             </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Fazer...</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
           <!-- /PROJECT PANELS -->
 
           <!-- PEOPLE -->
@@ -125,13 +117,24 @@
 
           <!-- TEAM -->
           <div class="team">
-            <h3>Time</h3>
+            <h3>
+            	Time
+            	@if ( !$project->ismember(auth()->user(),'member') )
+	            	@if ( !$project->ismember(auth()->user(),'owner') )
+						{!! link_to_route('projects.join', 'Participar', array($project->slug), 
+						array('class' => 'btn btn-info btn-xs')) !!}
+					@endif
+			    @else
+					{!! link_to_route('projects.leave', 'Sair', array($project->slug), 
+					array('class' => 'btn btn-warning btn-xs')) !!}
+			    @endif
+            </h3>
             <ul class="list-unstyled list-inline">
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
+	          @foreach( $project->members as $user )
+	            <li class="team-person">
+	            	<img src="/assets/img/avatar.png"/>{{ $user->name }}
+	            </li>
+	          @endforeach
             </ul>
           </div>
           <!-- /TEAM -->

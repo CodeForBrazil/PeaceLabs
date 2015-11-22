@@ -4,6 +4,7 @@ use Illuminate\Database\Seeder;
 
 // composer require laracasts/testdummy
 use Laracasts\TestDummy\Factory as TestDummy;
+use App\Models\Access\User\User as User;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -22,7 +23,7 @@ class ProjectsTableSeeder extends Seeder
 		
         foreach(range(1,5) as $index)  
         {  
-			DB::table('projects')->insert([
+			$id = DB::table('projects')->insertGetId([
                 'name' => str_replace('.', '_', $faker->unique()->name),  
                 'slug' => $faker->lexify('?????'),
                 'description' => $faker->paragraph(1),  
@@ -32,7 +33,13 @@ class ProjectsTableSeeder extends Seeder
                 'hashtag' => str_random(10), 
                 'created_at' => $faker->dateTimeThisMonth(),  
                 'updated_at' => $faker->dateTimeThisMonth(),  
-            ]);  
+            ]);
+            DB::table('project_users')->insert([
+            	'user_id' => User::orderByRaw("random()")->first()->id,
+            	'project_id' => $id,
+            	'role' => 'owner',
+            	'created_at' => new DateTime, 'updated_at' => new DateTime
+			]); 
         }		
     }
 }
