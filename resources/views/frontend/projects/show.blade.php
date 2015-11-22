@@ -68,7 +68,7 @@
         <div class="content-project col-sm-9">
           <div class="project-details">
             <ul class="list-inline">
-              <li><span class="project-details-label">Data da Criação</span> {{ date('d/M/Y', strtotime($project->created_at)) }}</li>
+              <li><span class="project-details-label">Data da Criação</span> {{ date('d/m/Y', strtotime($project->created_at)) }}</li>
               <li><span class="project-details-label">Categoria</span> Social</li>
               <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li>
             </ul>
