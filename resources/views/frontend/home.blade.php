@@ -52,10 +52,17 @@
             @foreach( $projects as $project )
 		        <li class="col-sm-4">
 		          <article class="teaser">
-		            {!! Form::open(array('class' => 'form-inline menu', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
-								{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
-								{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
-					{!! Form::close() !!}
+		          	@role('Administrator')
+				      {!! Form::open(array('class' => 'form-inline menu', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
+						{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
+						{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+					  {!! Form::close() !!}
+			        @endauth
+			        @if ( $project->ismember(auth()->user(),'owner'))
+			          <div class="menu">
+						{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}
+					  </div>
+			        @endif
 		            <header>
 		              <img class="capa" src="{{ $project->cover_url(['height' => 160,'width' => 720, 'crop' => 'fill' ]) }}"/>
 		              <img src="{{ $project->profile_url(['height' => 50,'width' => 50, 'crop' => 'fill']) }}" class="profile img-responsive"/>

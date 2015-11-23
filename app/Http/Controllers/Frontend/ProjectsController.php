@@ -119,7 +119,12 @@ class ProjectsController extends Controller
      */
     public function edit(Project $project)
     {
-        return view('frontend.projects.edit', compact('project'));
+		$this->middleware('auth');
+    	if ( $project->ismember(auth()->user(),'owner') || access()->hasRole('Administrator') ) {
+	        return view('frontend.projects.edit', compact('project'));
+    	} else {
+			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
+		}
     }
 
     /**
@@ -131,15 +136,20 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-		$this->validate($request, $this->rules);
-
-		$input = $this->filter_project_input();
-
-		$input = array_except($input, '_method');
-
-		$project->update($input);
-
-		return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto atualizado.');
+		$this->middleware('auth');
+    	if ( $project->ismember(auth()->user(),'owner') || access()->hasRole('Administrator') ) {
+			$this->validate($request, $this->rules);
+	
+			$input = $this->filter_project_input();
+	
+			$input = array_except($input, '_method');
+	
+			$project->update($input);
+	
+			return Redirect::route('projects.show', $project->slug)->with('flash_success', 'Projeto atualizado.');
+    	} else {
+			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
+		}
     }
 
     /**
@@ -150,9 +160,14 @@ class ProjectsController extends Controller
      */
     public function destroy(Project $project)
     {
-		$project->delete();
+		$this->middleware('auth');
+    	if (access()->hasRole('Administrator')) {
+			$project->delete();
 	 
-		return Redirect::to('/')->with('flash_success', 'Projeto apagado.');
+			return Redirect::to('/')->with('flash_success', 'Projeto apagado.');
+    	} else {
+			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
+		}
     }
 
     /**
