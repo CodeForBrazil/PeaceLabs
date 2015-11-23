@@ -18,7 +18,7 @@
 
   </head>
   <body>
-
+	
 @include('frontend.includes.nav')
 
 @if (Session::has('message'))
@@ -27,29 +27,19 @@
 	</div>
 @endif
 
-<style type="text/css">
-      .header {
-        background-size: 100% auto;
-        background-repeat: no-repeat;
-        color: #EE3051;
-        background-image: url(assets/img/hackathon.jpg);
-        }
-    </style>
-
 <div class="header alt vert">
   <div class="container">
 
-    <center>
-    <h1>HACKATHON CURITIBA 2015</h1>
-      <p class="lead">Plataforma colaborativa de projetos: Hackathon Curitiba 2015</p>
-       <p class="lead">Coloque sua ideia em prática! <br> Convide sua rede para colaborar no projeto dos seus sonhos.</p>
-      <div>&nbsp;</div>
-      </center>
+    <div class="intro">
+	    <h1>HACKATHON CURITIBA 2015</h1>
+	    <p class="lead">Plataforma colaborativa de projetos: Hackathon Curitiba 2015</p>
+	    <p class="lead">Coloque sua ideia em prática! <br> Convide sua rede para colaborar no projeto dos seus sonhos.</p>
+	</div>
+	<div class="action">
       <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
+    </div>
   </div>
 </div>
-
-<hr>
 
 <div id="projetos" class="blurb">
   <div class="container">

@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
   <div class="container">
     <div class="navbar-header">
-      <a href="/" class="navbar-brand">Open Brazil</a>
+      <!--a href="/" class="navbar-brand">Open Brazil</a-->
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -10,6 +10,7 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar">
       <ul class="nav navbar-nav">
+        <li><a href="/">{!! trans('navs.home') !!}</a></li>
         <li><a href="/#projetos">{!! trans('navs.projects') !!}</a></li>
         <li><a href="/#peacelabs">PeaceLabs</a></li>
         <li><a href="/#contato">{!! trans('navs.contact') !!}</a></li>
