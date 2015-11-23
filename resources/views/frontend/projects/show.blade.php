@@ -85,7 +85,7 @@
             </ul>
           </div>
           <div class="description jumbotron">
-            {{ $project->description }}
+    		{!! nl2br(e($project->description)) !!}
           </div>
 
           <!-- PROJECT PANELS -->

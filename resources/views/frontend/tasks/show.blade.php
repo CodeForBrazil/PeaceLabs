@@ -21,7 +21,7 @@
  	@endif
  
     <div class="description jumbotron">
-    	{{ $task->description }}
+    	{!! nl2br(e($task->description)) !!}
 	</div>
 	
       <!-- COMMENT -->
