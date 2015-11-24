@@ -94,6 +94,7 @@
                 <div class="col-lg-12 text-center">
 					<hr class="primary">
                     <h2 class="section-heading">Como funciona?</h2>
+					<br /><br />
                 </div>
             </div>
         </div>
