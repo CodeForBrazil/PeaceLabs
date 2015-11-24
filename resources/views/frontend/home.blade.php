@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>PeaceLabs - Open Brazil</title>
+    <title>Open Brazil</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -31,9 +31,9 @@
   <div class="container">
 
     <div class="intro">
-	    <h1>HACKATHON CURITIBA 2015</h1>
-	    <p class="lead">Plataforma colaborativa de projetos: Hackathon Curitiba 2015</p>
-	    <p class="lead">Coloque sua ideia em prática! <br> Convide sua rede para colaborar no projeto dos seus sonhos.</p>
+	    <h1>OPEN BRAZIL: Hackathon Curitiba</h1>
+	    <p class="lead">Nós somos uma comunidade com foco em tecnologia, fomentando o ecossistema de inovação cívica para melhorar a qualidade de vida em todo o Brasil</p>
+	    <p class="lead">Coloque sua ideia em prática! <br> Convide seus amigos e familiares para colaborar e fazer parte de uma nova forma de governo.</p>
 	</div>
 	<div class="action">
       <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
@@ -103,7 +103,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
 					<hr class="primary">
-                    <h2 class="section-heading">Como funciona?</h2>
+                    <h2 class="section-heading">PeaceLabs: Plataforma colaborativa de projetos! Como participar? Compartilhe:</h2>
 					<br /><br />
                 </div>
             </div>
@@ -116,7 +116,7 @@
                         <h3>Ideias</h3>
                     </div>  
 					<ul>				
-						<li class="text-muted">O que é paz para você?</li>
+						<li class="text-muted">Tem alguma ideia de projeto que esta querendo tirar do papel?</li>
 						<li class="text-muted">Qual solução social, ambiental ou econômica você tem?</li>
 						<li class="text-muted">Qual o problema que você acha que a humanidade deve resolver hoje?</li>
                     </ul>
@@ -139,8 +139,8 @@
                         <h3>Dinehiro</h3>
                     </div>
 					<ul>			
-						<li class="text-muted">Você é um entusiasta dos projetos sociais? Gosta de projetos crowdfunding online?</li>
-						<li class="text-muted">Você prefere investir seu dinheiro em soluções que melhorar nosso mundo?</li>
+						<li class="text-muted">Voce é uma empresa buscando otimizar seus investimentos sociais?</li>
+						<li class="text-muted">Você prefere investir seu dinheiro em soluções para melhorar nosso mundo?</li>
 						<li class="text-muted">Conhce alguem que quer investir seu dinheiro melhor?</li>
                     </ul>
                 </div>
