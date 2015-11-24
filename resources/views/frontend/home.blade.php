@@ -32,8 +32,8 @@
 
     <div class="intro">
 	    <h1>OPEN BRAZIL: Hackathon Curitiba</h1>
-	    <p class="lead">Nós somos uma comunidade com foco em tecnologia, fomentando o ecossistema de inovação cívica para melhorar a qualidade de vida em todo o Brasil</p>
-	    <p class="lead">Coloque sua ideia em prática! <br> Convide seus amigos e familiares para colaborar e fazer parte de uma nova forma de governo.</p>
+	    <p class="lead">Bem vindo a plataforma de co criação de projetos Open Brazil!</p>
+      <p class="lead">Tem uma ideia com foco em tecnologia e inovação cívica para melhorar a qualidade de vida em todo o Brasil? <br> Crie seu projeto abaixo! </p>
 	</div>
 	<div class="action">
       <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
@@ -103,7 +103,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
 					<hr class="primary">
-                    <h2 class="section-heading">PeaceLabs: Plataforma colaborativa de projetos! Como participar? Compartilhe:</h2>
+                    <h2 class="section-heading">PeaceLabs é uma plataforma colaborativa de projetos que foi co criada por hackers civicos do CodeForCuritiba. <br> Aqui você pode compartilhar suas ideias e habilidades para fazer de suas ideias um projeto bem sucedido!</h2>
 					<br /><br />
                 </div>
             </div>
@@ -132,17 +132,6 @@
 						<li class="text-muted">O que você adora fazer e sabe que pode ter valor a outras pessoas?</li>
 					</ul>
 					
-                </div>
-				<div class="col-lg-4 col-md-6">
-                    <div class="service-box text-center">
-                        <i class="fa fa-4x fa-money wow bounceIn text-primary" data-wow-delay=".1s"></i>
-                        <h3>Dinehiro</h3>
-                    </div>
-					<ul>			
-						<li class="text-muted">Voce é uma empresa buscando otimizar seus investimentos sociais?</li>
-						<li class="text-muted">Você prefere investir seu dinheiro em soluções para melhorar nosso mundo?</li>
-						<li class="text-muted">Conhce alguem que quer investir seu dinheiro melhor?</li>
-                    </ul>
                 </div>
             </div>
         </div>
