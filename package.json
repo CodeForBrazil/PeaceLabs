@@ -1,10 +1,19 @@
 {
-    "private": true,
-    "devDependencies": {
-        "gulp": "^3.8.8"
-    },
-    "dependencies": {
-        "laravel-elixir": "^3.0.0",
-        "bootstrap-sass": "^3.0.0"
-    }
+  "private": true,
+  "devDependencies": {
+    "gulp": "^3.8.8"
+  },
+  "dependencies": {
+    "bootstrap-sass": "^3.0.0",
+    "browser-pack": "^6.0.1",
+    "core-util-is": "^1.0.2",
+    "deps-sort": "^2.0.0",
+    "graceful-fs": "^4.1.2",
+    "inherits": "^2.0.1",
+    "insert-module-globals": "^7.0.1",
+    "isarray": "0.0.1",
+    "laravel-elixir": "^3.0.0",
+    "minimatch": "^3.0.0",
+    "module-deps": "^4.0.2"
+  }
 }

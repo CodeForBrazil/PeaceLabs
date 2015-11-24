@@ -12,13 +12,31 @@
       <div class="row project-title">
         <div class="container">
           <div class="col-xs-12">
+          	@role('Administrator')
             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
+	        @endauth
 	            <h1>
 	            	{{ $project->name }}
-					{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
+
+			        @if ( $project->ismember(auth()->user(),'owner') || access()->hasrole('Administrator') )
+					{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}
+			        @endif
+
+		          	@role('Administrator')
 					{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+			        @endauth
+
+	            	@if ( !$project->hasliked(auth()->user()) )
+						{!! link_to_route('projects.like', 'Curtir', array($project->slug), 
+						array('class' => 'btn btn-success btn-xs')) !!}
+				    @else
+						{!! link_to_route('projects.dislike', 'Descurtir', array($project->slug), 
+						array('class' => 'btn btn-default btn-xs')) !!}
+				    @endif
 	            </h1>
+          	@role('Administrator')
 			{!! Form::close() !!}
+			@endauth
 
           </div>
         </div>
@@ -29,16 +47,9 @@
       <div class="row loves">
         <div class="container">
           <div class="col-xs-12">
-            <span class="kpi"><i class="fa fa-heart"></i> <strong>64</strong> loves</span>
-          </div>
-        </div>
-      </div>
-      <div class="row kpis">
-        <div class="container">
-          <div class="col-xs-12">
-            <span class="kpi"><strong>2564</strong> views</span>
-            <span class="kpi"><strong>123</strong> cheers</span>
-            <span class="kpi"><strong>87</strong> followers</span>
+            <span class="kpi" title="Likes"><i class="fa fa-heart"></i> <strong>{{ $project->likes->count() }}</strong></span>&nbsp;
+            <span class="kpi" title="Views"><i class="fa fa-eye"></i> <strong>{{ $project->viewsCount() }}</strong></span>&nbsp;
+            <span class="kpi" title="Participantes"><i class="fa fa-users"></i> <strong>{{ $project->members->count() }}</strong></span>
           </div>
         </div>
       </div>
@@ -52,7 +63,7 @@
     <!-- MENU PROJECT PAGE -->
       <div class="container">
         <div class="sidebar-project hidden-xs col-sm-3">
-          <ul class="list-group">
+          <!--ul class="list-group">
             <li class="list-group-item"><a href="#">Informações</a></li>
             <li class="list-group-item"><a href="#">Atividade</a></li>
             <li class="list-group-item"><a href="#">Contribuidores</a></li>
@@ -63,30 +74,28 @@
             <li class="link-external"><a href="#">Atividade</a></li>
             <li class="link-external"><a href="#">Contribuidores</a></li>
             <li class="link-external"><a href="#">Comentário</a></li>
-          </ul>
+          </ul-->
         </div>
         <div class="content-project col-sm-9">
           <div class="project-details">
             <ul class="list-inline">
-              <li><span class="project-details-label">Data da Criação</span> 17/07/2013</li>
-              <li><span class="project-details-label">Categoria</span> Social</li>
-              <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li>
-              <li><span class="project-details-label">Data de Execução</span> 30/03/2014</li>
+              <li><span class="project-details-label">Data da Criação</span> {{ date('d/m/Y', strtotime($project->created_at)) }}</li>
+              <!--li><span class="project-details-label">Categoria</span> Social</li>
+              <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li-->
             </ul>
           </div>
-          <div class="description">
-            <p>{{ $project->description }}</p>
+          <div class="description jumbotron">
+    		{!! nl2br(e($project->description)) !!}
           </div>
 
           <!-- PROJECT PANELS -->
+		  @if ( $project->tasks->count() || $project->ismember(auth()->user()) || access()->hasrole('Administrator') )
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Precisamos de ajuda para</h3>
             </div>
             <div class="panel-body">
-			    @if ( !$project->tasks->count() )
-			        Não tem tarefa
-			    @else
+			    @if ( $project->tasks->count() )
 			        <ul>
 			            @foreach( $project->tasks as $task )
 			                <li>
@@ -95,24 +104,19 @@
 			            @endforeach
 			        </ul>
 			    @endif
-			    <p>
-			           {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug) !!}
-			    </p>
+			    @if ($project->ismember(auth()->user()) || access()->hasrole('Administrator'))
+				    <p>
+				      {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug, array('class' => 'btn btn-info btn-xs')) !!}
+				    </p>
+			    @endif
  
             </div>
           </div>
-          <div class="panel panel-default">
-            <div class="panel-heading">
-              <h3 class="panel-title">Fazer...</h3>
-            </div>
-            <div class="panel-body">
-              Panel content
-            </div>
-          </div>
+          @endif
           <!-- /PROJECT PANELS -->
 
           <!-- PEOPLE -->
-          <div class="people">
+          <!--div class="people">
             <span><strong>16</strong> CONTRIBUIDORES</span>
             <ul class="list-unstyled list-inline">
               <li class="contrib-person"><a href="#"><img src="https://secure.gravatar.com/avatar/61bde54bc933a749f0b706b0dbb31c8c?d=https%3A%2F%2Fwalter.trakt.us%2Fplaceholders%2Fmedium%2Ffry.png&r=pg&s=256"/></a></li>
@@ -120,51 +124,49 @@
               <li class="contrib-person"><a href="#"><img src="https://secure.gravatar.com/avatar/61bde54bc933a749f0b706b0dbb31c8c?d=https%3A%2F%2Fwalter.trakt.us%2Fplaceholders%2Fmedium%2Ffry.png&r=pg&s=256"/></a></li>
               <li class="contrib-person"><a href="#"><img src="https://secure.gravatar.com/avatar/61bde54bc933a749f0b706b0dbb31c8c?d=https%3A%2F%2Fwalter.trakt.us%2Fplaceholders%2Fmedium%2Ffry.png&r=pg&s=256"/></a></li>
             </ul>
-          </div>
+          </div-->
           <!-- /PEOPLE -->
 
           <!-- TEAM -->
           <div class="team">
-            <h3>Time</h3>
+            <h3>
+            	Time
+            	@if ( !$project->ismember(auth()->user(),'member') )
+	            	@if ( !$project->ismember(auth()->user(),'owner') )
+						{!! link_to_route('projects.join', 'Participar', array($project->slug), 
+						array('class' => 'btn btn-info btn-xs')) !!}
+					@endif
+			    @else
+					{!! link_to_route('projects.leave', 'Sair', array($project->slug), 
+					array('class' => 'btn btn-warning btn-xs')) !!}
+			    @endif
+            </h3>
             <ul class="list-unstyled list-inline">
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
-              <li class="team-person"><img src="https://trakt.tv/assets/placeholders/thumb/poster-2d5709c1b640929ca1ab60137044b152.png"/><a href="#">Stephan Garcia</a></li>
+	          @foreach( $project->members as $user )
+	            <li class="team-person">
+	            	<img src="/assets/img/avatar.png"/>{{ $user->name }}
+	            </li>
+	          @endforeach
             </ul>
           </div>
           <!-- /TEAM -->
 
+		  <hr />
+
           <!-- COMMENT -->
           <div class="comments">
-            <h3>Comentários</h3>
-            <ul class="list-unstyled">
-              <li class="comment">
-                <i class="fa fa-comment-o col-sm-2"></i>
-                <div class="col-sm-10">
-                  <p><strong>Nima Kazerooni</strong></p>
-                  <p>Que massa, cara!</p>
-                </div>
-              </li>
-              <li class="comment">
-                <i class="fa fa-comment-o col-sm-2"></i>
-                <div class="col-sm-10">
-                  <p><strong>Rodrigo Alvarenga</strong></p>
-                  <p>Cara, puta que projeto que massa.</p>
-                </div>
-              </li>
-            </ul>
+
+			@include('frontend/includes/comments')
+
           </div>
           <!-- /COMMENT -->
-
 
         </div>
 
       </div>
 
       <!-- OTHER PROJECTS -->
-      <div class="other-projects">
+      <!--div class="other-projects">
         <h3>Conheça outros projetos</h3>
         <ul class="list-unstyled list-inline">
           <li class="related-project">
@@ -180,14 +182,14 @@
             <span class="loves"><i class="fa fa-heart"></i> <strong>60%</strong></span>
           </li>
         </ul>
-      </div>
+      </div-->
       <!-- /OTHER PROJECTS -->
 
       <!-- SEARCH PROJECTS -->
-      <div class="search-projects">
+      <!--div class="search-projects">
         <h3>Encontre um projeto</h3>
         <input type="text" class="form-control" placeholder="Busque por Vizin, Kartão ou outros..."/>
-      </div>
+      </div-->
       <!-- /OTHER PROJECTS -->
     </section>
     <!-- /PROJECT DESCRIPTION -->

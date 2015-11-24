@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Media;
+use DB;
 
 class Project extends Model
 {
@@ -12,6 +12,45 @@ class Project extends Model
 	public function tasks()
 	{
 		return $this->hasMany('App\Models\Task');
+	}
+	
+	public function members()
+	{
+		return $this->belongsToMany('App\Models\Access\User\User','project_users')->withTimestamps();
+	}
+	
+	public function ismember($user,$role = NULL) {
+		if (!$user) return FALSE;
+		
+		if (is_null($role))
+		{
+			return ($this->members()->where('user_id', $user->id)->get()->count() > 0);
+		} 
+		else 
+		{
+			return ($this->members()->where('user_id', $user->id)->where('role',$role)->get()->count() > 0);
+		}
+	}
+
+	public function likes()
+	{
+		return $this->belongsToMany('App\Models\Access\User\User','project_likes')->withTimestamps();
+	}
+
+	public function hasliked($user) {
+		if (!$user) return FALSE;
+		
+		return ($this->likes()->where('user_id', $user->id)->get()->count() > 0);
+	}
+
+	public function views()
+	{
+		return $this->belongsToMany('App\Models\Access\User\User','project_views')->withTimestamps();
+	}
+
+	public function viewsCount()
+	{
+	    return DB::table('project_views')->where('project_id',$this->id)->count();
 	}
 	
 	public function profile() 

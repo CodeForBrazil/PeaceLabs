@@ -29,7 +29,7 @@ class FrontendController extends Controller
      */
     public function home()
     {
-    	$projects = Project::limit(9)->orderBy('created_at', 'desc')->get();
+    	$projects = Project::orderBy('created_at', 'desc')->get();
         return view('frontend.home', compact('projects'));
     }
     /**

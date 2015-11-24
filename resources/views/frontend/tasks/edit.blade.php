@@ -5,7 +5,7 @@
   <div class="main container">
     <h2>Editar a tarefa <em>{{ $task->name }}</em></h2>
  
-    {!! Form::model($task, ['method' => 'PATCH', 'route' => ['projects.tasks.update', $project->slug, $task->slug]]) !!}
+    {!! Form::model($task, ['method' => 'PATCH', 'route' => ['projects.tasks.update', $project->slug, $task->slug], 'class' => 'form-horizontal']) !!}
         @include('frontend/tasks/partials/_form', ['submit_text' => 'Salvar'])
     {!! Form::close() !!}
   </div>
