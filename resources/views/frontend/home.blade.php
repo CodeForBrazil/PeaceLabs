@@ -3,7 +3,7 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Open Brazil</title>
+    <title>CodeForBrazil</title>
     <meta name="generator" content="Bootply" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -31,9 +31,9 @@
   <div class="container">
 
     <div class="intro">
-	    <h1>OPEN BRAZIL: Hackathon Curitiba</h1>
+	    <h1>CODE FOR BRAZIL</h1>
 	    <p class="lead">Bem vindo a plataforma de co criação de projetos Open Brazil!</p>
-      <p class="lead">Tem uma ideia com foco em tecnologia e inovação cívica para melhorar a qualidade de vida em todo o Brasil? <br> Crie seu projeto abaixo! </p>
+      <p class="lead">Tem uma ideia com foco em tecnologia e inovação cívica para melhorar a qualidade de vida da sua cidade? <br> Crie seu projeto abaixo! </p>
 	</div>
 	<div class="action">
       <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
@@ -103,7 +103,7 @@
             <div class="row">
                 <div class="col-lg-12 text-center">
 					<hr class="primary">
-                    <h2 class="section-heading">PeaceLabs é uma plataforma colaborativa de projetos que foi co criada por hackers civicos do CodeForCuritiba. <br> Aqui você pode compartilhar suas ideias e habilidades para fazer de suas ideias um projeto bem sucedido!</h2>
+                    <h3 class="section-heading">PeaceLabs é uma plataforma colaborativa de projetos que foi co criada por hackers civicos do CodeForCuritiba. <br> Aqui você pode compartilhar suas ideias, tempo e habilidades para fazer de suas ideias um projeto de cidadania bem sucedido!</h3>
 					<br /><br />
                 </div>
             </div>
