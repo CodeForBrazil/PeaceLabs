@@ -88,12 +88,12 @@
   </div>
 </div>
 
-<div class="" id="sec2 services">
+<div class="" id="services">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
+					<hr class="primary">
                     <h2 class="section-heading">Como funciona?</h2>
-                    <hr class="primary">
                 </div>
             </div>
         </div>
