@@ -10,11 +10,11 @@ use App\Http\Controllers\Controller;
 
 use Input;
 use Redirect;
-use Illuminate\Support\Str;
 
 class TasksController extends Controller {
 	protected $rules = [
 		'name' => ['required', 'min:3'],
+		'slug' => ['required'],
 		'description' => ['required'],
 	];
 	 
@@ -28,29 +28,7 @@ class TasksController extends Controller {
 	{
 		return view('frontend.tasks.index', compact('project'));
 	}
-	
- 	/**
-	 * Create a conversation slug.
-	 *
-	 * @param  string $title
-	 * @return string
-	 */
-	protected function makeSlugFromTitle($title)
-	{
-	    $slug = Str::slug($title);
-	    $count = Project::whereRaw("slug LIKE '{$slug}-%' OR slug = '{$slug}'")->count();
-	    return $count ? "{$slug}-{$count}" : $slug;
-	}
-
-	protected function filter_task_input() {
-		$input = Input::all();
-
-		$input['slug'] = $this->makeSlugFromTitle($input['name']);
-
-		$input = array_except($input, '_method');
-		return $input;	
-	}
-			
+ 
 	/**
 	 * Show the form for creating a new resource.
 	 *
@@ -59,12 +37,7 @@ class TasksController extends Controller {
 	 */
 	public function create(Project $project)
 	{
-		$this->middleware('auth');
-    	if ( $project->ismember(auth()->user()) || access()->hasRole('Administrator') ) {
-			return view('frontend.tasks.create', compact('project'));
-    	} else {
-			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
-		}
+		return view('frontend.tasks.create', compact('project'));
 	}
  
 	/**
@@ -76,20 +49,13 @@ class TasksController extends Controller {
 	 */
 	public function store(Project $project, Request $request)
 	{
-		$this->middleware('auth');
-    	if ( $project->ismember(auth()->user()) || access()->hasRole('Administrator') ) {
-			$this->validate($request, $this->rules);
-	
-			$input = $this->filter_task_input();
+		$this->validate($request, $this->rules);
 
-			$input['project_id'] = $project->id;
-
-			Task::create( $input );
-		 
-			return Redirect::route('projects.show', $project->slug)->with('message', 'Nova tarefa criada.');
-    	} else {
-			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
-		}
+		$input = Input::all();
+		$input['project_id'] = $project->id;
+		Task::create( $input );
+	 
+		return Redirect::route('projects.show', $project->slug)->with('message', 'Nova tarefa criada.');
 	}
  
 	/**
@@ -113,12 +79,7 @@ class TasksController extends Controller {
 	 */
 	public function edit(Project $project, Task $task)
 	{
-		$this->middleware('auth');
-    	if ( $project->ismember(auth()->user()) || access()->hasRole('Administrator') ) {
-			return view('frontend.tasks.edit', compact('project', 'task'));
-    	} else {
-			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
-		}
+		return view('frontend.tasks.edit', compact('project', 'task'));
 	}
  
 	/**
@@ -131,18 +92,12 @@ class TasksController extends Controller {
 	 */
 	public function update(Project $project, Task $task, Request $request)
 	{
-		$this->middleware('auth');
-    	if ( $project->ismember(auth()->user()) || access()->hasRole('Administrator') ) {
-			$this->validate($request, $this->rules);
-	
-			$input = $this->filter_task_input();
+		$this->validate($request, $this->rules);
 
-			$task->update($input);
-		 
-			return Redirect::route('projects.tasks.show', [$project->slug, $task->slug])->with('message', 'Tarefa atualizada.');
-    	} else {
-			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
-		}
+		$input = array_except(Input::all(), '_method');
+		$task->update($input);
+	 
+		return Redirect::route('projects.tasks.show', [$project->slug, $task->slug])->with('message', 'Tarefa atualizada.');
 	}
  
 	/**
@@ -154,14 +109,9 @@ class TasksController extends Controller {
 	 */
 	public function destroy(Project $project, Task $task)
 	{
-		$this->middleware('auth');
-    	if ( $project->ismember(auth()->user(),'owner') || access()->hasRole('Administrator') ) {
-			$task->delete();
-		 
-			return Redirect::route('projects.show', $project->slug)->with('message', 'Tarefa removida.');
-    	} else {
-			return Redirect::route('home')->with('flash_danger','Operação não permitida.');
-		}
+		$task->delete();
+	 
+		return Redirect::route('projects.show', $project->slug)->with('message', 'Tarefa removida.');
 	}
 
 }

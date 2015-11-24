@@ -43,9 +43,6 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								{!! Form::submit(trans('labels.register_button'), ['class' => 'btn btn-primary']) !!}
-								<div style="float:right;">
-	                                {!! link_to('auth/login', trans('labels.login_box_title')) !!}
-								</div>
 							</div>
 						</div>
 

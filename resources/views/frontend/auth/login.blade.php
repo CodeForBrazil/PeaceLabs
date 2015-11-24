@@ -41,11 +41,7 @@
                             <div class="col-md-6 col-md-offset-4">
                                 {!! Form::submit(trans('labels.login_button'), ['class' => 'btn btn-primary', 'style' => 'margin-right:15px']) !!}
 
-								<div style="float:right;">
-	                                {!! link_to('password/email', trans('labels.forgot_password')) !!}
-	                                <br />
-	                                {!! link_to('auth/register', trans('labels.register_box_title')) !!}
-								</div>
+                                {!! link_to('password/email', trans('labels.forgot_password')) !!}
                             </div>
                         </div>
 

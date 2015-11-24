@@ -26,5 +26,5 @@ return [
     'create' => 'Novo projeto',
 
     'projects' => 'Projetos',
-    'contact' => 'Contato',
+    'contact' => 'Contacto',
 ];

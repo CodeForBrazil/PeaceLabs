@@ -73,12 +73,12 @@ return array(
         /*
          * Whether or not the user has to confirm their email when signing up
          */
-        'confirm_email' => false,
+        'confirm_email' => true,
 
         /*
          * Whether or not the users email can be changed on the edit profile screen
          */
-        'change_email' => true,
+        'change_email' => false,
     ],
 
     /*

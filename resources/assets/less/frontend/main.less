@@ -24,12 +24,6 @@ body {
   margin-top: 60px;
 }
 
-.alert {
-    position: absolute;
-    z-index: 10;
-    right: 4px;  
-}
-
 .link-external a:after {
   content: "\f08e";
   font-family: FontAwesome;
@@ -61,14 +55,6 @@ h1,h2,h3,h4,.lead,.btn,.navbar a {
 
 .loves .fa-heart {
   color: #9e2424;
-}
-
-.loves .fa-eye {
-  color: #e7e706;
-}
-
-.loves .fa-users {
-  color: #428BCA;
 }
 
 .poster {
@@ -121,7 +107,9 @@ h1,h2,h3,h4,.lead,.btn,.navbar a {
 }
 
 .project-description .description {
-  font-size: 1.2em;
+  margin: 1em 0;
+  display: inline-block;
+  clear: both; /*.clearfix()*/
 }
 
 .project-description .project-details {
@@ -291,19 +279,15 @@ span.other-projects-title {
   .poster {
     width: 140px;
     position: absolute;
-    z-index: 2;
   }
 
   .project-title {
     position: relative;
-    top: 45px;
+    top: 2em;
     bottom: 0em;
-    left: 0;
+    left: 150px;
     margin-bottom: 45px;
     font-size: 1.7em;
-    background: rgba(0, 0, 0, 0.5);
-    color: #eeeeee;
-    padding-left: 210px;
   }
 
 	.sidebar-project {

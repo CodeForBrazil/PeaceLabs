@@ -1,7 +1,7 @@
 <div class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
   <div class="container">
     <div class="navbar-header">
-      <!--a href="/" class="navbar-brand">Open Brazil</a-->
+      <a href="/" class="navbar-brand">Open Brazil</a>
       <a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -10,19 +10,18 @@
     </div>
     <div class="navbar-collapse collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><a href="/">{!! trans('navs.home') !!}</a></li>
         <li><a href="/#projetos">{!! trans('navs.projects') !!}</a></li>
         <li><a href="/#peacelabs">PeaceLabs</a></li>
         <li><a href="/#contato">{!! trans('navs.contact') !!}</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <!--li class="dropdown">
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ trans('menus.language-picker.language') }} <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
             <li>{!! link_to('lang/en', trans('menus.language-picker.langs.en')) !!}</li>
             <li>{!! link_to('lang/pt-BR', trans('menus.language-picker.langs.pt-BR')) !!}</li>
           </ul>
-        </li-->
+        </li>
 
         @if (Auth::guest())
           <li>{!! link_to('auth/login', trans('navs.login')) !!}</li>

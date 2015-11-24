@@ -48,7 +48,7 @@ class AuthController extends Controller
             //Use native auth login because do not need to check status when registering
             auth()->login($this->auth->create($request->all()));
 
-            return redirect()->route('home');
+            return redirect()->route('frontend.dashboard');
         }
     }
 
@@ -85,7 +85,7 @@ class AuthController extends Controller
                 $this->clearLoginAttempts($request);
             }
 
-            return redirect()->intended('/');
+            return redirect()->intended('/dashboard');
         } catch (GeneralException $e) {
             // If the login attempt was unsuccessful we will increment the number of attempts
             // to login and redirect the user back to the login form. Of course, when this

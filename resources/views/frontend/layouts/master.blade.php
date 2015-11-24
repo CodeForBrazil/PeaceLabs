@@ -31,17 +31,18 @@
             @include('includes.partials.messages')
             @yield('content')
 
-      <section class="container-fluid" style="border-top: 1px solid #DDD;">
+      <section class="footer">
         <ul class="list-inline">
           <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
           <li><a href="#">Terms</a></li>
-          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Privacy</a></li>
         </ul>
-        <ul class="list-inline social" style="font-size: 1.5em;">
+        <ul class="list-inline social">
           <li><a href="#"></a><i class="fa fa-facebook"></i></li>
           <li><a href="#"></a><i class="fa fa-twitter"></i></li>
         </ul>
-        <div class="copyright" style="font-size: 10px;">
+        <div class="copyright">
           <p>Copyright ©2015, Peace Enterprises, Inc. All rights reserved.</p>
         </div>
       </section>
