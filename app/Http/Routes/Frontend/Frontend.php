@@ -38,4 +38,6 @@ $router->group(['middleware' => 'auth'], function () {
     get('projects/create', 'ProjectsController@create')->name('projects.create');
     get('projects/{projects}/join', 'ProjectsController@join')->name('projects.join');
     get('projects/{projects}/leave', 'ProjectsController@leave')->name('projects.leave');
+    get('projects/{projects}/like', 'ProjectsController@like')->name('projects.like');
+    get('projects/{projects}/dislike', 'ProjectsController@dislike')->name('projects.dislike');
 });

@@ -1,6 +1,13 @@
 {
+<<<<<<< HEAD
   "css/backend.css": "css/backend-66773fb62d.css",
   "css/frontend.css": "css/frontend-0ea2318658.css",
   "js/backend.js": "js/backend-864b9e7e0b.js",
   "js/frontend.js": "js/frontend-c7c13382c8.js"
+=======
+  "css/backend.css": "css/backend-a1eabbb142.css",
+  "css/frontend.css": "css/frontend-2c115eb007.css",
+  "js/backend.js": "js/backend-3b4f70a1d9.js",
+  "js/frontend.js": "js/frontend-05c10beef6.js"
+>>>>>>> c8207d56c093b3232685664eb18931dfb426378c
 }

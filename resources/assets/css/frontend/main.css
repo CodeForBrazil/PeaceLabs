@@ -10941,7 +10941,16 @@ h4,
 .loves .fa-heart {
   color: #9e2424;
 }
+<<<<<<< HEAD
 
+=======
+.loves .fa-eye {
+  color: #e7e706;
+}
+.loves .fa-users {
+  color: #428BCA;
+}
+>>>>>>> c8207d56c093b3232685664eb18931dfb426378c
 .poster {
   width: 80px;
   box-shadow: 0 0 30px #333;

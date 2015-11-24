@@ -30,6 +30,23 @@ class Project extends Model
 			return ($this->members()->where('user_id', $user->id)->where('role',$role)->get()->count() > 0);
 		}
 	}
+
+	public function likes()
+	{
+		return $this->belongsToMany('App\Models\Access\User\User','project_likes')->withTimestamps();
+	}
+
+	public function hasliked($user) {
+		if (!$user) return FALSE;
+		
+		return ($this->likes()->where('user_id', $user->id)->get()->count() > 0);
+	}
+
+	public function views()
+	{
+		return $this->belongsToMany('App\Models\Access\User\User','project_views')->withTimestamps();
+	}
+
 	
 	public function profile() 
 	{

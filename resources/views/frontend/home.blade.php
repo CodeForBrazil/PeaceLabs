@@ -18,7 +18,7 @@
 
   </head>
   <body>
-
+	
 @include('frontend.includes.nav')
 
 @if (Session::has('message'))
@@ -30,14 +30,16 @@
 <div class="header alt vert">
   <div class="container">
 
-    <h1>Peacelabs: Code For Brazil - HACKATON CURITIBA</h1>
-      <p class="lead">Plataforma colaborativa dos projetos: Code For Brazil</p>
-      <div>&nbsp;</div>
+    <div class="intro">
+	    <h1>HACKATHON CURITIBA 2015</h1>
+	    <p class="lead">Plataforma colaborativa de projetos: Hackathon Curitiba 2015</p>
+	    <p class="lead">Coloque sua ideia em prática! <br> Convide sua rede para colaborar no projeto dos seus sonhos.</p>
+	</div>
+	<div class="action">
       <a href="{{ route('projects.create') }}" class="btn btn-default btn-lg">Criar um projeto</a>
+    </div>
   </div>
 </div>
-
-<hr>
 
 <div id="projetos" class="blurb">
   <div class="container">
@@ -50,10 +52,17 @@
             @foreach( $projects as $project )
 		        <li class="col-sm-4">
 		          <article class="teaser">
-		            {!! Form::open(array('class' => 'form-inline menu', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
-								{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
-								{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
-					{!! Form::close() !!}
+		          	@role('Administrator')
+				      {!! Form::open(array('class' => 'form-inline menu', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
+						{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
+						{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+					  {!! Form::close() !!}
+			        @endauth
+			        @if ( $project->ismember(auth()->user(),'owner'))
+			          <div class="menu">
+						{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}
+					  </div>
+			        @endif
 		            <header>
 		              <img class="capa" src="{{ $project->cover_url(['height' => 160,'width' => 720, 'crop' => 'fill' ]) }}"/>
 		              <img src="{{ $project->profile_url(['height' => 50,'width' => 50, 'crop' => 'fill']) }}" class="profile img-responsive"/>
@@ -79,83 +88,55 @@
   </div>
 </div>
 
-<div class="callout" id="peacelabs">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8 col-md-offset-2 text-center">
-        <h1>O que é PeaceLabs</h1>
-        <p>Peace Enterprises, uma plataforma para empresas criarem de forma colaborativa
-          seus projetos de sustentabilidade e responsabilidade social, engajando seus funcionários,
-          clientes e comunidade no processo<br><br></p>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-lightbulb-o"></i>
-          <h4>Ideias</h4>
-          <p>Up-up-and-away with this starter template.</p>
+<div class="" id="services">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+					<hr class="primary">
+                    <h2 class="section-heading">Como funciona?</h2>
+					<br /><br />
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-4 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-paw"></i>
-          <h4>Habilidades</h4>
-          <p>For you are a magnet and I am steel.</p>
+        <div class="container">
+            <div class="row">
+				<div class="col-lg-4 col-md-6">
+                    <div class="service-box text-center">
+                        <i class="fa fa-4x fa-lightbulb-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
+                        <h3>Ideias</h3>
+                    </div>  
+					<ul>				
+						<li class="text-muted">O que é paz para você?</li>
+						<li class="text-muted">Qual solução social, ambiental ou econômica você tem?</li>
+						<li class="text-muted">Qual o problema que você acha que a humanidade deve resolver hoje?</li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6 ">
+                    <div class="service-box text-center">
+                        <i class="fa fa-4x fa fa-cogs wow bounceIn text-primary" data-wow-delay=".3s"></i>
+                        <h3>Habilidades</h3>
+					</div>
+					<ul>
+						<li class="text-muted">Você é um designer, programador ou gerente de projetos? Ou talvez um escritor, comerciante ou networker?</li>
+						<li class="text-muted">Você sabe como fazer algo melhor do que outras pessoas?</li>
+						<li class="text-muted">O que você adora fazer e sabe que pode ter valor a outras pessoas?</li>
+					</ul>
+					
+                </div>
+				<div class="col-lg-4 col-md-6">
+                    <div class="service-box text-center">
+                        <i class="fa fa-4x fa-money wow bounceIn text-primary" data-wow-delay=".1s"></i>
+                        <h3>Dinehiro</h3>
+                    </div>
+					<ul>			
+						<li class="text-muted">Você é um entusiasta dos projetos sociais? Gosta de projetos crowdfunding online?</li>
+						<li class="text-muted">Você prefere investir seu dinheiro em soluções que melhorar nosso mundo?</li>
+						<li class="text-muted">Conhce alguem que quer investir seu dinheiro melhor?</li>
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="col-sm-4 text-center">
-        <div class="featurette-item">
-          <i class="fa fa-dollar"></i>
-          <h4>Dinheiro</h4>
-          <p>Protect yourself. Don't design like it's 1999.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="blurb" id="contato">
-  <div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <h3>Contato</h3>
-    <!--div class="alert alert-success"><strong><span class="glyphicon glyphicon-send"></span> Success! Message sent. (If form ok!)</strong></div>
-      <div class="alert alert-danger"><span class="glyphicon glyphicon-alert"></span><strong> Error! Please check the inputs. (If form error!)</strong></div -->
-    </div>
-    <form role="form" action="" method="post" >
-      <div class="col-lg-6">
-        <div class="form-group">
-          <label for="InputName">Seu nome</label>
-          <div class="input-group">
-            <input type="text" class="form-control" name="InputName" id="InputName" placeholder="Enter Name" required>
-            <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
-        </div>
-        <div class="form-group">
-          <label for="InputEmail">Seu email</label>
-          <div class="input-group">
-            <input type="email" class="form-control" id="InputEmail" name="InputEmail" placeholder="Enter Email" required  >
-            <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
-        </div>
-        <div class="form-group">
-          <label for="InputMessage">Mensagem</label>
-          <div class="input-group"
-  >
-            <textarea name="InputMessage" id="InputMessage" class="form-control" rows="5" required></textarea>
-            <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
-        </div>
-        <div class="form-group">
-          <label for="InputReal">O que faz 4+3?</label>
-          <div class="input-group">
-            <input type="text" class="form-control" name="InputReal" id="InputReal" required>
-            <span class="input-group-addon"><i class="fa fa-check"></i></span></div>
-        </div>
-        <input type="submit" name="submit" id="submit" value="Submit" class="btn btn-info center">
-      </div>
-    </form>
-  </div>
-
-  </div>
+    
 </div>
 
 

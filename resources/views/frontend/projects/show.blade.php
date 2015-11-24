@@ -12,13 +12,31 @@
       <div class="row project-title">
         <div class="container">
           <div class="col-xs-12">
+          	@role('Administrator')
             {!! Form::open(array('class' => 'form-inline', 'method' => 'DELETE', 'route' => array('projects.destroy', $project->slug))) !!}
+	        @endauth
 	            <h1>
 	            	{{ $project->name }}
-					{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}&nbsp;
+
+			        @if ( $project->ismember(auth()->user(),'owner') || access()->hasrole('Administrator') )
+					{!! link_to_route('projects.edit', 'Editar', array($project->slug), array('class' => 'btn btn-info btn-xs')) !!}
+			        @endif
+
+		          	@role('Administrator')
 					{!! Form::submit('Deletar', array('class' => 'btn btn-danger btn-xs')) !!}
+			        @endauth
+
+	            	@if ( !$project->hasliked(auth()->user()) )
+						{!! link_to_route('projects.like', 'Curtir', array($project->slug), 
+						array('class' => 'btn btn-success btn-xs')) !!}
+				    @else
+						{!! link_to_route('projects.dislike', 'Descurtir', array($project->slug), 
+						array('class' => 'btn btn-default btn-xs')) !!}
+				    @endif
 	            </h1>
+          	@role('Administrator')
 			{!! Form::close() !!}
+			@endauth
 
           </div>
         </div>
@@ -29,10 +47,9 @@
       <div class="row loves">
         <div class="container">
           <div class="col-xs-12">
-            <span class="kpi"><i class="fa fa-heart"></i> <strong>64</strong> loves</span>
-            <span class="kpi"><strong>2564</strong> views</span>
-            <span class="kpi"><strong>123</strong> cheers</span>
-            <span class="kpi"><strong>87</strong> followers</span>
+            <span class="kpi"><i class="fa fa-heart"></i> <strong>{{ $project->likes->count() }}</strong></span>&nbsp;
+            <span class="kpi"><i class="fa fa-eye"></i> <strong>{{ $project->views->count() }}</strong></span>&nbsp;
+            <span class="kpi"><i class="fa fa-users"></i> <strong>{{ $project->members->count() }}</strong> membros</span>
           </div>
         </div>
       </div>
@@ -68,18 +85,17 @@
             </ul>
           </div>
           <div class="description jumbotron">
-            {{ $project->description }}
+    		{!! nl2br(e($project->description)) !!}
           </div>
 
           <!-- PROJECT PANELS -->
+		  @if ( $project->tasks->count() || $project->ismember(auth()->user()) || access()->hasrole('Administrator') )
           <div class="panel panel-default">
             <div class="panel-heading">
               <h3 class="panel-title">Precisamos de ajuda para</h3>
             </div>
             <div class="panel-body">
-			    @if ( !$project->tasks->count() )
-			        Não tem tarefa
-			    @else
+			    @if ( $project->tasks->count() )
 			        <ul>
 			            @foreach( $project->tasks as $task )
 			                <li>
@@ -88,12 +104,15 @@
 			            @endforeach
 			        </ul>
 			    @endif
-			    <p>
-			           {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug, array('class' => 'btn btn-info btn-xs')) !!}
-			    </p>
+			    @if ($project->ismember(auth()->user()) || access()->hasrole('Administrator'))
+				    <p>
+				      {!! link_to_route('projects.tasks.create', 'Nova tarefa', $project->slug, array('class' => 'btn btn-info btn-xs')) !!}
+				    </p>
+			    @endif
  
             </div>
           </div>
+          @endif
           <!-- /PROJECT PANELS -->
 
           <!-- PEOPLE -->
@@ -131,6 +150,8 @@
             </ul>
           </div>
           <!-- /TEAM -->
+
+		  <hr />
 
           <!-- COMMENT -->
           <div class="comments">
