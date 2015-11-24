@@ -38,20 +38,20 @@ hcb_user = {
     like:'<img src="//www.htmlcommentbox.com/static/images/like.png"/> curtir',
     
     //dates
-    days_ago:'days ago',
-    hours_ago:'hours ago',
-    minutes_ago:'minutes ago',
-    within_the_last_minute:'within the last minute',
+    days_ago:'dias atrás',
+    hours_ago:'horas atrás',
+    minutes_ago:'minutos atrás',
+    within_the_last_minute:'nos próximos minutos',
 
-    msg_thankyou:'Thank you for commenting!',
-    msg_approval:'(this comment is not published until approved)',
-    msg_approval_required:'Thank you for commenting! Your comment will appear once approved by a moderator.',
+    msg_thankyou:'Obrigado pelo seu comentário!',
+    msg_approval:'(este comentario só será publicado após aprovação)',
+    msg_approval_required:'TObrigado pelo seu comentário! Este comentario só será publicado após aprovação.',
     
-    err_bad_html:'Your comment contained bad html.',
-    err_bad_email:'Please enter a valid email address.',
-    err_too_frequent:'You must wait a few seconds between posting comments.',
-    err_comment_empty:'Your comment was not posted because it was empty!',
-    err_denied:'Your comment was not accepted.',
+    err_bad_html:'Seu comentário contem HTML inválido.',
+    err_bad_email:'Por favor, insita um endereço de e-mail válido.',
+    err_too_frequent:'Favor aguarde alguns instates para postar seu préximo comentário.',
+    err_comment_empty:'Seu comentário não foi publicado pois estava em branco!',
+    err_denied:'Seu comentário foi rejeitado.',
 
     //SETTINGS
     MAX_CHARS: 2048,
