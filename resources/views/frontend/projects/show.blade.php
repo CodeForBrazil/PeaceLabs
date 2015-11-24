@@ -47,9 +47,9 @@
       <div class="row loves">
         <div class="container">
           <div class="col-xs-12">
-            <span class="kpi"><i class="fa fa-heart"></i> <strong>{{ $project->likes->count() }}</strong></span>&nbsp;
-            <span class="kpi"><i class="fa fa-eye"></i> <strong>{{ $project->views->count() }}</strong></span>&nbsp;
-            <span class="kpi"><i class="fa fa-users"></i> <strong>{{ $project->members->count() }}</strong> membros</span>
+            <span class="kpi" title="Likes"><i class="fa fa-heart"></i> <strong>{{ $project->likes->count() }}</strong></span>&nbsp;
+            <span class="kpi" title="Views"><i class="fa fa-eye"></i> <strong>{{ $project->viewsCount() }}</strong></span>&nbsp;
+            <span class="kpi" title="Participantes"><i class="fa fa-users"></i> <strong>{{ $project->members->count() }}</strong></span>
           </div>
         </div>
       </div>

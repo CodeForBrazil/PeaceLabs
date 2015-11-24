@@ -64,8 +64,8 @@
 					  </div>
 			        @endif
 		            <header>
-		              <img class="capa" src="{{ $project->cover_url(['height' => 160,'width' => 720, 'crop' => 'fill' ]) }}"/>
-		              <img src="{{ $project->profile_url(['height' => 50,'width' => 50, 'crop' => 'fill']) }}" class="profile img-responsive"/>
+		              <a href="{{ route('projects.show', $project->slug) }}"><img class="capa" src="{{ $project->cover_url(['height' => 160,'width' => 720, 'crop' => 'fill' ]) }}"/></a>
+		              <a href="{{ route('projects.show', $project->slug) }}"><img src="{{ $project->profile_url(['height' => 50,'width' => 50, 'crop' => 'fill']) }}" class="profile img-responsive"/></a>
 		              <h2>
 		              	<a href="{{ route('projects.show', $project->slug) }}">{{ $project->name }}</a>
 		              </h2>
@@ -75,9 +75,19 @@
 		                {{ $project->description }}
 		              </p>
 		            </div>
-		            <footer>
-		              <a href="{{ route('projects.show', $project->slug) }}">Saber mais sobre este projeto</a>
-		            </footer>
+		            <div class="row">
+			            <footer class="col-xs-6 col-sm-12 col-md-6">
+			              <div class="row loves">
+					            <span class="kpi" title="Likes"><i class="fa fa-heart"></i> <strong>{{ $project->likes->count() }}</strong></span>&nbsp;
+					            <span class="kpi" title="Views"><i class="fa fa-eye"></i> <strong>{{ $project->viewsCount() }}</strong></span>&nbsp;
+					            <span class="kpi" title="Participantes"><i class="fa fa-users"></i> <strong>{{ $project->members->count() }}</strong></span>
+					      </div>
+			            </footer>
+			            <footer  class="col-xs-6 col-sm-12 col-md-6" style="text-align: right;">
+	
+			              <a href="{{ route('projects.show', $project->slug) }}">Saber mais...</a>
+			            </footer>
+		            </div>
 		          </article>
 		        </li>
             @endforeach

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Project extends Model
 {
@@ -47,6 +48,10 @@ class Project extends Model
 		return $this->belongsToMany('App\Models\Access\User\User','project_views')->withTimestamps();
 	}
 
+	public function viewsCount()
+	{
+	    return DB::table('project_views')->where('project_id',$this->id)->count();
+	}
 	
 	public function profile() 
 	{
