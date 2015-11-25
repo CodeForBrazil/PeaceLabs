@@ -110,7 +110,7 @@
         </div>
         <div class="container">
             <div class="row">
-				<div class="col-lg-6 col-md-6">
+				<div class="col-lg-4 col-md-offset-2 col-md-4 col-md-offset-2">
                     <div class="service-box text-center">
                         <i class="fa fa-4x fa-lightbulb-o wow bounceIn text-primary" data-wow-delay=".2s"></i>
                         <h3>Ideias</h3>
@@ -121,7 +121,7 @@
 						<li class="text-muted">Qual o problema que você acha que a humanidade deve resolver hoje?</li>
                     </ul>
                 </div>
-                <div class="col-lg-6 col-md-6 ">
+                <div class="col-lg-4 col-md-4">
                     <div class="service-box text-center">
                         <i class="fa fa-4x fa fa-cogs wow bounceIn text-primary" data-wow-delay=".3s"></i>
                         <h3>Habilidades</h3>
