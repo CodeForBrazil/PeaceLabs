@@ -31,7 +31,10 @@
             @include('includes.partials.messages')
             @yield('content')
 
-      <section class="container-fluid" style="border-top: 1px solid #DDD;">
+
+		@include('frontend.includes.footer')
+
+      <!--section class="container-fluid" style="border-top: 1px solid #DDD;">
         <ul class="list-inline">
           <li><a href="#">About</a></li>
           <li><a href="#">Terms</a></li>
@@ -44,7 +47,7 @@
         <div class="copyright" style="font-size: 10px;">
           <p>Copyright ©2015, Peace Enterprises, Inc. All rights reserved.</p>
         </div>
-      </section>
+      </section-->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{asset('js/vendor/jquery-1.11.2.min.js')}}"><\/script>')</script>

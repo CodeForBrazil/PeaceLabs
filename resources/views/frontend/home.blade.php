@@ -138,22 +138,7 @@
     
 </div>
 
-
-<footer>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-6 col-md-offset-3 text-center">
-        <ul class="list-inline">
-          <li><a href="https://www.twitter.com/cheerforpeace" style="text-decoration: initial; color: #333333"><i class="icon-facebook icon-2x"></i></a></li>
-          <li><a href="https://www.facebook.com/CheerForPeace/" style="text-decoration: initial; color: #333333"><<i class="icon-twitter icon-2x"></i></a></li>
-          <li><i class="icon-google-plus icon-2x"></i></li>
-        </ul>
-        <hr>
-      Code For Brazil - PeaceLabs ©2015</p>
-      </div>
-    </div>
-  </div>
-</footer>
+@include('frontend.includes.footer')
 
 <ul class="nav pull-right scroll-down">
   <li><a href="#" title="Scroll down"><i class="icon-chevron-down icon-3x"></i></a></li>
