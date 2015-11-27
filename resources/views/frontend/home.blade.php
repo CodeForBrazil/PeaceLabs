@@ -72,7 +72,7 @@
 		            </header>
 		            <div class="teaser-body">
 		              <p>
-		                {{ $project->description }}
+		                {{ $project->description_short }}
 		              </p>
 		            </div>
 		            <div class="row">
