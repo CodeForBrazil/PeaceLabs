@@ -49,7 +49,7 @@
 </div>
 
 <div class="form-group">
-    {!! Form::label('url_1', 'Links para seu projetos', array('class' => 'col-sm-2 control-label')) !!}
+    {!! Form::label('url_1', 'Links do projeto', array('class' => 'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
 	    {!! Form::text('url_1', NULL, array('class' => 'form-control', 'placeholder' => 'Ex: Landing page, Github, Facebook, Twitter... ')) !!}
 	    {!! Form::text('url_2', NULL, array('class' => 'form-control', 'placeholder' => 'Ex: Landing page, Github, Facebook, Twitter... ')) !!}
