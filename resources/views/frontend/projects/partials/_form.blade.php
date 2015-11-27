@@ -9,7 +9,13 @@
     {!! Form::label('status', 'Status do projeto', array('class' => 'col-sm-2 control-label')) !!}
     <div class="col-sm-10">
 	    {!! Form::select('status', 
-	    			[ 'Brainstorm' , 'Pesquisa' , 'Prototipação' , 'Protótipo Navegável' , 'Desenvolvimento' , 'Produção'],
+	    			[ 'Brainstorm' => 'Brainstorm' , 
+	    			  'Pesquisa' => 'Pesquisa' ,
+	    			  'Prototipação' => 'Prototipação' , 
+	    			  'Protótipo Navegável' => 'Protótipo Navegável' , 
+	    			  'Desenvolvimento' => 'Desenvolvimento' , 
+	    			  'Produção' => 'Produção'
+	    			 ],
 	    			 NULL, array('class' => 'form-control')) !!}
     </div>
 </div>

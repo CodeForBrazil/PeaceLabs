@@ -80,13 +80,23 @@
           <div class="project-details">
             <ul class="list-inline">
               <li><span class="project-details-label">Data da Criação</span> {{ date('d/m/Y', strtotime($project->created_at)) }}</li>
-              <!--li><span class="project-details-label">Categoria</span> Social</li>
-              <li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li-->
+              <li><span class="project-details-label">Status</span> {{ $project->status }}</li>
+              <!--li><span class="project-details-label">Localidade</span> Curitiba - PR, Brasil</li-->
             </ul>
           </div>
+          @if ( !empty($project->description_short))
           <div class="description jumbotron">
-    		{!! nl2br(e($project->description)) !!}
+    		{!! nl2br(e($project->description_short)) !!}
           </div>
+          @endif
+
+          @if ( !empty($project->description))
+          <div class="description">
+    		{!! nl2br(e($project->description)) !!}
+    		<br/>
+    		<br/>
+          </div>
+          @endif
 
           <!-- PROJECT PANELS -->
 		  @if ( $project->tasks->count() || $project->ismember(auth()->user()) || access()->hasrole('Administrator') )
@@ -113,6 +123,27 @@
             </div>
           </div>
           @endif
+
+		  @if ( !empty($project->url_1) || !empty($project->url_2) || !empty($project->url_3) )
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Links do projeto</h3>
+            </div>
+            <div class="panel-body">
+            	@if (!empty($project->url_1))
+            		{!! HTML::link($project->url_1) !!}<br/>
+            	@endif
+ 
+            	@if (!empty($project->url_2))
+            		{!! HTML::link($project->url_2) !!}<br/>
+            	@endif
+
+            	@if (!empty($project->url_3))
+            		{!! HTML::link($project->url_3) !!}<br/>
+            	@endif
+            </div>
+          </div>
+          @endif          
           <!-- /PROJECT PANELS -->
 
           <!-- PEOPLE -->
