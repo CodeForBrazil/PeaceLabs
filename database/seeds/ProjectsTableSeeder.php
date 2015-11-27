@@ -26,13 +26,15 @@ class ProjectsTableSeeder extends Seeder
 			$id = DB::table('projects')->insertGetId([
                 'name' => str_replace('.', '_', $faker->unique()->name),  
                 'slug' => $faker->lexify('?????'),
-                'description' => $faker->paragraph(1),  
+                'description' => $faker->paragraph(1),
+                'description_short' => $faker->paragraph(1),  
                 'category' => $faker->randomElement($array = array ('social','ambiental','economic')),  
                 'profile_media_id' => rand($media_id,$media_id+20),  
                 'cover_media_id' => rand($media_id,$media_id+20),  
                 'hashtag' => str_random(10), 
                 'created_at' => $faker->dateTimeThisMonth(),  
                 'updated_at' => $faker->dateTimeThisMonth(),  
+                'status' => $faker->randomElement($array = array ('Brainstrom','Prototipação','Desenvolvimento','Produção')),
             ]);
             DB::table('project_users')->insert([
             	'user_id' => User::orderByRaw("random()")->first()->id,

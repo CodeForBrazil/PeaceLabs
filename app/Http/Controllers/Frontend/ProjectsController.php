@@ -16,7 +16,11 @@ class ProjectsController extends Controller
 {
 
 	protected $rules = [
-		'name' => ['required', 'min:3'],
+		'name' => ['required', 'min:3', 'max:25'],
+		'description_short' => ['max:140'],
+		'url_1' => ['url'],
+		'url_2' => ['url'],
+		'url_3' => ['url'],
 	];
 	
     /**
