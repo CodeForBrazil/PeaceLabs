@@ -109,7 +109,12 @@
 			        <ul>
 			            @foreach( $project->tasks as $task )
 			                <li>
-		                        <a href="{{ route('projects.tasks.show', [$project->slug, $task->slug]) }}">{{ $task->name }}</a>
+		                        <a href="{{ route('projects.tasks.show', [$project->slug, $task->slug]) }}">
+		                        	{{ $task->name }}
+		                        	@if ($task->completed)
+		                        	&nbsp;(Executada)
+		                        	@endif
+		                        </a>
 			 				</li>
 			            @endforeach
 			        </ul>
