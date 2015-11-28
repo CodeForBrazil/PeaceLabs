@@ -38,7 +38,7 @@ class TasksController extends Controller {
 	protected function makeSlugFromTitle($title)
 	{
 	    $slug = Str::slug($title);
-	    $count = Project::whereRaw("slug LIKE '{$slug}-%' OR slug = '{$slug}'")->count();
+	    $count = Task::whereRaw("slug LIKE '{$slug}-%' OR slug = '{$slug}'")->count();
 	    return $count ? "{$slug}-{$count}" : $slug;
 	}
 
