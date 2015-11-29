@@ -51,8 +51,6 @@ class TasksController extends Controller {
 	protected function filter_task_input() {
 		$input = Input::all();
 
-		$input['slug'] = $this->makeSlugFromTitle($input['name']);
-
 		$input = array_except($input, '_method');
 		return $input;	
 	}
@@ -88,6 +86,7 @@ class TasksController extends Controller {
 	
 			$input = $this->filter_task_input();
 
+			$input['slug'] = $this->makeSlugFromTitle($input['name']);
 			$input['project_id'] = $project->id;
 
 			Task::create( $input );

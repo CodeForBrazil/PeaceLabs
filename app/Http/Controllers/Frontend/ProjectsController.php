@@ -61,8 +61,6 @@ class ProjectsController extends Controller
 	protected function filter_project_input() {
 		$input = Input::all();
 
-		$input['slug'] = $this->makeSlugFromTitle($input['name']);
-
 		foreach ( ['profile','cover'] as $name) {
 			if (Input::file($name) && Input::file($name)->isValid()) {
 				$res = \Cloudinary\Uploader::upload(Input::file($name)->getRealPath());	
@@ -90,6 +88,7 @@ class ProjectsController extends Controller
 			$this->validate($request, $this->rules);
 	
 			$input = $this->filter_project_input();
+			$input['slug'] = $this->makeSlugFromTitle($input['name']);
 			
 			$project = Project::create( $input );
 			
