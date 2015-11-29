@@ -39,7 +39,13 @@ class TasksController extends Controller {
 	{
 	    $slug = Str::slug($title);
 	    $count = Task::whereRaw("slug LIKE '{$slug}-%' OR slug = '{$slug}'")->count();
-	    return $count ? "{$slug}-{$count}" : $slug;
+	    if ($count) {
+	    	while (Task::whereRaw("slug LIKE '{$slug}-$count'")->count()) {
+				$count = $count + 1;
+			}
+			return "{$slug}-$count";
+	    	
+	    } else return $slug;
 	}
 
 	protected function filter_task_input() {
