@@ -50,6 +50,7 @@
             <span class="kpi" title="Likes"><i class="fa fa-heart"></i> <strong>{{ $project->likes->count() }}</strong></span>&nbsp;
             <span class="kpi" title="Views"><i class="fa fa-eye"></i> <strong>{{ $project->viewsCount() }}</strong></span>&nbsp;
             <span class="kpi" title="Participantes"><i class="fa fa-users"></i> <strong>{{ $project->members->count() }}</strong></span>
+            <span class="kpi" title="Tarefas"><i class="fa fa-question-circle"></i> <strong>{{ $project->tasks->count() }}</strong></span>
           </div>
         </div>
       </div>
@@ -102,7 +103,7 @@
 		  @if ( $project->tasks->count() || $project->ismember(auth()->user()) || access()->hasrole('Administrator') )
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Precisamos de ajuda para</h3>
+              <h3 class="panel-title"><i class="fa fa-question-circle"></i>&nbsp;Precisamos de ajuda para</h3>
             </div>
             <div class="panel-body">
 			    @if ( $project->tasks->count() )
@@ -132,7 +133,7 @@
 		  @if ( !empty($project->url_1) || !empty($project->url_2) || !empty($project->url_3) )
           <div class="panel panel-default">
             <div class="panel-heading">
-              <h3 class="panel-title">Links do projeto</h3>
+              <h3 class="panel-title"><i class="fa fa-link"></i>&nbsp;Links do projeto</h3>
             </div>
             <div class="panel-body">
             	@if (!empty($project->url_1))
