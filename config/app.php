@@ -89,7 +89,7 @@ return [
 
     'key' => env('APP_KEY', 'yWjuZnOctIFg7cSJfdcp3Dv6A8u6MW22'),
 
-    'cipher' => MCRYPT_RIJNDAEL_128,
+    'cipher' => "AES-256-CBC", //MCRYPT_RIJNDAEL_128,
 
     /*
     |--------------------------------------------------------------------------
